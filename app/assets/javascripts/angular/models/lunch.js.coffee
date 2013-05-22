@@ -1,14 +1,13 @@
 class window.Lunch
 
-  date: null
-  votes: []
-
   constructor: (data = {}) ->
     @date = data.date
     @votes = _.map(data.votes, (voteData) =>
       user = @_findUser(data.users, voteData.userId)
       restaurant = @_findRestaurant(data.restaurants, voteData.restaurantId)
-      new Vote(user, restaurant)
+      vote = new Vote(user, restaurant)
+      restaurant.addVote(vote)
+      vote
     )
 
   getRestaurants: ->

@@ -6,6 +6,7 @@
   margin-bottom: 15px;
   border: 1px solid black;
   clear: both;
+  position: relative;
 
   @include border-radius(4px);
   @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
@@ -24,6 +25,20 @@
       float: left;
     }
 
+  }
+
+  .voters {
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    .voter {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
   }
 
 

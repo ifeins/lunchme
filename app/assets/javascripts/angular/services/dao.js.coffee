@@ -9,17 +9,6 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     )
     dfd.promise
 
-  @find = (id) ->
-    dfd = $q.defer()
-    fetchRequest.success((data) ->
-      restaurantData = _.find(data, (currentRestaurantData) -> currentRestaurantData.id == id)
-      if (restaurantData)
-        dfd.resolve(new Restaurant(restaurantData))
-      else
-        dfd.reject()
-    )
-    dfd.promise
-
   @
 ).factory('LunchDAO', ($http, $q) ->
 

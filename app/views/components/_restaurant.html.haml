@@ -5,3 +5,6 @@
     %span.name {{tag.name}}
     %span.multiplier ×
     %span.quantity {{tag.quantity}}
+.voters
+  .voter{'ng-repeat' => 'voter in restaurant.getVoters()'}
+    %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
