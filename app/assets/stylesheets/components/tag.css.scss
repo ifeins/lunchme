@@ -1,0 +1,24 @@
+@import "master";
+
+@mixin tag {
+  @include box-sizing(border-box);
+  height: 20px;
+
+  color: #3E6D8E;
+  background-color: #E0EAF1;
+  border-bottom: 1px solid #b3cee1;
+  border-right: 1px solid #b3cee1;
+  padding: 3px 4px 3px 4px;
+  margin: 2px 2px 2px 0;
+  white-space: nowrap;
+  font-family: $body-font;
+  font-size: 12px;
+
+  .multiplier {
+    color: #999;
+  }
+
+  .quantity {
+    color: #999;
+  }
+}

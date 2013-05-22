@@ -1,0 +1,30 @@
+@import "components/tag";
+
+@mixin restaurant {
+  @include box-sizing(border-box);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  clear: both;
+
+  @include border-radius(4px);
+  @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
+  border: 1px solid #bfbfbf;
+  background-color: white;
+
+  > .name {
+    font-weight: bold;
+  }
+
+  .tags {
+    height: 20px;
+
+    .tag {
+      @include tag;
+      float: left;
+    }
+
+  }
+
+
+}

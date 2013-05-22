@@ -1,0 +1,11 @@
+%h2 Where do people want to lunch today?
+.lunch{'ng-controller' => 'LunchController'}
+  .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants()'}
+    = render 'components/restaurant'
+
+
+.search_restaurants{'ng-controller' => 'SearchRestaurantsController'}
+  .search
+    %input{:type => :text, :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
+  .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:query'}
+    = render 'components/restaurant'

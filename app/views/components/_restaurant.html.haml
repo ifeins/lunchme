@@ -1,0 +1,7 @@
+%span.name {{restaurant.name}}
+%span.category {{restaurant.category}}
+.tags
+  .tag{'ng-repeat' => 'tag in restaurant.tags'}
+    %span.name {{tag.name}}
+    %span.multiplier ×
+    %span.quantity {{tag.quantity}}

@@ -1,0 +1,36 @@
+@import "master";
+@import "components/restaurant";
+
+$grey-shadow: rgba(#000, 0.15);
+
+@mixin main-content {
+  @include box-sizing(border-box);
+  padding: 30px;
+
+  .search {
+
+    margin-bottom: 30px;
+
+    input {
+      @include box-sizing(border-box);
+
+      width: 100%;
+      padding: 5px;
+
+      font-size: 16px;
+
+      border: 1px solid #dedede;
+      @include border-radius(4px);
+      @include box-shadow(1px 1px 3px 0 rgba(0, 0, 0, 0.3));
+    }
+
+
+  }
+
+  .restaurant {
+    @include restaurant;
+  }
+}
+
+
+

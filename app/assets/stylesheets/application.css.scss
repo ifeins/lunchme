@@ -1,0 +1,49 @@
+//= require_self
+
+@import 'pages/restaurants/main';
+
+$container-width: 960px;
+$grey-shadow: rgba(#000, 0.15);
+
+body {
+  margin-top: 0;
+  background-color: rgb(235, 234, 222);
+}
+
+.container {
+  position: relative;
+  width: $container-width;
+  margin: 0 auto;
+  background-color: white;
+  @include box-shadow(0px 3px 10px 0px $grey-shadow);
+
+  header, footer {
+    text-align: center;
+    clear: both;
+  }
+
+  header {
+    padding-top: 15px;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .main {
+    @include main-content;
+    @include min-height(700px);
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background-color: #EFEFEF;
+    color: #444;
+    font-family: $body-font;
+  }
+
+}
