@@ -1,8 +1,8 @@
 class window.Vote
 
-  constructor: (restaurantDAO, data = {}) ->
-    @restaurantDAO = restaurantDAO
-    _.each(_.keys(data), (key) -> @[key] = data[key])
+  user: null
+  restaurant: null
 
-  getRestaurant: ->
-    @restaurantDAO.find(@data.restaurant)
+  constructor: (user, restaurant) ->
+    @user = user
+    @restaurant = restaurant

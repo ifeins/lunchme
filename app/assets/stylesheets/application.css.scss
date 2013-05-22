@@ -33,6 +33,10 @@ body {
   .main {
     @include main-content;
     @include min-height(700px);
+
+    .lunch {
+      margin-bottom: 50px;
+    }
   }
 
   footer {
