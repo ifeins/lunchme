@@ -7,7 +7,7 @@
 #= require_self
 
 angular.module('Lunchme', ['DAO']).config(($routeProvider) ->
-  $routeProvider.when('/', controller: 'LunchPageController', templateUrl: 'partials/lunch_page.html', resolve: {
+  $routeProvider.when('/', controller: 'LunchPageController', templateUrl: '<%= asset_path("pages/lunch_page.html") %>', resolve: {
     lunch: (LunchDAO) -> LunchDAO.today()
   })
 )
