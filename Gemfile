@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'angular-rails'
 gem 'haml'
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -17,6 +18,7 @@ group :assets do
   gem 'compass-rails'
   gem 'compass-photoshop-drop-shadow'
   gem 'underscore-rails'
+  gem 'haml_coffee_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
