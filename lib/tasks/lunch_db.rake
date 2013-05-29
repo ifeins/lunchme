@@ -7,13 +7,14 @@ namespace :lunch_db do
       category = nil
       category = Category.find_or_create_by_name(item['cuisines'][0]['name']) if item['cuisines'].try(:[], 0).try(:[], 'name').present?
       puts "importing restuarant: #{item['name']}"
-      Restaurant.create!(:name => item['name'],
-                         :category => category,
-                         :location_attributes => {
-                             :name => item['address'],
-                             :latitude => item['latitude'],
-                             :longitude => item['longitude']
-                         }
+      Restaurant.find_or_create_by_name(
+          :name => item['name'],
+          :category => category,
+          :location_attributes => {
+              :name => item['address'],
+              :latitude => item['latitude'],
+              :longitude => item['longitude']
+          }
       )
     end
   end
