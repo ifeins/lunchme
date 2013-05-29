@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529141334) do
+ActiveRecord::Schema.define(:version => 20130529141554) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
     t.float    "radius"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
