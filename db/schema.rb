@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529144058) do
+ActiveRecord::Schema.define(:version => 20130529144406) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(:version => 20130529144058) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "lunches", :force => true do |t|
+    t.date     "date"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "lunches", ["group_id"], :name => "index_lunches_on_group_id"
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
