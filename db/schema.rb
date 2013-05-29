@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529141554) do
+ActiveRecord::Schema.define(:version => 20130529142250) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -36,5 +36,18 @@ ActiveRecord::Schema.define(:version => 20130529141554) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "location_id"
+    t.integer  "area_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"
+  add_index "restaurants", ["category_id"], :name => "index_restaurants_on_category_id"
+  add_index "restaurants", ["location_id"], :name => "index_restaurants_on_location_id"
 
 end
