@@ -9,16 +9,20 @@ namespace :lunch_db do
       puts "importing restuarant: #{item['name']}"
       Restaurant.find_or_create_by_name(
           :name => item['name'],
-          :logo_url => item['logo_url'],
+          :logo_url => "http:#{item['logo_url']}",
           :category => category,
           :location_attributes => {
-              :street => item['address'],
+              :street => street_name(item['address'], item['city']),
               :city => item['city'],
               :latitude => item['latitude'],
               :longitude => item['longitude']
           }
       )
     end
+  end
+
+  def street_name(street, city)
+    street.gsub(city, '').gsub(',', '').gsub('.', '').strip
   end
 
 end
