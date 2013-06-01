@@ -1,10 +1,12 @@
-%span.name {{restaurant.name}}
-%span.category {{restaurant.category}}
-.tags
-  .tag{'ng-repeat' => 'tag in restaurant.tags'}
-    %span.name {{tag.name}}
-    %span.multiplier ×
-    %span.quantity {{tag.quantity}}
-.voters
-  .voter{'ng-repeat' => 'voter in restaurant.getVoters()'}
-    %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
+%img{'ng-src' => '{{restaurant.logo_url}}'}
+.details
+  %span.name {{restaurant.name}}
+  %span.category {{restaurant.category}}
+  .tags
+    .tag{'ng-repeat' => 'tag in restaurant.tags'}
+      %span.name {{tag.name}}
+      %span.multiplier ×
+      %span.quantity {{tag.quantity}}
+  .voters
+    .voter{'ng-repeat' => 'voter in restaurant.getVoters()'}
+      %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}

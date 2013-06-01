@@ -13,33 +13,42 @@
   border: 1px solid #bfbfbf;
   background-color: white;
 
-  > .name {
-    font-weight: bold;
+  img {
+    height: 42px;
+    vertical-align: middle;
   }
 
-  .tags {
-    height: 20px;
+  .details {
+    @include inline-block;
+    margin-left: 10px;
 
-    .tag {
-      @include tag;
-      float: left;
+    > .name {
+      font-weight: bold;
     }
 
-  }
+    .tags {
+      height: 20px;
 
-  .voters {
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+      .tag {
+        @include tag;
+        float: left;
+      }
 
-    .voter {
-      img {
-        width: 40px;
-        height: 40px;
+    }
+
+    .voters {
+      height: 40px;
+      position: absolute;
+      top: 12px;
+      right: 10px;
+
+      .voter {
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
   }
-
 
 }
