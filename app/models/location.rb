@@ -1,3 +1,3 @@
 class Location < ActiveRecord::Base
-  attr_accessible :latitude, :longitude, :name, :radius
+  attr_accessible :latitude, :longitude, :street, :city
 end

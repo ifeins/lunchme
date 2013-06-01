@@ -9,9 +9,11 @@ namespace :lunch_db do
       puts "importing restuarant: #{item['name']}"
       Restaurant.find_or_create_by_name(
           :name => item['name'],
+          :logo_url => item['logo_url'],
           :category => category,
           :location_attributes => {
-              :name => item['address'],
+              :street => item['address'],
+              :city => item['city'],
               :latitude => item['latitude'],
               :longitude => item['longitude']
           }
