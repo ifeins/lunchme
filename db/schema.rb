@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531132255) do
+ActiveRecord::Schema.define(:version => 20130601144514) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130531132255) do
     t.integer  "area_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "logo_url"
   end
 
   add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"
