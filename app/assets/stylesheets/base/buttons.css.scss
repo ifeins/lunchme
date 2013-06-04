@@ -15,4 +15,13 @@
   @include box-shadow(shade($from, 30%) 0 0 0 1px, rgba(black, 0.5) 0 2px 0 0);
   border: 1px solid tint($from, 30%);
   @include border-radius(3px);
+
+  &:hover {
+    @include background(linear-gradient(tint($from, 30%), tint($to, 30%)));
+  }
+
+  &:active {
+    @include box-shadow(none);
+    border: shade($from, 30%) 1px solid;
+  }
 }
