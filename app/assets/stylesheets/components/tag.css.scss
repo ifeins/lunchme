@@ -1,5 +1,3 @@
-@import "master";
-
 @mixin tag {
   @include box-sizing(border-box);
   height: 20px;
