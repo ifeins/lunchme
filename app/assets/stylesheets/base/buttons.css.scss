@@ -1,0 +1,18 @@
+.btn {
+  $from: rgb(0, 164, 209);
+  $to: rgb(0, 137, 177);
+
+  @include inline-block;
+
+  font-family: $body-font;
+  font-size: 16px;
+  padding: 5px 15px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  @include background(linear-gradient($from, $to));
+  @include box-shadow(shade($from, 30%) 0 0 0 1px, rgba(black, 0.5) 0 2px 0 0);
+  border: 1px solid tint($from, 30%);
+  @include border-radius(3px);
+}
