@@ -33,4 +33,5 @@ end
 
 group :development do
   gem 'powder'
+  gem 'awesome_print'
 end
