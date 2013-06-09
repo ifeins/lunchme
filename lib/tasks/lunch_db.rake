@@ -2,11 +2,12 @@ namespace :lunch_db do
 
   desc 'Import restaurants from LunchDB'
   task :import, [] => :environment do
-    response = HTTParty.get('http://lunchdb.herokuapp.com/restaurants?limit=5')
+    response = HTTParty.get('http://lunchdb.herokuapp.com/restaurants?limit=100')
     response['restaurants'].each do |item|
-      category = nil
-      category = Category.find_or_create_by_name(item['cuisines'][0]['name']) if item['cuisines'].try(:[], 0).try(:[], 'name').present?
-      puts "importing restuarant: #{item['name']}"
+      hebrew_category = item['cuisines'].try(:[], 0).try(:[], 'name').presence
+      english_category = CategoryMapper.map_category(hebrew_category)
+      category = Category.find_or_create_by_name(english_category) if english_category.present?
+
       Restaurant.find_or_create_by_name(
           :name => item['name'],
           :logo_url => "http:#{item['logo_url']}",
