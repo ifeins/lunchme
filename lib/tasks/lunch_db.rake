@@ -16,7 +16,12 @@ namespace :lunch_db do
               :city => item['city'],
               :latitude => item['latitude'],
               :longitude => item['longitude']
-          }
+          },
+          :payment_methods => [
+              PaymentMethod.find_by_name('10Bis'),
+              PaymentMethod.find_by_name('Credit Card'),
+              PaymentMethod.find_by_name('Cash')
+          ]
       )
     end
   end

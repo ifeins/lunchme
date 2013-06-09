@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+def create_payment_method(name)
+  logo_url = "/assets/payment_methods/#{name.downcase.parameterize}-logo.png"
+  PaymentMethod.find_or_create_by_name(:name => name, :logo_url => logo_url)
+end
+
+create_payment_method '10Bis'
+create_payment_method 'Cibus'
+create_payment_method 'Credit Card'
+create_payment_method 'Cash'
