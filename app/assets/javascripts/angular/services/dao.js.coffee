@@ -11,40 +11,41 @@ _findUser = (list = [], id) ->
   data = _.findWhere(list, id: id)
   if data then new User(data) else null
 
-angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
-  fetchRequest = $http.get('fixtures/restaurants.json')
+angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) ->
 
+  dao = $resource('restaurants/:id')
   restaurants = {}
 
   @load = ->
     dfd = $q.defer()
-    fetchRequest.success((list) ->
+    dao.query((list) ->
       _.each(list, (data) -> restaurants[data.id] = new Restaurant(data))
       dfd.resolve()
     )
     dfd.promise
 
-  @find = (id) ->
-    restaurants[id]
-
   @all = ->
     _.values(restaurants)
 
-  @
-).factory('LunchDAO', ($http, $q, RestaurantDAO) ->
+  @find = (id) ->
+    restaurants[id]
 
-  fetchRequest = $http.get('fixtures/lunch.json')
+  @
+).factory('LunchDAO', ($resource, $q, RestaurantDAO) ->
+
+  dao = $resource('lunches/:id')
 
   @today = ->
     dfd = $q.defer()
 
     RestaurantDAO.load().then( ->
-      fetchRequest.success((data) ->
+      dao.get(id: 1, (data) ->
         votes = _createVotes(data, RestaurantDAO)
         lunch = new Lunch(data.date, votes)
         dfd.resolve(lunch)
       )
     )
+
     dfd.promise
 
   @

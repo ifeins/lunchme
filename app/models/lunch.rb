@@ -1,4 +1,6 @@
 class Lunch < ActiveRecord::Base
   belongs_to :group
-  attr_accessible :date
+  has_many :votes
+
+  attr_accessible :date, :group
 end
