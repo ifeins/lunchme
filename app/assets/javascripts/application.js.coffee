@@ -9,19 +9,20 @@
 #= require_tree ./angular
 #= require_self
 
-_camelCaseObject = (data) ->
-  _.each(_.keys(data), (key) ->
-    data[S(key)] = data[key]
-    delete data[key]
+_camelCaseValue = (value) ->
+  return _.map(value, (data) -> _camelCaseValue(data)) if _.isArray(value)
+
+  _.each(_.keys(value), (key) ->
+    camelizedKey = S(key).camelize().s
+    if camelizedKey != key
+      value[camelizedKey] = value[key]
+      delete value[key]
   )
-  data
+  value
 
 angular.module('Lunchme', ['DAO']).config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.transformResponse.push((value) ->
-    if isArray(value)
-      _.map(value, (data) -> _camelCaseObject(data))
-    else
-      _camelCaseObject(value)
+    _camelCaseValue(value)
   )
 
   $routeProvider.when('/', controller: 'LunchPageController', template: JST['pages/lunch_page'](), resolve: {
