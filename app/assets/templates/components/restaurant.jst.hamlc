@@ -1,4 +1,4 @@
-%img{'ng-src' => '{{restaurant.logo_url}}'}
+%img{'ng-src' => '{{restaurant.logoUrl}}'}
 .details
   %span.name {{restaurant.name}}
   %span.category {{restaurant.category}}
