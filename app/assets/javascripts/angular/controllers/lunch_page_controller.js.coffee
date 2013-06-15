@@ -5,4 +5,5 @@ window.LunchPageController = ($scope, lunch, RestaurantDAO) ->
 
   $scope.restaurantSearch = (restaurant) ->
     matchTerms = _.union([restaurant.name, restaurant.category], _.map(restaurant.tags, (tag) -> tag.name))
+    matchTerms = _.select(matchTerms, (term) -> term?)
     _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query) != -1)
