@@ -1,15 +1,11 @@
 _createVotes = (data, RestaurantDAO) ->
   _.map(data.votes, (voteData) ->
-    user = _findUser(data.users, voteData.userId)
+    user = new User(voteData.user)
     restaurant = RestaurantDAO.find(voteData.restaurantId)
     vote = new Vote(user, restaurant)
     restaurant.addVote(vote)
     vote
   )
-
-_findUser = (list = [], id) ->
-  data = _.findWhere(list, id: id)
-  if data then new User(data) else null
 
 angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) ->
 
