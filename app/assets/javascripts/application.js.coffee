@@ -13,6 +13,7 @@ _camelCaseObject = (data) ->
   _.each(_.keys(data), (key) ->
     data[S(key)] = data[key]
     delete data[key]
+  )
   data
 
 angular.module('Lunchme', ['DAO']).config(($routeProvider, $httpProvider) ->
