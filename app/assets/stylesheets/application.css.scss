@@ -42,11 +42,8 @@ body {
   }
 
   footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: 30px;
+    margin-bottom: 30px;
     background-color: #EFEFEF;
     color: #444;
     font-family: $body-font;
