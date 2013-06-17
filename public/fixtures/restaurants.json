@@ -2,7 +2,6 @@
   {
     "id": 1,
     "name": "Papa Johnny",
-    "category": "Middle Eastern",
     "location": "Tel Aviv",
     "logo_url": "http://www.10bis.co.il/ImageViewer.aspx?imgDir=shops&imgName=6735",
     "tags": [{"name": "cheap", "quantity": 50}, {"name": "fast service", "quantity": 33}, {"name": "meat", "quantity": 44}]
@@ -10,7 +9,6 @@
   {
     "id": 2,
     "name": "Cafe Noir",
-    "category": "American",
     "location": "Tel Aviv",
     "logo_url": "http://www.10bis.co.il/ImageViewer.aspx?imgDir=shops&imgName=2441",
     "tags": [{"name": "high end", "quantity": 22}, {"name": "tasty", "quantity": 22}, {"name": "meat", "quantity": 54}]

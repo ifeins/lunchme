@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
-    t.integer  "category_id"
     t.integer  "location_id"
     t.integer  "area_id"
     t.datetime "created_at",  :null => false
@@ -88,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
   end
 
   add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"
-  add_index "restaurants", ["category_id"], :name => "index_restaurants_on_category_id"
   add_index "restaurants", ["location_id"], :name => "index_restaurants_on_location_id"
 
   create_table "tag_definitions", :force => true do |t|

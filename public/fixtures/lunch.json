@@ -24,7 +24,6 @@
     {
       "id": 2,
       "name": "Cafe Noir",
-      "category": "American",
       "location": "Tel Aviv",
       "tags": [{"name": "high end", "quantity": 22}, {"name": "tasty", "quantity": 22}, {"name": "meat", "quantity": 54}]
     }
