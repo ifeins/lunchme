@@ -74,9 +74,3 @@ create_user('Ticket', 'Oak',
             'ticketoak2000@gmail.com', 'https://graph.facebook.com/116090981872463/picture',
             'facebook', '116090981872463', Group.find_by_name('eBay IIC')
 )
-
-# lunches
-lunch = create_lunch(Group.find_by_name('eBay IIC'), '2013-06-15')
-
-# votes
-#lunch.votes.create(:user => User.find_by_email('ticketoak2000@gmail.com'), :restaurant => Restaurant.find(10))
