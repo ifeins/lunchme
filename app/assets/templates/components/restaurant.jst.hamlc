@@ -1,7 +1,6 @@
 %img{'ng-src' => '{{restaurant.logoUrl}}'}
 .details
   %span.name {{restaurant.name}}
-  %span.category{'ng-show' => 'restaurant.category'} ⦿ {{restaurant.category}}
   .tags
     .tag{'ng-repeat' => 'tag in restaurant.tags'}
       %span.name {{tag.name}}
