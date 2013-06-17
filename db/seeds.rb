@@ -3,8 +3,8 @@ def create_payment_method(name)
   PaymentMethod.find_or_create_by_name(:name => name, :logo_url => logo_url)
 end
 
-def create_category(name)
-  Category.find_or_create_by_name(:name => name)
+def create_tag_definition(name)
+  TagDefinition.find_or_create_by_name(:name => name)
 end
 
 def create_area(name, latitude, longitude, radius)
@@ -39,24 +39,29 @@ create_payment_method 'Cibus'
 create_payment_method 'Credit Card'
 create_payment_method 'Cash'
 
-# categories
-create_category('Homemade')
-create_category('Italian')
-create_category('American')
-create_category('Asian')
-create_category('Bistro')
-create_category('Cafe')
-create_category('Bar')
-create_category('Grill')
-create_category('Meat')
-create_category('Seafood')
-create_category('Middle Eastern')
-create_category('Japanese')
-create_category('Mexican')
-create_category('Salad')
-create_category('Sandwich')
-create_category('Conditure')
-create_category('Indian')
+# tags
+create_tag_definition('Homemade')
+create_tag_definition('Italian')
+create_tag_definition('Pizzeria')
+create_tag_definition('American')
+create_tag_definition('Hamburger')
+create_tag_definition('Asian')
+create_tag_definition('Bistro')
+create_tag_definition('Cafe')
+create_tag_definition('Bar')
+create_tag_definition('Grill')
+create_tag_definition('Meat')
+create_tag_definition('Seafood')
+create_tag_definition('Middle Eastern')
+create_tag_definition('Hummus')
+create_tag_definition('Japanese')
+create_tag_definition('Sushi')
+create_tag_definition('Thai Food')
+create_tag_definition('Mexican')
+create_tag_definition('Salad')
+create_tag_definition('Sandwich')
+create_tag_definition('Conditure')
+create_tag_definition('Indian')
 
 # areas
 create_area('Tel Aviv', 34.770738, 32.063501, 2)
@@ -74,4 +79,4 @@ create_user('Ticket', 'Oak',
 lunch = create_lunch(Group.find_by_name('eBay IIC'), '2013-06-15')
 
 # votes
-lunch.votes.create(:user => User.find_by_email('ticketoak2000@gmail.com'), :restaurant => Restaurant.find(10))
+#lunch.votes.create(:user => User.find_by_email('ticketoak2000@gmail.com'), :restaurant => Restaurant.find(10))
