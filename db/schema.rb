@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "area_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "groups", ["area_id"], :name => "index_groups_on_area_id"
-
   create_table "locations", :force => true do |t|
     t.float    "latitude"
     t.float    "longitude"
@@ -63,12 +54,9 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
 
   create_table "lunches", :force => true do |t|
     t.date     "date"
-    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "lunches", ["group_id"], :name => "index_lunches_on_group_id"
 
   create_table "payment_methods", :force => true do |t|
     t.string   "name"
@@ -111,12 +99,9 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
     t.string   "last_name"
     t.string   "email"
     t.string   "avatar_url"
-    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "users", ["group_id"], :name => "index_users_on_group_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "lunch_id"

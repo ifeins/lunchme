@@ -11,17 +11,12 @@ def create_area(name, latitude, longitude, radius)
   Area.find_or_create_by_name(:name => name, :latitude => latitude, :longitude => longitude, :radius => radius)
 end
 
-def create_group(name, area)
-  Group.find_or_create_by_name(:name => name, :area => area)
-end
-
-def create_user(first_name, last_name, email, avatar_url, provider, uid, group)
+def create_user(first_name, last_name, email, avatar_url, provider, uid)
   User.find_or_create_by_email(
       :first_name => first_name,
       :last_name => last_name,
       :email => email,
       :avatar_url => avatar_url,
-      :group => group,
       :account_attributes => {
         :provider => provider,
         :uid => uid
@@ -72,11 +67,7 @@ create_tag_definition('Vegan')
 # areas
 create_area('Tel Aviv', 34.770738, 32.063501, 2)
 
-# groups
-create_group('eBay IIC', Area.find_by_name('Tel Aviv'))
-
 # users
 create_user('Ticket', 'Oak',
             'ticketoak2000@gmail.com', 'https://graph.facebook.com/116090981872463/picture',
-            'facebook', '116090981872463', Group.find_by_name('eBay IIC')
-)
+            'facebook', '116090981872463')
