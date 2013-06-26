@@ -22,16 +22,37 @@ header {
   padding: 15px 0;
   background: #333;
 
-  h1 {
-    color: white;
-    text-align: left;
-    margin: 0;
-    margin-left: 502.5px;
+  .header-content {
+    @include box-sizing(border-box);
+    position: relative;
+
+    margin: 0 auto;
+    width: $container-width;
+
+    h1 {
+      color: white;
+      margin: 0;
+      display: inline;
+    }
+
+    .sign-in-btn {
+      @include inline-block;
+      position: absolute;
+      right: 5px;
+      top: 12px;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        color: #00a4d1;
+      }
+    }
   }
+
 }
 
 footer {
-  padding: 30px;
+  padding: 30px 0;
   background-color: white;
   color: #444;
   border-top: 1px solid #ddd;
@@ -41,5 +62,4 @@ footer {
   @include box-sizing(border-box);
   width: $container-width;
   margin: 0 auto;
-  padding: 30px;
 }
