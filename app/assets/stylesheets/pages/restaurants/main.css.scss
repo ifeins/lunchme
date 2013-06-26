@@ -2,12 +2,12 @@
 
 $grey-shadow: rgba(#000, 0.15);
 
-@mixin main-content {
+.main {
   @include box-sizing(border-box);
+  @include min-height(700px);
   padding: 30px;
 
   .search {
-
     margin-bottom: 30px;
 
     input {
@@ -22,8 +22,10 @@ $grey-shadow: rgba(#000, 0.15);
       @include border-radius(4px);
       @include box-shadow(1px 1px 3px 0 rgba(0, 0, 0, 0.3));
     }
+  }
 
-
+  .lunch {
+    margin-bottom: 50px;
   }
 
   .restaurant {
