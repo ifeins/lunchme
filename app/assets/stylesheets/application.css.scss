@@ -10,10 +10,10 @@ $grey-shadow: rgba(#000, 0.15);
 body {
   margin-top: 0;
   background-color: rgb(235, 234, 222);
+  font-family: $body-font;
 }
 
 .container {
-  position: relative;
   width: $container-width;
   margin: 0 auto;
   background-color: white;
@@ -25,10 +25,18 @@ body {
   }
 
   header {
-    padding-top: 15px;
+    padding: 15px 0;
 
     h1 {
       margin: 0;
+      span:first-child {
+        color: #333;
+      }
+
+      span:last-child {
+        margin-left: -10px;
+        color: #de382d;
+      }
     }
   }
 
@@ -46,7 +54,6 @@ body {
     margin-bottom: 30px;
     background-color: #EFEFEF;
     color: #444;
-    font-family: $body-font;
   }
 
 }
