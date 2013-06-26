@@ -23,8 +23,10 @@ header {
   background: #333;
 
   h1 {
-    margin: 0;
     color: white;
+    text-align: left;
+    margin: 0;
+    margin-left: 502.5px;
   }
 }
 
@@ -36,6 +38,8 @@ footer {
 }
 
 .container {
+  @include box-sizing(border-box);
   width: $container-width;
   margin: 0 auto;
+  padding: 30px;
 }
