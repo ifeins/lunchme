@@ -10,6 +10,7 @@
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+  cursor: pointer;
 
   @include background(linear-gradient($from, $to));
   @include box-shadow(shade($from, 30%) 0 0 0 1px, rgba(black, 0.5) 0 2px 0 0);

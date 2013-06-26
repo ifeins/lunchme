@@ -1,3 +1,6 @@
+- content_for :stylesheets do
+  != stylesheet_link_tag 'http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css', :media => 'all'
+
 !!! 5
 %html{'ng-app' => 'Lunchme'}
   %head
@@ -5,6 +8,7 @@
     != stylesheet_link_tag 'application', :media => 'all'
     != javascript_include_tag 'application'
     != csrf_meta_tags
+    != yield :stylesheets
   %body
     %header
       .header-content
@@ -13,3 +17,6 @@
     .container
       != yield
     %footer Created by Ido Feins
+    = render :partial => 'application/modal'
+
+
