@@ -10,10 +10,10 @@
     != csrf_meta_tags
     != yield :stylesheets
   %body
-    %header
+    %header{'ng-controller' => 'HeaderController'}
       .header-content
         %h1 LunchTIME
-        .sign-in-btn SIGN IN
+        .sign-in-btn{'ng-click' => 'showSignIn()'} SIGN IN
     .container
       != yield
     %footer Created by Ido Feins
