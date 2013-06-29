@@ -24,7 +24,7 @@ _camelCaseObject = (obj) ->
   )
   obj
 
-angular.module('Lunchme', ['DAO']).config(($routeProvider, $httpProvider) ->
+angular.module('Lunchme', ['DAO', 'UI']).config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.transformResponse.push((value) ->
     _camelCaseObject(value)
   )

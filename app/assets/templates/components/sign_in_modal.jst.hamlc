@@ -1,0 +1,2 @@
+%h4 SIGN IN
+%a{:href => 'javascript:;'} Sign in using Facebook

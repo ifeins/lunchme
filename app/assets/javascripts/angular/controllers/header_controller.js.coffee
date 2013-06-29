@@ -1,4 +1,4 @@
-window.HeaderController = ($scope) ->
+window.HeaderController = ($scope, $modal) ->
 
   $scope.showSignIn = ->
-    console.log 'Sign in clicked'
+    $modal(template: 'components/sign_in_modal')
