@@ -2,8 +2,8 @@ $google-sign-in-bg-color: #dd4a32;
 $google-sign-in-border-color: #ae1800;
 
 .sign-in-modal {
-  width: 320px;
-  height: 300px;
+  width: 420px;
+  height: 235px;
 
   .modal-body {
     padding: 30px;
@@ -70,6 +70,37 @@ $google-sign-in-border-color: #ae1800;
       }
     }
 
+  }
+
+  .sign-up-details {
+    .name {
+      .icon-user {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      input {
+        vertical-align: middle;
+        font-size: 14px;
+        padding: 5px;
+      }
+    }
+
+    .work-area {
+      margin-top: 15px;
+
+      .icon-globe {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      select {
+        font-size: 16px;
+        margin-left: 2px;
+        width: 320px;
+        vertical-align: middle;
+      }
+    }
   }
 
 }
