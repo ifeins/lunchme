@@ -16,3 +16,4 @@
         %option{:value => 1} Tel Aviv
         %option{:value => 2} Herzliya Pituch
         %option{:value => 3} Ramat Ha-Hayal
+    .btn.sign-up-btn Create account

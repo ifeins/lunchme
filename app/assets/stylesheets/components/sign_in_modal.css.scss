@@ -3,7 +3,6 @@ $google-sign-in-border-color: #ae1800;
 
 .sign-in-modal {
   width: 420px;
-  height: 235px;
 
   .modal-body {
     padding: 30px;
@@ -101,6 +100,13 @@ $google-sign-in-border-color: #ae1800;
         vertical-align: middle;
       }
     }
+
+    .sign-up-btn {
+      width: 150px;
+      display: block;
+      margin: 30px auto 0 auto;
+    }
+
   }
 
 }
