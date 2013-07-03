@@ -1,36 +1,75 @@
+$google-sign-in-bg-color: #dd4a32;
+$google-sign-in-border-color: #ae1800;
+
 .sign-in-modal {
   width: 320px;
   height: 300px;
 
   .modal-body {
     padding: 30px;
+
+    > .separator {
+      width: 150px;
+      margin: 20px auto;
+    }
   }
 
   .sign-in-btn {
+    @include box-sizing(border-box);
+    width: 220px;
+    margin: 0 auto;
+
+    position: relative;
     font-size: 24px;
     color: white;
+    padding: 5px;
+    font-family: $body-font;
+    @include border-radius(3px);
+    @include box-shadow(0 2px darken(white, 15%));
 
     .separator {
+      position: absolute;
       width: 1px;
-      height: 100%;
-      display: inline;
-      margin: 0 10px 0 1px;
-      border-left: 1px solid #ae1800;
+      top:0;
+      bottom: 0;
+      left: 37px;
+      border-left: 1px solid;
     }
 
     .share-icon {
       font-size: 20px;
       text-align: center;
-      margin-left: 10px;
+      margin-left: 5px;
     }
 
     .text {
+      @include inline-block;
+      margin-left: 10px;
+      margin-top: 5px;
+      vertical-align: top;
       font-size: 18px;
     }
 
     &.google-sign-in {
-      background-color: #dd4a32;
+      background-color: $google-sign-in-bg-color;
+
+      .separator {
+        border-left-color: $google-sign-in-border-color;
+      }
+
+      &:hover {
+        background-color: #FF4932;
+
+        .separator {
+          border-left-color: lighten($google-sign-in-border-color, 5%);
+        }
+      }
+
+      &:active {
+        @include box-shadow(none);
+      }
     }
 
   }
+
 }
