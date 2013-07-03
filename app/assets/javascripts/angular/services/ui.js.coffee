@@ -1,3 +1,25 @@
+class Modal
+
+  constructor: (config) ->
+    @$el = $('#modal')
+    @$el.empty()
+
+    @$el.addClass(config.className) if config.className
+    @$el.append(JST[config.template])
+    @centerModal()
+
+    $('#modal-overlay').show()
+    @$el.show()
+
+  centerModal: ->
+    viewportWidth = $('body').width()
+    viewportHeight = $(window).height()
+    left = (viewportWidth - @$el.width()) / 2;
+    top = (viewportHeight - @$el.outerHeight()) / 2;
+
+    @$el.css('left', left)
+    @$el.css('top', top)
+
 angular.module('UI', []).factory('$modal', ->
   ModalFactory = (config) ->
     hide = ->
@@ -7,16 +29,6 @@ angular.module('UI', []).factory('$modal', ->
     $('#modal-overlay').click(->
       hide()
     )
-
-    Modal = (config) ->
-      $modalEl = $('#modal')
-      $modalEl.empty()
-
-      $modalEl.addClass(config.className) if config.className
-      $modalEl.append(JST[config.template])
-
-      $('#modal-overlay').show()
-      $modalEl.show()
 
     new Modal(config)
 
