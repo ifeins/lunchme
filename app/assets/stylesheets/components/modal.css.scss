@@ -11,6 +11,8 @@
 }
 
 #modal {
+  @include box-sizing(border-box);
+
   display: none;
   background: white;
 

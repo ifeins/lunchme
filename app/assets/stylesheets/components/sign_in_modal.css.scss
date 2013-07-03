@@ -1,8 +1,36 @@
 .sign-in-modal {
-  width: 300px;
+  width: 320px;
   height: 300px;
 
   .modal-body {
     padding: 30px;
+  }
+
+  .sign-in-btn {
+    font-size: 24px;
+    color: white;
+
+    .separator {
+      width: 1px;
+      height: 100%;
+      display: inline;
+      margin: 0 10px 0 1px;
+      border-left: 1px solid #ae1800;
+    }
+
+    .share-icon {
+      font-size: 20px;
+      text-align: center;
+      margin-left: 10px;
+    }
+
+    .text {
+      font-size: 18px;
+    }
+
+    &.google-sign-in {
+      background-color: #dd4a32;
+    }
+
   }
 }

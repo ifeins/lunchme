@@ -1,5 +1,8 @@
 .modal-body
-  .sign-in-btn.google-sign-in{:href => 'javascript:;'} Sign in with Google
+  .sign-in-btn.google-sign-in
+    %i.share-icon.icon-google-plus
+    .separator
+    %span.text Sign in with Google
   .separator or create an account
   .sign-up-details
     %input{:type => 'text', :placeholder => 'First name'}
