@@ -7,6 +7,5 @@ Lunchme::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'session#create'
   match '/auth/failure' => 'session#failure'
-  match '/auth/:provider' => 'session#nothing'
 
 end
