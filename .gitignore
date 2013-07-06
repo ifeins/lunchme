@@ -16,3 +16,6 @@ log
 
 # ide files
 .idea
+
+# secret configuration
+config/configreader/env/google.yml

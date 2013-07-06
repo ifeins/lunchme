@@ -9,6 +9,10 @@ gem 'mysql2'
 gem 'haml'
 gem 'httparty'
 gem 'active_model_serializers'
+gem 'configreader'
+
+# oauth
+gem 'omniauth-google-oauth2'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,3 @@
+development:
+  app_id: <client id>
+  secret: <secret>
