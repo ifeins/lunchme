@@ -13,8 +13,10 @@ class SessionController < ApplicationController
             :avatar_url => auth_hash[:info][:image]
         }
     )
+    user = account.user
+    sign_in(user)
 
-    respond_with account.user do |format|
+    respond_with user do |format|
       format.html { redirect_to root_url }
     end
   end

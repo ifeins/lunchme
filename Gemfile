@@ -10,6 +10,7 @@ gem 'haml'
 gem 'httparty'
 gem 'active_model_serializers'
 gem 'configreader'
+gem 'controller_support'
 
 # oauth
 gem 'omniauth-google-oauth2'

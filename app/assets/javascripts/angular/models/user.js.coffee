@@ -5,3 +5,7 @@ class window.User
 
   fullName: ->
     "#{@firstName} #{@lastName}"
+
+  isCurrentUser: ->
+    @id == @constructor.current?.id
+
