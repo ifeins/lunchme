@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601145844) do
+ActiveRecord::Schema.define(:version => 20130710155447) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -95,7 +95,10 @@ ActiveRecord::Schema.define(:version => 20130601145844) do
     t.string   "avatar_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "area_id"
   end
+
+  add_index "users", ["area_id"], :name => "index_users_on_area_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "lunch_id"
