@@ -1,14 +1,6 @@
 .modal-body
-  .sign-in-btn.google-sign-in
-    %i.share-icon.icon-google-plus
-    .separator
-    %span.text Sign in with Google
-  .separator or create an account
   .sign-up-details
-    .name
-      %i.icon-user
-      %input{:type => 'text', :placeholder => 'First name'}
-      %input{:type => 'text', :placeholder => 'Last name'}
+    %h3 Select the area you work in:
     .work-area
       %i.icon-globe
       %select#area
@@ -16,4 +8,4 @@
         %option{:value => 1} Tel Aviv
         %option{:value => 2} Herzliya Pituch
         %option{:value => 3} Ramat Ha-Hayal
-    .btn.sign-up-btn Create account
+    .btn.submit-btn Submit
