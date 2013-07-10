@@ -5,7 +5,9 @@ Lunchme::Application.routes.draw do
   resources :restaurants, :only => [:index]
   resources :lunches, :only => [:show]
 
-  match '/auth/:provider/callback' => 'session#create'
-  match '/auth/failure' => 'session#failure'
+  scope 'auth' do
+    match ':provider/callback' => 'session#create'
+    match 'failure' => 'session#failure'
+  end
 
 end
