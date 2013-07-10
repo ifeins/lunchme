@@ -4,7 +4,7 @@ module JsHelper
     return unless user_signed_in?
 
     javascript_tag <<-END
-      User.current = new User(#{current_user.to_json});
+      User.current = User.parse(#{current_user.to_json});
     END
   end
 

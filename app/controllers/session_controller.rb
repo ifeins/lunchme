@@ -25,6 +25,11 @@ class SessionController < ApplicationController
 
   end
 
+  def destroy
+    sign_out
+    respond_with nil, :location => root_path
+  end
+
   private
 
   def auth_hash

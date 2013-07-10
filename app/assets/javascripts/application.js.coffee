@@ -5,30 +5,16 @@
 #= require string
 #= require js-routes
 #= require browser
+#= require utils
 #= require_tree ../templates
 #= require angular/angular
 #= require angular/angular-resource
 #= require_tree ./angular
 #= require_self
 
-_camelCaseObject = (obj) ->
-  return _.map(obj, (data) -> _camelCaseObject(data)) if _.isArray(obj)
-
-  _.each(_.keys(obj), (key) ->
-    value = obj[key]
-    if _.isArray(value) or _.isObject(value)
-      value = _camelCaseObject(value)
-
-    camelizedKey = S(key).camelize().s
-    if camelizedKey != key
-      obj[camelizedKey] = value
-      delete obj[key]
-  )
-  obj
-
 angular.module('Lunchme', ['DAO', 'UI']).config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.transformResponse.push((value) ->
-    _camelCaseObject(value)
+    Utils.camelCaseObject(value) if value
   )
 
   $routeProvider.when('/', controller: 'LunchPageController', template: JST['pages/lunch_page'](), resolve: {

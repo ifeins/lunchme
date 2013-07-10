@@ -1,4 +1,8 @@
 %header{'ng-controller' => 'HeaderController'}
   .header-content
     %h1 LunchTIME
-    .sign-in-btn{'ng-click' => 'signIn()'} SIGN IN
+    .user-panel
+      .sign-in-btn{'ng-click' => 'signIn()', 'ng-hide' => 'user'} SIGN IN
+      .signed-in-user-details{'ng-show' => 'user'}
+        %span.username Hi {{user.firstName}},
+        .sign-out-btn{'ng-click' => 'signOut()'} SIGN OUT

@@ -1,0 +1,51 @@
+header {
+  padding: 15px 0;
+  background: #333;
+  text-align: center;
+  clear: both;
+
+  .header-content {
+    @include box-sizing(border-box);
+    position: relative;
+
+    margin: 0 auto;
+    width: $container-width;
+
+    h1 {
+      color: white;
+      margin: 0;
+      display: inline;
+    }
+
+    .user-panel {
+      position: absolute;
+      right: 5px;
+      top: 12px;
+    }
+
+    .username {
+      color: white;
+      vertical-align: middle;
+    }
+
+    .sign-in-btn, .sign-out-btn {
+      @include inline-block;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        color: #00a4d1;
+      }
+    }
+
+    .sign-out-btn {
+      font-size: 13px;
+      margin: 3px 0 0 3px;
+    }
+
+    .signed-in-user-details {
+      @include inline-block;
+    }
+  }
+
+}

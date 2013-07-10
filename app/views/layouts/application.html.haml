@@ -10,11 +10,9 @@
     != csrf_meta_tags
     != yield :stylesheets
   %body
+    = setup
     = render :partial => 'layouts/header'
     .container
       != yield
     = render :partial => 'layouts/footer'
     = render :partial => 'application/modal'
-    = setup
-
-
