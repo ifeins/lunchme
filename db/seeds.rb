@@ -11,12 +11,13 @@ def create_area(name, latitude, longitude, radius)
   Area.find_or_create_by_name(:name => name, :latitude => latitude, :longitude => longitude, :radius => radius)
 end
 
-def create_user(first_name, last_name, email, avatar_url, provider, uid)
+def create_user(first_name, last_name, email, avatar_url, work_area, provider, uid)
   User.find_or_create_by_email(
       :first_name => first_name,
       :last_name => last_name,
       :email => email,
       :avatar_url => avatar_url,
+      :area => Area.find_by_name(work_area),
       :account_attributes => {
         :provider => provider,
         :uid => uid
@@ -69,5 +70,5 @@ create_area('Tel Aviv', 34.770738, 32.063501, 2)
 
 # users
 create_user('Ticket', 'Oak',
-            'ticketoak2000@gmail.com', 'https://graph.facebook.com/116090981872463/picture',
+            'ticketoak2000@gmail.com', 'https://graph.facebook.com/116090981872463/picture', 'Tel Aviv',
             'facebook', '116090981872463')

@@ -25,7 +25,7 @@ module UserSupport
 
   def load_user
     user_id = session[USER_SESSION_KEY]
-    user_id.present? ? User.find(user_id) : nil
+    user_id.present? ? User.find_by_id(user_id) : nil
   end
 
 end
