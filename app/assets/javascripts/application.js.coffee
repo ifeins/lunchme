@@ -3,6 +3,8 @@
 #= require underscore
 #= require hamlcoffee
 #= require string
+#= require js-routes
+#= require browser
 #= require_tree ../templates
 #= require angular/angular
 #= require angular/angular-resource

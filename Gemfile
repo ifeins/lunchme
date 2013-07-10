@@ -11,6 +11,7 @@ gem 'httparty'
 gem 'active_model_serializers'
 gem 'configreader'
 gem 'controller_support'
+gem 'js-routes'
 
 # oauth
 gem 'omniauth-google-oauth2'
@@ -38,6 +39,5 @@ group :development, :test do
 end
 
 group :development do
-  gem 'powder'
   gem 'awesome_print'
 end
