@@ -1,6 +1,9 @@
 class SessionController < ApplicationController
 
-  respond_to :json, :html
+  respond_to :html, :only => [:create, :failure, :destroy]
+  respond_to :json
+
+  before_filter :sign_in_required, :only => [:update]
 
   def create
     account = Account.find_or_create_by_provider_and_uid(
@@ -19,6 +22,14 @@ class SessionController < ApplicationController
     respond_with user do |format|
       format.html { redirect_to root_url }
     end
+  end
+
+  def update
+    area_name = params[:area].try(:[], :name)
+    area = Area.find_by_name(area_name) if area_name.present?
+    current_user.update_attribute(:area, area)
+
+    respond_with current_user, :location => root_path
   end
 
   def failure

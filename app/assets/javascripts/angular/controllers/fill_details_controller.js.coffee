@@ -4,4 +4,7 @@ window.FillDetailsController = ($scope, $http) ->
   $scope.selectedArea = $scope.areas[0]
 
   $scope.submit = ->
-    console.log "selected area is: #{$scope.selectedArea.name}"
+    data = {area: {name: $scope.selectedArea.name}}
+    $http.put(Routes.session_path(), data).success(
+
+    )

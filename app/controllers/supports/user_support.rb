@@ -21,6 +21,10 @@ module UserSupport
     session[USER_SESSION_KEY] = nil
   end
 
+  def sign_in_required
+    user_signed_in?
+  end
+
   private
 
   def load_user
