@@ -9,4 +9,4 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO) ->
     _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query) != -1)
 
   if User.current and not User.current.workArea
-    $modal(template: 'components/sign_in_modal', className: 'sign-in-modal')
+    $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')

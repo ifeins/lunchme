@@ -5,11 +5,13 @@ class Modal
     @$el.empty()
 
     @$el.addClass(config.className) if config.className
+    @$el.attr('ng-controller', config.controller) if config.controller
     @$el.append(JST[config.template])
     @centerModal()
 
     $('#modal-overlay').show()
     @$el.show()
+    angular.bootstrap(@$el)
 
   centerModal: ->
     viewportWidth = $('body').width()

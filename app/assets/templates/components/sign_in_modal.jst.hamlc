@@ -1,11 +1,7 @@
-.modal-body
+.modal-body{'ng-controller' => 'FillDetailsController'}
   .sign-up-details
     %h3 Select the area you work in:
     .work-area
       %i.icon-globe
-      %select#area
-        %option Select work area
-        %option{:value => 1} Tel Aviv
-        %option{:value => 2} Herzliya Pituch
-        %option{:value => 3} Ramat Ha-Hayal
-    .btn.submit-btn Submit
+      %select#area{'ng-model' => 'selectedArea', 'ng-options' => 'area.name for area in areas'}
+    .btn.submit-btn{'ng-click' => 'submit()'} Submit
