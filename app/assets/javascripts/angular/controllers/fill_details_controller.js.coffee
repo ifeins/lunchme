@@ -1,4 +1,4 @@
-window.FillDetailsController = ($scope, $http) ->
+window.FillDetailsController = ($scope, $http, $modal) ->
 
   $scope.areas = [{id: 1, name: 'Tel Aviv'}, {id: 2, name: 'Herzliya Pituch'}, {id: 3, name: 'Ramat Ha-Hayal'}]
   $scope.selectedArea = $scope.areas[0]
@@ -6,5 +6,5 @@ window.FillDetailsController = ($scope, $http) ->
   $scope.submit = ->
     data = {area: {name: $scope.selectedArea.name}}
     $http.put(Routes.session_path(), data).success(
-
+      $modal('hide')
     )

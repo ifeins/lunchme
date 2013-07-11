@@ -22,7 +22,7 @@ module UserSupport
   end
 
   def sign_in_required
-    user_signed_in?
+    forbidden unless user_signed_in?
   end
 
   private

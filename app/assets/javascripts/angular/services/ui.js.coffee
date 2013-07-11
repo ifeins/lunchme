@@ -32,7 +32,10 @@ angular.module('UI', []).factory('$modal', ->
       hide()
     )
 
-    new Modal(config)
+    if _.isString(config) and config == 'hide'
+      hide()
+    else
+      new Modal(config)
 
   ModalFactory
 )
