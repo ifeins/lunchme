@@ -11,7 +11,7 @@ class Modal
 
     $('#modal-overlay').show()
     @$el.show()
-    angular.bootstrap(@$el)
+    angular.bootstrap(@$el, ['UI'])
 
   centerModal: ->
     viewportWidth = $('body').width()

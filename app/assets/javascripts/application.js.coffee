@@ -1,6 +1,5 @@
 #= require jquery
 #= require jquery_ujs
-#= require jquery_config
 #= require underscore
 #= require hamlcoffee
 #= require string

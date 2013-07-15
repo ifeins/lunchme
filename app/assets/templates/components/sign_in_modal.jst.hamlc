@@ -1,4 +1,4 @@
-.modal-body{'ng-controller' => 'FillDetailsController'}
+.modal-body
   .sign-up-details
     %h3 Select the area you work in:
     .work-area
