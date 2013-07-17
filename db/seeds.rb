@@ -68,7 +68,5 @@ create_tag_definition('Vegan')
 # areas
 create_area('Tel Aviv', 34.770738, 32.063501, 2)
 
-# users
-create_user('Ticket', 'Oak',
-            'ticketoak2000@gmail.com', 'https://graph.facebook.com/116090981872463/picture', 'Tel Aviv',
-            'facebook', '116090981872463')
+# lunch
+Lunch.create(:date => Date.today)

@@ -17,7 +17,7 @@ namespace :lunch_db do
 
       Restaurant.find_or_create_by_name(
           :name => item['name'],
-          :logo_url => "http:#{item['logo_url']}",
+          :logo => fetch_logo("http:#{item['logo_url']}"),
           :tags_attributes => tags,
           :location_attributes => {
               :street => street_name(item['address'], item['city']),
@@ -36,6 +36,16 @@ namespace :lunch_db do
 
   def street_name(street, city)
     street.gsub(city, '').gsub(',', '').gsub('.', '').strip
+  end
+
+  def fetch_logo(logo_url)
+    agent = Mechanize.new
+    mechanize_file = agent.get(logo_url)
+    filename = File.basename(mechanize_file.filename, File.extname(mechanize_file.filename))
+    temp_filename = Dir::Tmpname.make_tmpname(filename, Dir.tmpdir)
+
+    mechanize_file.save temp_filename
+    File.open(temp_filename)
   end
 
 end

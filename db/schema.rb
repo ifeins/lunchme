@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130710155447) do
     t.integer  "area_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "logo_url"
+    t.string   "logo"
   end
 
   add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"

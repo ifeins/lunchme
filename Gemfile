@@ -12,6 +12,8 @@ gem 'active_model_serializers'
 gem 'configreader'
 gem 'controller_support'
 gem 'js-routes'
+gem 'carrierwave'
+gem 'mechanize'
 
 # oauth
 gem 'omniauth-google-oauth2'
