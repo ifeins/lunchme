@@ -9,4 +9,4 @@
   .voters
     .voter{'ng-repeat' => 'voter in restaurant.getVoters()'}
       %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
-    .btn.vote-btn I want in!
+    .btn.vote-btn{'ng-click' => 'vote(restaurant)'} {{voteButtonText(restaurant)}}
