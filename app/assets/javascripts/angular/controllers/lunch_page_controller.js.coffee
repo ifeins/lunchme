@@ -8,20 +8,23 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO) ->
     matchTerms = _.select(matchTerms, (term) -> term?)
     _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query) != -1)
 
-  $scope.vote = (restaurant) ->
-    if restaurant.isVotedFor(User.current)
-      restaurant.unvote(User.current)
+  ### vote methods ###
+
+  $scope.voteButtonClicked = (restaurant) ->
+    if lunch.isVotedForRestaurant(User.current, restaurant)
+      lunch.unvote(restaurant)
     else
-      restaurant.vote(User.current)
+      lunch.vote(restaurant)
 
   $scope.voteButtonText = (restaurant) ->
     return "I want in!" unless User.current
 
-    voters = _.pluck(restaurant.votes, 'user')
-    if User.current in voters
+    if $scope.lunch.isVotedForRestaurant(User.current, restaurant)
       "I want out"
     else
       "I want in!"
+
+  # init code
 
   if User.current and not User.current.workArea
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')

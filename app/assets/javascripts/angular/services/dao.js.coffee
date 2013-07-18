@@ -2,9 +2,7 @@ _createVotes = (data, RestaurantDAO) ->
   _.map(data.votes, (voteData) ->
     user = new User(voteData.user)
     restaurant = RestaurantDAO.find(voteData.restaurantId)
-    vote = new Vote(user, restaurant)
-    restaurant.addVote(vote)
-    vote
+    new Vote(user, restaurant)
   )
 
 angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) ->
