@@ -1,5 +1,5 @@
 class LunchSerializer < ActiveModel::Serializer
-  attributes :date
+  attributes :id, :date
   has_many :votes
 
 end

@@ -5,7 +5,7 @@ Lunchme::Application.routes.draw do
   resources :restaurants, :only => [:index]
 
   resources :lunches, :only => [:show] do
-    resources :votes, :only => [:create]
+    resources :votes, :only => [:create, :destroy]
   end
 
   resource :session, :controller => :session, :only => [:destroy, :update]

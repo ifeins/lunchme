@@ -1,18 +1,20 @@
-_createVotes = (lunch, votes, RestaurantDAO) ->
+_createVotes = (lunch, votes, RestaurantDAO, UserDAO) ->
   _.map(votes, (voteData) ->
-    user = new User(voteData.user)
+    user = UserDAO.findOrInitializeById(voteData.user)
     restaurant = RestaurantDAO.find(voteData.restaurantId)
-    new Vote(lunch, user, restaurant)
+    vote = new Vote(lunch, user, restaurant)
+    vote.id = voteData.id
+
+    vote
   )
 
-angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) ->
+angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
-  dao = $resource('restaurants/:id')
   restaurants = {}
 
   @load = ->
     dfd = $q.defer()
-    dao.query((list) ->
+    $http.get('restaurants').success((list) ->
       _.each(list, (data) -> restaurants[data.id] = new Restaurant(data))
       dfd.resolve()
     )
@@ -25,17 +27,44 @@ angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) -
     restaurants[id]
 
   @
-).factory('LunchDAO', ($resource, $q, RestaurantDAO) ->
+).factory('UserDAO', ->
 
-  dao = $resource('lunches/:id')
+  users = {}
+
+  @findOrInitializeById = (userData) ->
+    user = users[userData.id]
+    unless user
+      user = User.parse(userData)
+      users[user.id] = user
+
+    user
+
+  @
+
+).factory('VoteDAO', ($http) ->
+
+  @create = (vote) ->
+    $http.post("lunches/#{vote.lunch.id}/votes", vote).success((response) ->
+      vote.id = response.id
+      vote.lunch.addVote vote
+    )
+
+  @destroy = (vote) ->
+    $http.delete("lunches/#{vote.lunch.id}/votes/#{vote.id}").success(->
+      vote.lunch.removeVote vote
+    )
+
+  @
+
+).factory('LunchDAO', ($http, $q, RestaurantDAO, UserDAO) ->
 
   @today = ->
     dfd = $q.defer()
 
     RestaurantDAO.load().then( ->
-      dao.get(id: 1, (data) ->
-        lunch = new Lunch(data.date)
-        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO)
+      $http.get('lunches/1').success((data) ->
+        lunch = new Lunch(data.id, data.date)
+        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
         dfd.resolve(lunch)
       )
     )

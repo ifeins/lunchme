@@ -1,4 +1,4 @@
-window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO) ->
+window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   $scope.lunch = lunch
   $scope.restaurants = RestaurantDAO.all()
   $scope.query = ''
@@ -11,15 +11,16 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO) ->
   ### vote methods ###
 
   $scope.voteButtonClicked = (restaurant) ->
-    if lunch.isVotedForRestaurant(User.current, restaurant)
-      lunch.unvote(restaurant)
+    vote = lunch.userVoteForRestaurant(User.current, restaurant)
+    if vote
+      VoteDAO.destroy(vote)
     else
-      lunch.vote(restaurant)
+      VoteDAO.create(new Vote(lunch, User.current, restaurant))
 
   $scope.voteButtonText = (restaurant) ->
     return "I want in!" unless User.current
 
-    if $scope.lunch.isVotedForRestaurant(User.current, restaurant)
+    if lunch.isVotedForRestaurant(User.current, restaurant)
       "I want out"
     else
       "I want in!"

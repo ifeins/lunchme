@@ -4,7 +4,9 @@ module JsHelper
     return unless user_signed_in?
 
     javascript_tag <<-END
-      User.current = User.parse(#{UserSerializer.new(current_user).to_json});
+      angular.module('Lunchme').run(function(UserDAO) {
+        User.current = UserDAO.findOrInitializeById(#{UserSerializer.new(current_user).to_json});
+      });
     END
   end
 

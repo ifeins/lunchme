@@ -1,6 +1,6 @@
 class window.Lunch
 
-  constructor: (@date, @votes = []) ->
+  constructor: (@id, @date, @votes = []) ->
 
   getRestaurants: ->
     _.map(@votes, (vote) -> vote.restaurant)
@@ -15,12 +15,14 @@ class window.Lunch
   votersForRestaurant: (restaurant) ->
     _.pluck(@votesForRestaurant(restaurant), 'user')
 
+  userVoteForRestaurant: (user, restaurant) ->
+    _.find(@votesForRestaurant(restaurant), (vote) -> vote.user == user)
+
   isVotedForRestaurant: (user, restaurant) ->
-    user in @votersForRestaurant(restaurant)
+    @userVoteForRestaurant(user, restaurant)?
 
-  vote: (restaurant) ->
-    @votes.push new Vote(@, User.current, restaurant)
+  addVote: (vote) ->
+    @votes.push vote
 
-  unvote: (restaurant) ->
-    userVote = _.find(@votes, (vote) -> vote.user == User.current and vote.restaurant == restaurant)
-    @votes.splice(@votes.indexOf(userVote), 1)
+  removeVote: (vote) ->
+    @votes.splice(@votes.indexOf(vote), 1)
