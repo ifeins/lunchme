@@ -1,8 +1,8 @@
-_createVotes = (data, RestaurantDAO) ->
-  _.map(data.votes, (voteData) ->
+_createVotes = (lunch, votes, RestaurantDAO) ->
+  _.map(votes, (voteData) ->
     user = new User(voteData.user)
     restaurant = RestaurantDAO.find(voteData.restaurantId)
-    new Vote(user, restaurant)
+    new Vote(lunch, user, restaurant)
   )
 
 angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) ->
@@ -34,8 +34,8 @@ angular.module('DAO', ['ngResource']).factory('RestaurantDAO', ($resource, $q) -
 
     RestaurantDAO.load().then( ->
       dao.get(id: 1, (data) ->
-        votes = _createVotes(data, RestaurantDAO)
-        lunch = new Lunch(data.date, votes)
+        lunch = new Lunch(data.date)
+        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO)
         dfd.resolve(lunch)
       )
     )

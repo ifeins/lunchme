@@ -1,5 +1,6 @@
 class window.Vote
 
-  constructor: (user, restaurant) ->
+  constructor: (lunch, user, restaurant) ->
+    @lunch = lunch
     @user = user
     @restaurant = restaurant

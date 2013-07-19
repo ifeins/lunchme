@@ -1,6 +1,6 @@
 class window.Lunch
 
-  constructor: (@date, @votes) ->
+  constructor: (@date, @votes = []) ->
 
   getRestaurants: ->
     _.map(@votes, (vote) -> vote.restaurant)
@@ -19,7 +19,7 @@ class window.Lunch
     user in @votersForRestaurant(restaurant)
 
   vote: (restaurant) ->
-    @votes.push new Vote(User.current, restaurant)
+    @votes.push new Vote(@, User.current, restaurant)
 
   unvote: (restaurant) ->
     userVote = _.find(@votes, (vote) -> vote.user == User.current and vote.restaurant == restaurant)
