@@ -44,7 +44,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 ).factory('VoteDAO', ($http) ->
 
   @create = (vote) ->
-    $http.post("lunches/#{vote.lunch.id}/votes", vote).success((response) ->
+    $http.post("lunches/#{vote.lunch.id}/votes", vote.toJSON()).success((response) ->
       vote.id = response.id
       vote.lunch.addVote vote
     )
