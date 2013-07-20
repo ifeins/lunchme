@@ -7,6 +7,6 @@
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
   .voters
-    .voter{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)'}
+    .voter{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)', 'ng-animate' => "'voter-animate'"}
       %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
     .btn.vote-btn{'ng-click' => 'voteButtonClicked(restaurant)'} {{voteButtonText(restaurant)}}
