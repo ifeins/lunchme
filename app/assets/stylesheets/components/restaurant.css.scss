@@ -4,22 +4,22 @@
   @include single-transition(all 50ms linear);
   @include opacity(0);
   top: -25px;
-}
 
-.restaurant-animate-enter.restaurant-animate-enter-active {
-  @include opacity(1);
-  top: 0;
+  &.restaurant-animate-enter-active {
+    @include opacity(1);
+    top: 0;
+  }
 }
 
 .restaurant-animate-leave {
   @include single-transition(all 50ms linear);
   @include opacity(1);
   left: 0;
-}
 
-.restaurant-animate-leave.restaurant-animate-leave-active {
-  @include opacity(0);
-  left: -1000px;
+  &.restaurant-animate-leave-active {
+    @include opacity(0);
+    left: -1000px;
+  }
 }
 
 .voter-animate-enter {
@@ -27,20 +27,20 @@
   @include opacity(0);
   position: relative;
   left: 100px;
-}
 
-.voter-animate-enter.voter-animate-enter-active {
-  @include opacity(1);
-  left: 0;
+  &.voter-animate-enter-active {
+    @include opacity(1);
+    left: 0;
+  }
 }
 
 .voter-animate-leave {
   @include single-transition(all 500ms linear);
   @include opacity(1);
-}
 
-.voter-animate-leave.voter-animate-leave-active {
-  @include opacity(0);
+  &.voter-animate-leave-active {
+    @include opacity(0);
+  }
 }
 
 @mixin restaurant {
