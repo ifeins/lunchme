@@ -14,7 +14,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @load = ->
     dfd = $q.defer()
-    $http.get('restaurants').success((list) ->
+    $http.get('restaurants.json').success((list) ->
       _.each(list, (data) -> restaurants[data.id] = new Restaurant(data))
       dfd.resolve()
     )
@@ -45,7 +45,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @create = (vote) ->
     vote.lunch.addVote vote
-    $http.post("lunches/#{vote.lunch.id}/votes", vote.toJSON()).success((response) ->
+    $http.post("lunches/#{vote.lunch.id}/votes.json", vote.toJSON()).success((response) ->
       vote.id = response.id
     ).error(->
       # in case of failure we revert the addition
@@ -54,7 +54,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @destroy = (vote) ->
     vote.lunch.removeVote vote
-    $http.delete("lunches/#{vote.lunch.id}/votes/#{vote.id}").error(->
+    $http.delete("lunches/#{vote.lunch.id}/votes/#{vote.id}.json").error(->
       vote.lunch.addVote vote
     )
 
@@ -66,7 +66,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd = $q.defer()
 
     RestaurantDAO.load().then( ->
-      $http.get('lunches/1').success((data) ->
+      $http.get('lunches/1.json').success((data) ->
         lunch = new Lunch(data.id, data.date)
         lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
         dfd.resolve(lunch)

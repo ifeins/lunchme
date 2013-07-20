@@ -13,6 +13,8 @@
 #= require_self
 
 angular.module('Lunchme', ['DAO', 'UI']).config(($routeProvider, $httpProvider) ->
+  $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
+
   $httpProvider.defaults.transformResponse.push((value) ->
     Utils.camelCaseObject(value) if value
   )
