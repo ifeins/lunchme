@@ -1,7 +1,7 @@
 .parent
   %h2 Where do people want to lunch today?
   .lunch
-    .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants()', 'ng-animate' => "'animate'"}
+    .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants()', 'ng-animate' => "'restaurant-animate'"}
       +include 'components/restaurant'
 
   %h2 Where do you want to lunch today?
