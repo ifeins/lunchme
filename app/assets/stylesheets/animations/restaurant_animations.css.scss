@@ -1,5 +1,8 @@
-.restaurant-animate-enter {
+.restaurant-animate-enter, .restaurant-animate-leave {
   @include single-transition(all 50ms linear);
+}
+
+.restaurant-animate-enter {
   @include opacity(0);
   top: -25px;
 
@@ -10,7 +13,6 @@
 }
 
 .restaurant-animate-leave {
-  @include single-transition(all 50ms linear);
   @include opacity(1);
   left: 0;
 
@@ -20,8 +22,11 @@
   }
 }
 
-.voter-animate-enter {
+.voter-animate-enter, .voter-animate-leave {
   @include single-transition(all 500ms linear);
+}
+
+.voter-animate-enter {
   @include opacity(0);
   position: relative;
   left: 100px;
@@ -33,7 +38,6 @@
 }
 
 .voter-animate-leave {
-  @include single-transition(all 500ms linear);
   @include opacity(1);
 
   &.voter-animate-leave-active {
