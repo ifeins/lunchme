@@ -1,7 +1,7 @@
 .parent
   %h2 Where do people want to lunch today?
   .lunch
-    .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants() | orderBy:lunch.votesForRestaurant(restaurant).length', 'ng-animate' => "'restaurant-animate'"}
+    .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants() | orderBy:restaurantOrder:true', 'ng-animate' => "'restaurant-animate'"}
       +include 'components/restaurant'
 
   %h2 Where do you want to lunch today?
@@ -9,5 +9,5 @@
     .search
       %i.icon-search
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
-    .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch'}
+    .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch | orderBy:restaurantOrder:true'}
       +include 'components/restaurant'

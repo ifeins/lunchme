@@ -25,6 +25,9 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
     else
       "I want in!"
 
+  $scope.restaurantOrder = (restaurant) ->
+    lunch.votesForRestaurant(restaurant).length
+
   # init code
 
   if User.current and not User.current.workArea
