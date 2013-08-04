@@ -3,7 +3,7 @@ class window.Lunch
   constructor: (@id, @date, @votes = []) ->
 
   getRestaurants: ->
-    _.map(@votes, (vote) -> vote.restaurant)
+    _.uniq(_.map(@votes, (vote) -> vote.restaurant))
 
   # vote methods
   # NOTE: all those methods are nested under lunch and not under restaurant because a user votes on
