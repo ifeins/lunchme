@@ -8,6 +8,7 @@
   border: 1px solid black;
   clear: both;
   position: relative;
+  cursor: pointer;
 
   @include border-radius(4px);
   @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
@@ -29,6 +30,7 @@
 
     .tags {
       height: 20px;
+      cursor: default;
 
       .tag {
         @include tag;
@@ -39,6 +41,7 @@
 
     .voters {
       @include box-sizing(border-box);
+      cursor: default;
 
       height: 40px;
       position: absolute;
@@ -63,6 +66,14 @@
         &:first-child {
           margin-left: 0;
         }
+      }
+    }
+  }
+
+  &:hover {
+    .details {
+      > .name {
+        color: #3f7be1;
       }
     }
   }
