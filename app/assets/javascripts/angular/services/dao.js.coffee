@@ -32,6 +32,8 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   users = {}
 
   @findOrInitializeById = (userData) ->
+    return null unless userData
+
     user = users[userData.id]
     unless user
       user = User.parse(userData)
