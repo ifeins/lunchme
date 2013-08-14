@@ -28,6 +28,9 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   $scope.restaurantOrder = (restaurant) ->
     lunch.votesForRestaurant(restaurant).length
 
+  $scope.showRestaurant = (restaurant) ->
+    $modal(template: 'components/restaurant_modal', className: 'restaurant-modal', controller: 'RestaurantModalController', locals: {restaurant: restaurant})
+
   # init code
 
   if User.current and not User.current.workArea

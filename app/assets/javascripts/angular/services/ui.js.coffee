@@ -1,17 +1,28 @@
 class Modal
 
-  constructor: (config) ->
+  constructor: (config, $controller, $rootScope, $compile, $timeout, $interpolate) ->
     @$el = $('#modal')
     @$el.empty()
 
     @$el.addClass(config.className) if config.className
-    @$el.attr('ng-controller', config.controller) if config.controller
-    @$el.append(JST[config.template])
+
+    scope = $rootScope.$new()
+    for local of config.locals
+      scope[local] = config.locals[local]
+    scope.blat = 'rustico'
+
+    @$el.append(JST[config.template]())
+    $timeout(=>
+      $compile(@$el)(scope)
+      scope.$digest()
+    )
     @centerModal()
 
     $('#modal-overlay').show()
     @$el.show()
-    angular.bootstrap(@$el, ['UI'])
+
+#    $controller(config.controller, $scope: scope) if config.controller
+
 
   centerModal: ->
     viewportWidth = $('body').width()
@@ -22,7 +33,7 @@ class Modal
     @$el.css('left', left)
     @$el.css('top', top)
 
-angular.module('UI', []).factory('$modal', ->
+angular.module('UI', []).factory('$modal', ($controller, $rootScope, $compile, $timeout, $interpolate) ->
   ModalFactory = (config) ->
     hide = ->
       $('#modal').hide()
@@ -35,7 +46,7 @@ angular.module('UI', []).factory('$modal', ->
     if _.isString(config) and config == 'hide'
       hide()
     else
-      new Modal(config)
+      new Modal(config, $controller, $rootScope, $compile, $timeout, $interpolate)
 
   ModalFactory
 )
