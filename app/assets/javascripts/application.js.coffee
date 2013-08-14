@@ -9,10 +9,12 @@
 #= require_tree ../templates
 #= require angular/angular
 #= require angular/angular-resource
-#= require_tree ./angular
 #= require_self
+#= require_tree ./angular
 
-angular.module('Lunchme', ['DAO', 'UI']).config(($routeProvider, $httpProvider) ->
+window.Lunchtime = angular.module('Lunchme', ['DAO', 'UI'])
+
+Lunchtime.config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 
   $httpProvider.defaults.transformResponse.push((value) ->
