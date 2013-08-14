@@ -9,19 +9,15 @@ class Modal
     scope = $rootScope.$new()
     for local of config.locals
       scope[local] = config.locals[local]
-    scope.blat = 'rustico'
 
     @$el.append(JST[config.template]())
-    $timeout(=>
-      $compile(@$el)(scope)
-      scope.$digest()
-    )
+    $compile(@$el)(scope)
     @centerModal()
 
     $('#modal-overlay').show()
     @$el.show()
 
-#    $controller(config.controller, $scope: scope) if config.controller
+    $controller(config.controller, $scope: scope) if config.controller
 
 
   centerModal: ->
