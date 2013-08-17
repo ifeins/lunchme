@@ -1,2 +1,13 @@
 .modal-body
-  %h2 {{ restaurant.name }}
+  .title
+    %img.logo{'ng-src' => '{{restaurant.logoUrl}}'}
+    %h2 {{ restaurant.name }}
+  .location {{ restaurant.address }}
+  .tags
+    .tag{'ng-repeat' => 'tag in restaurant.tags'}
+      %span.name {{tag.name}}
+      %span.multiplier ×
+      %span.quantity {{tag.quantity}}
+    %input.new-tag{:type => 'text'}
+
+

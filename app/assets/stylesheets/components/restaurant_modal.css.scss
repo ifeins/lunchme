@@ -1,0 +1,35 @@
+@import 'components/tags';
+
+.restaurant-modal {
+  width: 500px;
+  height: 300px;
+  @include box-sizing(border-box);
+
+  padding: 15px;
+
+  .title {
+    margin: 0 auto;
+    text-align: center;
+
+    .logo {
+      vertical-align: middle;
+    }
+
+    h2 {
+      vertical-align: middle;
+      display: inline;
+    }
+  }
+
+  .location {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .tags {
+    margin-top: 30px;
+
+    @include tags;
+  }
+
+}

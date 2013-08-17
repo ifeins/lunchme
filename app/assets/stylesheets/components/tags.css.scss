@@ -1,0 +1,11 @@
+@import "components/tag";
+
+@mixin tags {
+  height: 20px;
+  cursor: default;
+
+  .tag {
+    @include tag;
+    float: left;
+  }
+}

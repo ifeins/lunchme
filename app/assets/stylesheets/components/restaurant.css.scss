@@ -1,4 +1,3 @@
-@import "components/tag";
 @import "animations/restaurant_animations";
 
 @mixin restaurant {
@@ -29,14 +28,7 @@
     }
 
     .tags {
-      height: 20px;
-      cursor: default;
-
-      .tag {
-        @include tag;
-        float: left;
-      }
-
+      @include tags;
     }
 
     .voters {
