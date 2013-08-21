@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710155447) do
+ActiveRecord::Schema.define(:version => 20130821141042) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(:version => 20130710155447) do
   end
 
   create_table "tags", :force => true do |t|
-    t.integer  "quantity"
+    t.integer  "quantity",          :default => 1
     t.integer  "tag_definition_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "tags", ["restaurant_id"], :name => "index_tags_on_restaurant_id"
