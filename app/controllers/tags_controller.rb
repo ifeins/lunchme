@@ -7,9 +7,8 @@ class TagsController < ApplicationController
   respond_to :json
 
   def create
-    tag = nil
     tag_definition = TagDefinition.find_by_name(params[:name])
-    tag = restaurant.tags.first_or_create(:tag_definition => tag_definition) if tag_definition.present?
+    tag = restaurant.tags.create(:tag_definition => tag_definition) if tag_definition.present?
 
     respond_with tag
   end

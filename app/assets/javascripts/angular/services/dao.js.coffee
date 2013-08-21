@@ -80,6 +80,16 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   @
 ).factory('TagDAO', ($http) ->
 
+  @create = (tag) ->
+    tag.restaurant.addTag tag
+
+    $http.put("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
+      tag.quantity = response.quantity
+      tag.id = response.id
+    ).error(->
+      tag.restaurant.removeTag tag
+    )
+
   @vote = (tag) ->
     tag.increment()
 

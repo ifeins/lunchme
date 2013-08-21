@@ -12,7 +12,6 @@ class window.Restaurant
     tag.restaurant = @
     @tags.push tag
 
-
   removeTag: (tag) ->
     index = @tags.indexOf(tag)
     @tags.splice(index, 1)

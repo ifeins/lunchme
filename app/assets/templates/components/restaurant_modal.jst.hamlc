@@ -8,6 +8,6 @@
       %span.name {{tag.name}}
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
-    %input.new-tag{:type => 'text'}
+    %input.new-tag{:type => 'text', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(newTagName)', :keys => [13]}
 
 
