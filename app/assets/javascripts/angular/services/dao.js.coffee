@@ -78,5 +78,16 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   @
+).factory('TagDAO', ($http) ->
+
+  @vote = (tag) ->
+    tag.increment()
+
+    $http.put("restaurants/#{tag.restaurant.id}/tags/#{tag.id}/vote.json", tag.toJSON()).error(->
+      tag.decrement() # revert operation
+    )
+
+  @
+
 )
 

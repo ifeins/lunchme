@@ -1,6 +1,6 @@
 class TagSerializer < ActiveModel::Serializer
 
-  attributes :name, :quantity
+  attributes :id, :name, :quantity
 
   def name
     object.tag_definition.name
