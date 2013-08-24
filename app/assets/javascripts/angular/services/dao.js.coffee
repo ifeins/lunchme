@@ -83,7 +83,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   @create = (tag) ->
     tag.restaurant.addTag tag
 
-    $http.put("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
+    $http.post("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
       tag.quantity = response.quantity
       tag.id = response.id
     ).error(->

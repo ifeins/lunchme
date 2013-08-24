@@ -10,7 +10,7 @@ class TagsController < ApplicationController
     tag_definition = TagDefinition.find_by_name(params[:name])
     tag = restaurant.tags.create(:tag_definition => tag_definition) if tag_definition.present?
 
-    respond_with tag
+    respond_with tag, :location => root_url
   end
 
   def vote
