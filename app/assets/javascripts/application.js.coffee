@@ -17,8 +17,11 @@ window.Lunchtime = angular.module('Lunchme', ['DAO', 'UI'])
 Lunchtime.config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 
-  $httpProvider.defaults.transformResponse.push((value) ->
-    Utils.camelCaseObject(value) if value
+  $httpProvider.defaults.transformResponse.push((value, headers) ->
+    if headers('content-type').indexOf('application/json') != -1
+      if value then Utils.camelCaseObject(value) else value
+    else
+      value
   )
 
   $routeProvider.when('/', controller: 'LunchPageController', template: JST['pages/lunch_page'](), resolve: {

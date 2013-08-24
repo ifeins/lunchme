@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+  class InvalidTagError < StandardError; end
+
   attr_reader :restaurant
 
   before_filter :load_restaurant
@@ -8,9 +10,13 @@ class TagsController < ApplicationController
 
   def create
     tag_definition = TagDefinition.find_by_name(params[:name])
-    tag = restaurant.tags.create(:tag_definition => tag_definition) if tag_definition.present?
+    if tag_definition.present?
+      tag = restaurant.tags.create(:tag_definition => tag_definition)
+      respond_with tag, :location => root_url
+    else
+      raise InvalidTagError.new('Tag is not listed in the predefined tags')
+    end
 
-    respond_with tag, :location => root_url
   end
 
   def vote
