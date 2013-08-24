@@ -3,7 +3,7 @@
   background: rgba(black, 0.75);
 
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -19,7 +19,7 @@
 
   z-index: 101;
 
-  position: absolute;
+  position: fixed;
 
   @include box-shadow(0 2px 3px rgba(black, 0.7));
 }
