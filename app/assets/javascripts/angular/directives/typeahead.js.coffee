@@ -13,7 +13,7 @@ Lunchtime.directive('bsTypeahead', ($parse) ->
           local: value
         )
         el.bind('typeahead:autocompleted', (obj, datum) ->
-          scope.$apply(ngModel.$setViewValue(datum.value))
+          ngModel.$setViewValue(datum.value)
         )
     )
 
