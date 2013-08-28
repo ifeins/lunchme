@@ -5,7 +5,10 @@ window.RestaurantModalController = ($scope, $http, TagDAO, RestaurantDAO) ->
 
   $scope.addTag = (restaurant, tagName) ->
     tag = new Tag(name: tagName, restaurant: restaurant)
-    TagDAO.create(tag)
+    TagDAO.create(tag).then(->
+      $scope.availableTags = _.without($scope.availableTags, tag.name)
+    )
 
-  $scope.availableTags = RestaurantDAO.availableTags($scope.restaurant)
+  $scope.availableTags = []
+  RestaurantDAO.availableTags($scope.restaurant).then((tags) -> $scope.availableTags = tags)
 
