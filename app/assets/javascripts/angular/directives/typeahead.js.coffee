@@ -1,5 +1,7 @@
 Lunchtime.directive('bsTypeahead', ($parse) ->
-  (scope, el, attrs) ->
+  restrict: 'A'
+  require: '?ngModel'
+  link: (scope, el, attrs, ngModel) ->
     getter = $parse(attrs.bsTypeahead)
     value = getter(scope)
 
@@ -9,6 +11,9 @@ Lunchtime.directive('bsTypeahead', ($parse) ->
         el.typeahead(
           name: 'tags'
           local: value
+        )
+        el.bind('typeahead:autocompleted', (obj, datum) ->
+          scope.$apply(ngModel.$setViewValue(datum.value))
         )
     )
 
