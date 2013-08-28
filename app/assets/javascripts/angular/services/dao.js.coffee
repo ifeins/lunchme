@@ -26,6 +26,13 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   @find = (id) ->
     restaurants[id]
 
+  @availableTags = (restaurant) ->
+    dfd = $q.defer()
+    $http.get("restaurants/#{restaurant.id}/available_tags.json").success((list) ->
+      dfd.resolve(list)
+    )
+    dfd.promise
+
   @
 ).factory('UserDAO', ->
 

@@ -6,6 +6,7 @@
 #= require js-routes
 #= require browser
 #= require utils
+#= require typeahead
 #= require_tree ../templates
 #= require angular/angular
 #= require angular/angular-resource

@@ -1,6 +1,8 @@
 class window.Utils
 
   @camelCaseObject = (obj) ->
+    return obj if not _.isObject(obj) and not _.isArray(obj)
+
     return _.map(obj, (data) -> Utils.camelCaseObject(data)) if _.isArray(obj)
 
     _.each(_.keys(obj), (key) ->

@@ -24,7 +24,10 @@ class TagsController < ApplicationController
     tag.quantity += 1
     tag.save!
 
-    respond_with tag
+    # by default rails doesn't includes body in response to PUT requests
+    respond_with tag do |format|
+      format.json { render :json => tag }
+    end
   end
 
   private

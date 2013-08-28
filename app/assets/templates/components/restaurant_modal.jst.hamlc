@@ -8,6 +8,6 @@
       %span.name {{tag.name}}
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
-    %input.new-tag{:type => 'text', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]'}
+    %input.new-tag{:type => 'text', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]', 'bs-typeahead' => 'availableTags'}
 
 

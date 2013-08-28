@@ -3,6 +3,8 @@ Lunchme::Application.routes.draw do
   root :to => 'application#index'
 
   resources :restaurants, :only => [:index] do
+    get :available_tags
+
     resources :tags, :only => [:create] do
       put :vote
     end
