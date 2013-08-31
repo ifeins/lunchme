@@ -28,12 +28,14 @@
 
   .tags {
     margin-top: 30px;
+    margin-left: 4px;
 
     @include tags;
   }
 
   .new-tag {
-    margin-top: 30px;
+    padding-top: 15px;
+    clear: both;
 
     input {
       font-size: 16px;
@@ -51,6 +53,7 @@
     @include border-radius(3px);
     @include box-sizing(border-box);
     width: 100%;
+    background: white;
 
     .tt-suggestion {
       margin-bottom: 10px;

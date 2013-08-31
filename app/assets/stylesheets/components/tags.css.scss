@@ -1,7 +1,7 @@
 @import "components/tag";
 
 @mixin tags {
-  height: 20px;
+  float: left;
   cursor: default;
 
   .tag {
