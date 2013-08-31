@@ -10,10 +10,10 @@
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
   .new-tag
-    %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]', 'bs-typeahead' => 'availableTags'}
-  .stats
+    %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
+  .stats{'ng-hide' => 'newTagTypeaheadOpened'}
     %h4 Statistics
     %ul
-      %li Your last visit was 4 days ago
+      %li Your last vote for this restaurant was 4 days ago
       %li You have voted for this restaurant 3 times in the past month
 
