@@ -2,6 +2,7 @@
   display: none;
   background: rgba(black, 0.75);
 
+
   z-index: 100;
   position: fixed;
   top: 0;
@@ -12,13 +13,11 @@
 
 #modal {
   @include box-sizing(border-box);
+  @include border-radius(5px);
 
   display: none;
-  background: white;
-  //background: #f3f3f3;
-
+  background: #f3f3f3;
   z-index: 101;
-
   position: fixed;
 
   @include box-shadow(0 2px 3px rgba(black, 0.7));

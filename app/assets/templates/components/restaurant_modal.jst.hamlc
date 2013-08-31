@@ -3,13 +3,17 @@
     %img.logo{'ng-src' => '{{restaurant.logoUrl}}'}
     %h2 {{ restaurant.name }}
   .location {{ restaurant.address }}
+  %h3 Vote on existing tags or add a new one
   .tags
     .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)'}
       %span.name {{tag.name}}
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
-
   .new-tag
     %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]', 'bs-typeahead' => 'availableTags'}
-
+  .stats
+    %h4 Statistics
+    %ul
+      %li Your last visit was 4 days ago
+      %li You have voted for this restaurant 3 times in the past month
 
