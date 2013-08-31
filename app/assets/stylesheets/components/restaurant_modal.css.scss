@@ -1,8 +1,8 @@
 @import 'components/tags';
 
 .restaurant-modal {
-  width: 500px;
-  height: 300px;
+  width: 600px;
+  height: 400px;
   @include box-sizing(border-box);
 
   padding: 15px;
@@ -43,5 +43,28 @@
       box-shadow: inset 1px 4px 7px -6px black;
     }
   }
+
+  .tt-dropdown-menu {
+    border: 1px solid rgba(black, 0.3);
+    margin-top: 5px;
+    padding: 10px;
+    @include border-radius(3px);
+    @include box-sizing(border-box);
+    width: 100%;
+
+    .tt-suggestion {
+      margin-bottom: 10px;
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
 
 }
