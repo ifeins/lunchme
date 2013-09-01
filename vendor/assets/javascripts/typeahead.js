@@ -705,6 +705,7 @@
             this.isOpen = false;
             this.isEmpty = true;
             this.isMouseOverDropdown = false;
+            this.eventBus = o.eventBus;
             this.$menu = $(o.menu).on("mouseenter.tt", this._handleMouseenter).on("mouseleave.tt", this._handleMouseleave).on("click.tt", ".tt-suggestion", this._handleSelection).on("mouseover.tt", ".tt-suggestion", this._handleMouseover);
         }
         utils.mixin(DropdownView.prototype, EventTarget, {
@@ -838,6 +839,7 @@
                     this.clearSuggestions(dataset.name);
                 }
                 this.trigger("suggestionsRendered");
+                this.eventBus.trigger('dropdown-opened')
             },
             clearSuggestions: function(datasetName) {
                 var $datasets = datasetName ? this.$menu.find(".tt-dataset-" + datasetName) : this.$menu.find('[class^="tt-dataset-"]'), $suggestions = $datasets.find(".tt-suggestions");
@@ -846,6 +848,7 @@
                 if (this._getSuggestions().length === 0) {
                     this.isEmpty = true;
                     this._hide();
+                    this.eventBus.trigger('dropdown-closed')
                 }
             }
         });
@@ -909,7 +912,8 @@
             $input = this.$node.find(".tt-query");
             $hint = this.$node.find(".tt-hint");
             this.dropdownView = new DropdownView({
-                menu: $menu
+                menu: $menu,
+                eventBus: this.eventBus
             }).on("suggestionSelected", this._handleSelection).on("cursorMoved", this._clearHint).on("cursorMoved", this._setInputValueToSuggestionUnderCursor).on("cursorRemoved", this._setInputValueToQuery).on("cursorRemoved", this._updateHint).on("suggestionsRendered", this._updateHint).on("opened", this._updateHint).on("closed", this._clearHint).on("opened closed", this._propagateEvent);
             this.inputView = new InputView({
                 input: $input,

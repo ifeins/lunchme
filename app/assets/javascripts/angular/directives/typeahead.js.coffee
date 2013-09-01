@@ -8,13 +8,13 @@ Lunchtime.directive('bsTypeahead', ($parse) ->
 
         el.typeahead('destroy')
         el.typeahead(local: value) # we don't set a name for the dataset as we don't want it to be cached
-        el.bind('typeahead:autocompleted', (obj, datum) ->
+        el.on('typeahead:autocompleted', (obj, datum) ->
           ngModel.$setViewValue(datum.value)
         )
-        el.bind('typeahead:opened', ->
+        el.on('typeahead:dropdown-opened', ->
           scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = true)
         )
-        el.bind('typeahead:closed', ->
+        el.on('typeahead:dropdown-closed', ->
           scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false)
         )
     )
