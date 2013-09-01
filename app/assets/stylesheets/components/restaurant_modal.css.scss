@@ -67,16 +67,24 @@
     width: 100%;
     background: white;
 
-    .tt-suggestion {
-      margin-bottom: 10px;
+    .tt-suggestions {
+      @include min-height(130px);
 
-      p {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
+      .tt-suggestion {
+        margin-bottom: 10px;
 
-      &:last-child {
-        margin-bottom: 0;
+        p {
+          margin-top: 0;
+          margin-bottom: 0;
+
+          &:hover {
+            color: #3f7be1;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
