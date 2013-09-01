@@ -835,11 +835,11 @@
                         fragment.appendChild($el[0]);
                     });
                     $dataset.show().find(".tt-suggestions").html(fragment);
+                    this.eventBus.trigger('suggestions-rendered')
                 } else {
                     this.clearSuggestions(dataset.name);
                 }
                 this.trigger("suggestionsRendered");
-                this.eventBus.trigger('dropdown-opened')
             },
             clearSuggestions: function(datasetName) {
                 var $datasets = datasetName ? this.$menu.find(".tt-dataset-" + datasetName) : this.$menu.find('[class^="tt-dataset-"]'), $suggestions = $datasets.find(".tt-suggestions");
@@ -848,8 +848,8 @@
                 if (this._getSuggestions().length === 0) {
                     this.isEmpty = true;
                     this._hide();
-                    this.eventBus.trigger('dropdown-closed')
                 }
+                this.eventBus.trigger('suggestions-cleared')
             }
         });
         return DropdownView;

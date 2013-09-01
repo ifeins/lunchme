@@ -11,12 +11,16 @@ Lunchtime.directive('bsTypeahead', ($parse) ->
         el.on('typeahead:autocompleted', (obj, datum) ->
           ngModel.$setViewValue(datum.value)
         )
-        el.on('typeahead:dropdown-opened', ->
+        el.on('typeahead:suggestions-rendered', ->
           scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = true)
         )
-        el.on('typeahead:dropdown-closed', ->
+        el.on('typeahead:suggestions-cleared', ->
           scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false)
         )
+
+        # need both blur and focousout for this to work
+        el.blur(-> scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false))
+        el.focusout(-> scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false))
     )
 
 )
