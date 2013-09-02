@@ -19,7 +19,9 @@ Lunchtime.config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 
   $httpProvider.defaults.transformResponse.push((value, headers) ->
-    if headers('content-type').indexOf('application/json') != -1
+    contentType = headers('content-type')
+
+    if contentType and contentType.indexOf('application/json') != -1
       if value then Utils.camelCaseObject(value) else value
     else
       value
