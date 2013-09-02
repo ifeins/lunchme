@@ -19,7 +19,7 @@
 
   img {
     flex: 0 0 auto;
-    height: 42px;
+    height: 44px;
     vertical-align: middle;
   }
 
@@ -39,12 +39,24 @@
   .vote-container {
     align-self: center;
     flex: 12 0 auto;
+    height: 44px;
 
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
+    align-items: center;
 
-    @include voters;
+    .voters {
+      flex: 0 0 auto;
+      @include voters;
+    }
+
+    .vote-btn {
+      flex: 0 0 auto;
+      margin-left: 10px;
+      text-align: center;
+      width: 95px;
+    }
   }
 
   &:hover {

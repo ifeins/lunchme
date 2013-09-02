@@ -3,16 +3,7 @@
   cursor: default;
   height: 40px;
 
-  .vote-btn {
-    margin: 4px 0 0 10px;
-    text-align: center;
-    vertical-align: baseline;
-    width: 95px;
-  }
-
   .voter {
-    @include inline-block;
-
     img {
       width: 40px;
       height: 40px;
