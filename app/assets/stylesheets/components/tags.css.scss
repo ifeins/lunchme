@@ -1,11 +1,11 @@
 @import "components/tag";
 
 @mixin tags {
-  float: left;
+  display: flex;
+  flex-flow: row wrap;
   cursor: default;
 
   .tag {
     @include tag;
-    float: left;
   }
 }

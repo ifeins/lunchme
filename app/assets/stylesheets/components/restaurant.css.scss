@@ -6,9 +6,11 @@
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid black;
-  clear: both;
-  position: relative;
   cursor: pointer;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
 
   @include border-radius(4px);
   @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
@@ -16,12 +18,12 @@
   background-color: white;
 
   img {
+    flex: 0 0 auto;
     height: 42px;
     vertical-align: middle;
   }
 
   .details {
-    @include inline-block;
     margin-left: 10px;
 
     > .name {
@@ -32,9 +34,17 @@
       @include tags;
     }
 
-    .voters {
-      @include voters;
-    }
+  }
+
+  .vote-container {
+    align-self: center;
+    flex: 12 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+
+    @include voters;
   }
 
   &:hover {
