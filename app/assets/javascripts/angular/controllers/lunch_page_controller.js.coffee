@@ -11,6 +11,8 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   ### vote methods ###
 
   $scope.voteButtonClicked = (restaurant) ->
+    return unless User.current # TODO: should display error message
+
     vote = lunch.userVoteForRestaurant(User.current, restaurant)
     if vote
       VoteDAO.destroy(vote)
