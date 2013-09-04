@@ -7,7 +7,7 @@ class LunchesController < ApplicationController
   end
 
   def today
-    respond_with Lunch.last
+    respond_with Lunch.where(date: Date.today)
   end
 
 end
