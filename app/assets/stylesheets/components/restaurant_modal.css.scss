@@ -1,13 +1,13 @@
 @import 'components/tags';
 
 #modal.restaurant-modal {
-  width: 500px;
-  height: 450px;
+  width: 550px;
+  height: 500px;
   @include box-sizing(border-box);
   // unfortunately all the restaurants' logos have a white background, so in any other color it will look bad.
   background: white;
 
-  padding: 15px;
+  padding: 30px;
 
   .title {
     margin: 0 auto;
