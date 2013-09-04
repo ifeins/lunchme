@@ -6,4 +6,8 @@ class LunchesController < ApplicationController
     respond_with Lunch.find(params[:id])
   end
 
+  def today
+    respond_with Lunch.last
+  end
+
 end

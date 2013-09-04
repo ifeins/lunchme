@@ -11,6 +11,10 @@ Lunchme::Application.routes.draw do
   end
 
   resources :lunches, :only => [:show] do
+    collection do
+      get :today
+    end
+
     resources :votes, :only => [:create, :destroy]
   end
 

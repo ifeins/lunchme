@@ -75,7 +75,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd = $q.defer()
 
     RestaurantDAO.load().then( ->
-      $http.get('lunches/1.json').success((data) ->
+      $http.get('lunches/today.json').success((data) ->
         lunch = new Lunch(data.id, data.date)
         lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
         dfd.resolve(lunch)
