@@ -85,6 +85,8 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     RestaurantDAO.load().then( ->
       $http.get(path).success((data) ->
         dfd.resolve(parseLunch(data))
+      ).error((errorData, status) ->
+        dfd.reject()
       )
     )
     dfd.promise

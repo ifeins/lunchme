@@ -3,15 +3,26 @@ class LunchesController < ApplicationController
   respond_to :json
 
   def show
-    respond_with Lunch.where(date: params[:id]).first
+    respond_with_lunch Lunch.find_by_date(params[:id])
   end
 
   def today
-    respond_with Lunch.where(date: Date.today).first
+    respond_with_lunch Lunch.find_by_date(Date.today)
   end
 
   def yesterday
-    respond_with Lunch.where(date: Date.yesterday).first
+    respond_with_lunch Lunch.find_by_date(Date.yesterday)
   end
+
+  private
+
+  def respond_with_lunch(lunch)
+    if lunch.present?
+      respond_with lunch
+    else
+      head :not_found
+    end
+  end
+
 
 end
