@@ -84,6 +84,19 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
     dfd.promise
 
+  @findByDate = (date) ->
+    dfd = $q.defer()
+
+    RestaurantDAO.load().then(->
+      $http.get("lunches/#{date}.json").success((data) ->
+        lunch = new Lunch(data.id, data.date)
+        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
+        dfd.resolve(lunch)
+      )
+    )
+
+    dfd.promise
+
   @
 ).factory('TagDAO', ($http, $q) ->
 
