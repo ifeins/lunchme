@@ -72,30 +72,27 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 ).factory('LunchDAO', ($http, $q, RestaurantDAO, UserDAO) ->
 
   @today = ->
-    dfd = $q.defer()
+    fetchLunchFromPath('lunches/today.json')
 
-    RestaurantDAO.load().then( ->
-      $http.get('lunches/today.json').success((data) ->
-        lunch = new Lunch(data.id, data.date)
-        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
-        dfd.resolve(lunch)
-      )
-    )
-
-    dfd.promise
+  @yesterday = ->
+    fetchLunchFromPath('lunches/yesterday.json')
 
   @findByDate = (date) ->
-    dfd = $q.defer()
+    fetchLunchFromPath("lunches/#{date}.json")
 
-    RestaurantDAO.load().then(->
-      $http.get("lunches/#{date}.json").success((data) ->
-        lunch = new Lunch(data.id, data.date)
-        lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
-        dfd.resolve(lunch)
+  fetchLunchFromPath = (path) ->
+    dfd = $q.defer()
+    RestaurantDAO.load().then( ->
+      $http.get(path).success((data) ->
+        dfd.resolve(parseLunch(data))
       )
     )
-
     dfd.promise
+
+  parseLunch = (data) ->
+    lunch = new Lunch(data.id, data.date)
+    lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
+    lunch
 
   @
 ).factory('TagDAO', ($http, $q) ->

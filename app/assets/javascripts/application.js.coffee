@@ -27,14 +27,18 @@ Lunchtime.config(($routeProvider, $httpProvider) ->
       value
   )
 
-  $routeProvider.when('/', controller: 'LunchPageController', template: JST['pages/lunch_page'](), resolve: {
-    lunch: (LunchDAO) -> LunchDAO.today()
-  }).when('/lunches/:date',
-    controller: 'LunchPageController',
-    template: JST['pages/lunch_page'](),
-    resolve: {
+  $routeProvider.when('/',
+    controller: 'LunchPageController'
+    template: JST['pages/lunch_page']()
+    resolve:
+      lunch: (LunchDAO, $location) ->
+        $location.path('lunches/today')
+        LunchDAO.today()
+  ).when('/lunches/:date',
+    controller: 'LunchPageController'
+    template: JST['pages/lunch_page']()
+    resolve:
       lunch: ($route, LunchDAO) -> LunchDAO.findByDate($route.current.params.date)
-    }
   )
 )
 
