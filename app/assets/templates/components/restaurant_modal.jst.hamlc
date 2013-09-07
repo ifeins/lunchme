@@ -14,6 +14,7 @@
   .stats{'ng-hide' => 'newTagTypeaheadOpened'}
     %h4 Statistics
     %ul
-      %li Your last vote for this restaurant was 4 days ago
       %li You have voted for this restaurant 3 times in the past month
+      %li You went to this restaurant 2 times in the past month
+      %li Last time you went to this restaurant was 4 days ago
 
