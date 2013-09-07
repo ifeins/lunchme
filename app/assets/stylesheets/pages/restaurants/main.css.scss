@@ -14,6 +14,7 @@ $grey-shadow: rgba(#000, 0.15);
   }
 
   .parent {
+    flex: 3 0 auto;
     .search {
       position: relative;
       margin-bottom: 30px;
@@ -65,7 +66,8 @@ $grey-shadow: rgba(#000, 0.15);
 
   .sidebar {
     @include box-sizing(border-box);
-    width: 100px;
+    flex: 0 0 auto;
+    width: 200px;
     padding: 10px;
     margin-left: 30px;
     border-left: 1px solid #ccc;
