@@ -15,3 +15,8 @@
     .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
 .sidebar
+  %h3 Where did you lunch yesterday?
+  %ul
+    %li Rustico
+    %li Moses
+    %li Buddah Burgers
