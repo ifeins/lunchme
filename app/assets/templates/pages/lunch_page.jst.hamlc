@@ -14,9 +14,8 @@
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
     .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
-.sidebar
-  %h3 Where did you lunch yesterday?
-  %ul
-    %li Rustico
-    %li Moses
-    %li Buddah Burgers
+.sidebar{'ng-controller' => 'SidebarController'}
+  .yesterday_lunch{'ng-show' => 'canShow'}
+    %h3 Where did you lunch yesterday?
+    %ul
+      %li{'ng-repeat' => 'restaurant in restaurants()'} {{restaurant.name}}

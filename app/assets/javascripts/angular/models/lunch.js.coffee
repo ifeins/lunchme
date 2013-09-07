@@ -12,6 +12,12 @@ class window.Lunch
   votesForRestaurant: (restaurant) ->
     _.select(@votes, (vote) -> vote.restaurant == restaurant)
 
+  userVotes: (user) ->
+    _.select(@votes, (vote) -> vote.user == user)
+
+  userRestaurants: (user) ->
+    _.pluck(@userVotes(user), 'restaurant')
+
   votersForRestaurant: (restaurant) ->
     _.pluck(@votesForRestaurant(restaurant), 'user')
 
