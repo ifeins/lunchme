@@ -18,4 +18,6 @@
   .yesterday_lunch{'ng-show' => 'canShow'}
     %h3 Where did you lunch yesterday?
     %ul
-      %li{'ng-repeat' => 'restaurant in restaurants()'} {{restaurant.name}}
+      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()'}
+        %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
+        %span {{restaurant.name}}
