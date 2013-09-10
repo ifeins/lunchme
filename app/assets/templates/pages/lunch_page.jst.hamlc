@@ -21,3 +21,4 @@
       %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()'}
         %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
         %span {{restaurant.name}}
+    %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead'}
