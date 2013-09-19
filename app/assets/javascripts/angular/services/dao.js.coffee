@@ -123,5 +123,19 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @
 
+).factory('VisitDAO', ($http, $q) ->
+
+  @create = (visit) ->
+    dfd = $q.defer()
+
+    $http.post("lunches/#{visit.lunch.id}/visits.json", visit.toJSON()).success(->
+      dfd.resolve()
+    ).error(->
+      dfd.reject()
+    )
+
+    dfd.promise
+
+  @
 )
 

@@ -18,7 +18,7 @@
   .yesterday_lunch{'ng-show' => 'canShow'}
     %h3 Where did you lunch yesterday?
     %ul
-      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()'}
+      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visited(restaurant)'}
         %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
         %span {{restaurant.name}}
     %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead'}

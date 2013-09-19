@@ -7,7 +7,7 @@ class VisitsController < ApplicationController
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
     visit = current_lunch.visits.create(:user => current_user, :restaurant => restaurant)
-    respond_with visit
+    respond_with visit, :location => lunch_url(current_lunch)
   end
 
   private

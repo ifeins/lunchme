@@ -1,4 +1,4 @@
-window.SidebarController = ($scope, LunchDAO, RestaurantDAO) ->
+window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
 
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
@@ -11,6 +11,11 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO) ->
     restaurants = $scope.lunch.userRestaurants(User.current)
     $scope.canShow = true
     restaurants
+
+  $scope.visited = (restaurant) ->
+    visit = new Visit($scope.lunch, User.current, restaurant)
+    VisitDAO.create(visit)
+
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
 
