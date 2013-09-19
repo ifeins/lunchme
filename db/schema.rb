@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821141042) do
+ActiveRecord::Schema.define(:version => 20130919085249) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -99,6 +99,18 @@ ActiveRecord::Schema.define(:version => 20130821141042) do
   end
 
   add_index "users", ["area_id"], :name => "index_users_on_area_id"
+
+  create_table "visits", :force => true do |t|
+    t.integer  "lunch_id"
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "visits", ["lunch_id"], :name => "index_visits_on_lunch_id"
+  add_index "visits", ["restaurant_id"], :name => "index_visits_on_restaurant_id"
+  add_index "visits", ["user_id"], :name => "index_visits_on_user_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "lunch_id"
