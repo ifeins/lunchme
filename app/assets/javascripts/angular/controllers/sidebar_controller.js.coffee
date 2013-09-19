@@ -13,6 +13,7 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
     restaurants
 
   $scope.visited = (restaurant) ->
+    restaurant = RestaurantDAO.findByName(restaurant) if _.isString(restaurant)
     visit = new Visit($scope.lunch, User.current, restaurant)
     VisitDAO.create(visit)
 

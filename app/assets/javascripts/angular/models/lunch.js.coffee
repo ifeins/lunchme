@@ -1,6 +1,6 @@
 class window.Lunch
 
-  constructor: (@id, @date, @votes = []) ->
+  constructor: (@id, @date, @votes = [], @visits = []) ->
 
   getRestaurants: ->
     _.uniq(_.map(@votes, (vote) -> vote.restaurant))
@@ -32,3 +32,13 @@ class window.Lunch
 
   removeVote: (vote) ->
     @votes.splice(@votes.indexOf(vote), 1)
+
+  addVisit: (visit) ->
+    @visits.push visit
+
+  removeVisit: (visit) ->
+    @visits.splice(@visits.indexOf(visit), 1)
+
+  hasVisited: ->
+    # user can only visit one restaurant per lunch, so there is no need to receive the restaurant as parameter
+    _.findWhere(@visits, user: User.current)

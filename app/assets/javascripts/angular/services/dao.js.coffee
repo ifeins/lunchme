@@ -8,6 +8,16 @@ _createVotes = (lunch, votes, RestaurantDAO, UserDAO) ->
     vote
   )
 
+_createVisits = (lunch, visits, UserDAO, RestaurantDAO) ->
+  _.map(visits, (visitData) ->
+    user = UserDAO.findOrInitializeById(visitData.user)
+    restaurant = RestaurantDAO.find(visitData.restaurantId)
+    visit = new Visit(lunch, user, restaurant)
+    visit.id = visitData.id
+
+    visit
+  )
+
 angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   restaurants = {}
@@ -25,6 +35,9 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @find = (id) ->
     restaurants[id]
+
+  @findByName = (name) ->
+    _.findWhere(restaurants, name: name)
 
   @availableTags = (restaurant) ->
     dfd = $q.defer()
@@ -85,7 +98,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     RestaurantDAO.load().then( ->
       $http.get(path).success((data) ->
         dfd.resolve(parseLunch(data))
-      ).error((errorData, status) ->
+      ).error(->
         dfd.reject()
       )
     )
@@ -94,6 +107,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   parseLunch = (data) ->
     lunch = new Lunch(data.id, data.date)
     lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
+    lunch.visits = _createVisits(lunch, data.visits, UserDAO, RestaurantDAO)
     lunch
 
   @
@@ -126,11 +140,15 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 ).factory('VisitDAO', ($http, $q) ->
 
   @create = (visit) ->
-    dfd = $q.defer()
+    lunch = visit.lunch
+    lunch.addVisit(visit)
 
-    $http.post("lunches/#{visit.lunch.id}/visits.json", visit.toJSON()).success(->
+    dfd = $q.defer()
+    $http.post("lunches/#{lunch.id}/visits.json", visit.toJSON()).success((response) ->
+      visit.id = response.id
       dfd.resolve()
     ).error(->
+      lunch.removeVisit(visit)
       dfd.reject()
     )
 

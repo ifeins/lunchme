@@ -10,7 +10,7 @@
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
   .new-tag
-    %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-key-up' => 'addTag(restaurant, newTagName)', :keys => '[13]', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
+    %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-enter' => 'addTag(restaurant, newTagName)', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
   .stats{'ng-hide' => 'newTagTypeaheadOpened'}
     %h4 Statistics
     %ul
