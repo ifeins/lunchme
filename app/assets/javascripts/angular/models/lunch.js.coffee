@@ -39,6 +39,10 @@ class window.Lunch
   removeVisit: (visit) ->
     @visits.splice(@visits.indexOf(visit), 1)
 
-  hasVisited: ->
-    # user can only visit one restaurant per lunch, so there is no need to receive the restaurant as parameter
-    _.findWhere(@visits, user: User.current)
+  hasVisited: (restaurant = null) ->
+    if restaurant
+      _.findWhere(@visits, user: User.current, restaurant: restaurant)
+    else
+      _.findWhere(@visits, user: User.current)
+
+

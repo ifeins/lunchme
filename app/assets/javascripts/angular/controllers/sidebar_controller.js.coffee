@@ -17,6 +17,9 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
     visit = new Visit($scope.lunch, User.current, restaurant)
     VisitDAO.create(visit)
 
+  $scope.hasVisited = (restaurant) ->
+    $scope.lunch.hasVisited(restaurant)
+
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
 
