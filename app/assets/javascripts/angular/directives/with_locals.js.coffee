@@ -5,18 +5,16 @@ Lunchtime.directive('withLocals', ->
   compile: (element, attributes, transclusion) ->
     # for each attribute that matches locals-* (camelcased to locals[A-Z0-9]),
     # capture the "key" intended for the local variable so that we can later
-    # map it into $scope.locals (in the linking function below)
+    # map it into $scope.key (in the linking function below)
     mapLocalsToParentExp = {}
     for attr of attributes
       if attributes.hasOwnProperty(attr) and /^locals[A-Z0-9]/.test(attr)
         localKey = attr.slice(6)
         localKey = localKey[0].toLowerCase() + localKey.slice(1)
-
-    mapLocalsToParentExp[localKey] = attributes[attr]
+        mapLocalsToParentExp[localKey] = attributes[attr]
 
     pre: ($scope, $element, $attributes) ->
       # setup `$scope.locals` hash so that we can map expressions from the parent scope into it.
-      $scope.locals = {}
       for localKey of mapLocalsToParentExp
         # For each local key, $watch the provided expression and update the $scope.locals hash
         # (i.e. attribute `locals-cars` has key `cars` and the $watch-ed value maps to `$scope.locals.cars`)
