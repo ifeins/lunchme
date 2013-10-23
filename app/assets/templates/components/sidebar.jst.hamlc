@@ -8,8 +8,8 @@
         %i.icon-ok{'ng-show' => 'hasVisited(restaurant)'}
     %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visited(yesterdayRestaurant)'}
 
-  .yesterday_restaurant_tags{'ng-show' => 'hasVisited()'}
-    %h3 How did you find {{ visitedRestaurant().name }} ?
+  .yesterday_restaurant_tags{'ng-show' => 'hasVisited()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
+    %h3 How did you find {{ restaurant.name }} ?
 
 
 
