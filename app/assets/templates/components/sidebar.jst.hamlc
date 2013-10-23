@@ -1,8 +1,15 @@
 .yesterday_lunch{'ng-show' => 'canShow'}
-  %h3 Where did you lunch yesterday?
-  %ul
-    %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visited(restaurant)'}
-      %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
-      %span {{restaurant.name}}
-      %i.icon-ok{'ng-show' => 'hasVisited(restaurant)'}
-  %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visited(yesterdayRestaurant)'}
+  .yesterday_restaurant
+    %h3 Where did you lunch yesterday?
+    %ul
+      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visited(restaurant)'}
+        %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
+        %span {{restaurant.name}}
+        %i.icon-ok{'ng-show' => 'hasVisited(restaurant)'}
+    %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visited(yesterdayRestaurant)'}
+
+  .yesterday_restaurant_tags{'ng-show' => 'hasVisited()'}
+    %h3 How did you find {{ visitedRestaurant().name }} ?
+
+
+
