@@ -14,6 +14,7 @@ gem 'controller_support'
 gem 'js-routes'
 gem 'carrierwave'
 gem 'mechanize'
+gem 'font-awesome-rails'
 
 # oauth
 gem 'omniauth-google-oauth2'
