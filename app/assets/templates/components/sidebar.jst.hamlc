@@ -10,6 +10,7 @@
 
   .yesterday_restaurant_tags{'ng-show' => 'hasVisited()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
     %h3 How did you find {{ restaurant.name }} ?
+    +include 'components/tags'
 
 
 

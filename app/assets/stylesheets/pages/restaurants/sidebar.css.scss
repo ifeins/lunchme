@@ -12,64 +12,75 @@
       font-size: 16px;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .yesterday_restaurant {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
 
-      .restaurant-vote-btn {
-        @include box-sizing(border-box);
+        .restaurant-vote-btn {
+          @include box-sizing(border-box);
 
-        width: 100%;
-        height: 35px;
-        background: white;
-        cursor: pointer;
+          width: 100%;
+          height: 35px;
+          background: white;
+          cursor: pointer;
 
-        border: 1px solid #ccc;
-        @include border-radius(6px);
-        box-shadow: 0 1px 6px -2px rgba(black, 0.3) inset;
+          border: 1px solid #ccc;
+          @include border-radius(6px);
+          box-shadow: 0 1px 6px -2px rgba(black, 0.3) inset;
 
-        padding: 1px 5px;
-        margin-bottom: 5px;
+          padding: 1px 5px;
+          margin-bottom: 5px;
 
-        img {
-          vertical-align: middle;
-        }
+          img {
+            vertical-align: middle;
+          }
 
-        span {
-          vertical-align: middle;
-          margin-left: 5px;
-        }
-
-        &:hover {
           span {
-            color: #3f7be1;
+            vertical-align: middle;
+            margin-left: 5px;
+          }
+
+          &:hover {
+            span {
+              color: #3f7be1;
+            }
+          }
+
+          .icon-ok {
+            float: right;
+            font-size: 20px;
+            margin-top: 5px;
+            color: green;
           }
         }
+      }
 
-        .icon-ok {
-          float: right;
-          font-size: 20px;
-          margin-top: 5px;
-          color: green;
+      .twitter-typeahead {
+        @include box-sizing(border-box);
+        width: 100%;
+
+        input {
+          @include box-sizing(border-box);
+          width: 100%;
+          padding: 5px;
+          font-size: 16px;
+
+          border: 1px solid #ccc;
+          @include border-radius(6px);
+          box-shadow: 0 1px 6px -2px rgba(black, 0.3) inset;
         }
       }
     }
 
-    .twitter-typeahead {
-      @include box-sizing(border-box);
-      width: 100%;
+    .yesterday_restaurant_tags {
 
-      input {
-        @include box-sizing(border-box);
-        width: 100%;
-        padding: 5px;
-        font-size: 16px;
-
-        border: 1px solid #ccc;
-        @include border-radius(6px);
-        box-shadow: 0 1px 6px -2px rgba(black, 0.3) inset;
+      .tags {
+        @include tags;
       }
+
     }
+
   }
 }
