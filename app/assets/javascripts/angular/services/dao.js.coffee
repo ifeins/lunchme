@@ -139,6 +139,22 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
 ).factory('VisitDAO', ($http, $q) ->
 
+  @update = (visit, restaurant) ->
+    lunch = visit.lunch
+    previousRestaurant = visit.restaurant
+    visit.restaurant = restaurant
+
+    dfd = $q.defer()
+    $http.put("lunches/#{lunch.id}/visits/#{visit.id}.json", visit.toJSON()).success(->
+      dfd.resolve()
+    ).error(->
+      visit.restaurant = previousRestaurant
+      dfd.reject()
+    )
+
+    dfd.promise
+
+
   @create = (visit) ->
     lunch = visit.lunch
     lunch.addVisit(visit)

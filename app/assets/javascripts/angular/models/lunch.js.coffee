@@ -15,7 +15,7 @@ class window.Lunch
   userVotes: (user) ->
     _.select(@votes, (vote) -> vote.user == user)
 
-  userRestaurants: (user) ->
+  userVotedRestaurants: (user) ->
     _.pluck(@userVotes(user), 'restaurant')
 
   votersForRestaurant: (restaurant) ->
@@ -32,6 +32,11 @@ class window.Lunch
 
   removeVote: (vote) ->
     @votes.splice(@votes.indexOf(vote), 1)
+
+  ## visit methods ##
+
+  userVisit: (user) ->
+    _.findWhere(@visits, user: user)
 
   addVisit: (visit) ->
     @visits.push visit
