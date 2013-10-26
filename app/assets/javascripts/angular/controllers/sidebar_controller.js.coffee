@@ -1,4 +1,4 @@
-window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
+window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO) ->
 
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
@@ -16,7 +16,7 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
     $scope.canShow = true
     restaurants
 
-  $scope.visited = (restaurant) ->
+  $scope.visitRestaurant = (restaurant) ->
     restaurant = RestaurantDAO.findByName(restaurant) if _.isString(restaurant)
     visit = $scope.lunch.userVisit(User.current)
     if visit
@@ -25,12 +25,32 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO) ->
       visit = new Visit($scope.lunch, User.current, restaurant)
       VisitDAO.create(visit)
 
-  $scope.hasVisited = (restaurant) ->
-    $scope.lunch.hasVisited?(restaurant)
+  $scope.hasVisitedRestaurant = (restaurant = null) ->
+    if restaurant
+      $scope.lunch.hasVisited?(restaurant)
+    else
+      $scope.lunch.userVisit?(User.current)?
 
   $scope.visitedRestaurant = ->
     $scope.lunch.userVisit?(User.current)?.restaurant
 
+  $scope.voteOnTag = (tag) ->
+    TagDAO.vote(tag)
+
+  $scope.addTag = (restaurant, tagName) ->
+    tag = new Tag(name: tagName, restaurant: restaurant)
+    TagDAO.create(tag).then(->
+      $scope.availableTags = _.without($scope.availableTags, tag.name)
+    )
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
+  $scope.availableTags = []
+  $scope.$watch('visitedRestaurant()', (newValue, oldValue) ->
+    if newValue != oldValue
+      RestaurantDAO.availableTags(newValue).then((tags) -> $scope.availableTags = tags)
+  )
+
+
+
+
 

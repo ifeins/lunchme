@@ -2,15 +2,18 @@
   .yesterday_restaurant
     %h3 Where did you lunch yesterday?
     %ul
-      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visited(restaurant)'}
+      %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visitRestaurant(restaurant)'}
         %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
         %span {{restaurant.name}}
-        %i.icon-ok{'ng-show' => 'hasVisited(restaurant)'}
-    %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visited(yesterdayRestaurant)'}
+        %i.icon-ok{'ng-show' => 'hasVisitedRestaurant(restaurant)'}
+    %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visitRestaurant(yesterdayRestaurant)'}
 
-  .yesterday_restaurant_tags{'ng-show' => 'hasVisited()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
+  .yesterday_restaurant_tags{'ng-show' => 'hasVisitedRestaurant()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
     %h3 How did you find {{ restaurant.name }} ?
-    +include 'components/tags'
-
-
-
+    .tags
+      .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)'}
+        %span.name {{tag.name}}
+        %span.multiplier ×
+        %span.quantity {{tag.quantity}}
+    .new-tag
+      %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-enter' => 'addTag(restaurant, newTagName)', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
