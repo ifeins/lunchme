@@ -17,3 +17,5 @@
         %span.quantity {{tag.quantity}}
     .new-tag
       %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-enter' => 'addTag(restaurant, newTagName)', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
+
+  .btn.done-btn{'ng-click' => 'done()'} I'm done!
