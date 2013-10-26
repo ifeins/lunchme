@@ -21,14 +21,14 @@ configureTypeahead = ($parse, scope, el, attrs, ngModel) ->
     ngModel.$setViewValue(datum.value)
   )
   el.on('typeahead:suggestions-rendered', ->
-    scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = true)
+    safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = true)
   )
   el.on('typeahead:suggestions-cleared', ->
-    scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false)
+    safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false)
   )
 
   # need both blur and focousout for this to work
-  el.blur(-> scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false))
-  el.focusout(-> scope.$apply(-> scope["#{attrs.bsTypeaheadId}Opened"] = false))
+  el.blur(-> safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false))
+  el.focusout(-> safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false))
 
 
