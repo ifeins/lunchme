@@ -85,6 +85,9 @@
   }
 
   .done-btn {
+    @include box-sizing(border-box);
+    display: block;
+    width: 110px;
     margin: 30px auto 0 auto;
   }
 }
