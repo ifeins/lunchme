@@ -20,6 +20,6 @@
 
   .btn.done-btn{'ng-click' => 'done()', 'ng-hide' => 'doneClicked'} I'm done!
 
-  .done-msg{'ng-show' => 'doneClicked'}
+  .done-msg{'ng-show' => 'doneClicked', 'ng-animate' => "'done-msg-animate'"}
     %i.fa.fa-check-circle-o
     %span You're awesome!

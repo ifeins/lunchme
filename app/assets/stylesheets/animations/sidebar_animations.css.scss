@@ -1,0 +1,12 @@
+.done-msg-animate-show {
+  @include single-transition(all 50ms linear);
+}
+
+.done-msg-animate-show {
+  @include opacity(0);
+
+  &.done-msg-animate-show-active {
+    @include opacity(1);
+  }
+}
+
