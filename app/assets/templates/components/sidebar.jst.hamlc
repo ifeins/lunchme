@@ -5,7 +5,7 @@
       %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visitRestaurant(restaurant)'}
         %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
         %span {{restaurant.name}}
-        %i.icon-ok{'ng-show' => 'hasVisitedRestaurant(restaurant)'}
+        %i.fa.fa-check{'ng-show' => 'hasVisitedRestaurant(restaurant)'}
     %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visitRestaurant(yesterdayRestaurant)'}
 
   .yesterday_restaurant_tags{'ng-show' => 'hasVisitedRestaurant()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}

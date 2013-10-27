@@ -2,6 +2,6 @@
   .sign-up-details
     %h3 Select the area you work in:
     .work-area
-      %i.icon-globe
+      %i.fa.fa-globe
       %select#area{'ng-model' => 'selectedArea', 'ng-options' => 'area.name for area in areas'}
     .btn.submit-btn{'ng-click' => 'submit()'} Submit

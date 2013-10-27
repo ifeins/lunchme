@@ -10,7 +10,7 @@
   %h2 Where do you want to lunch today?
   .search_restaurants
     .search
-      %i.icon-search
+      %i.fa.fa-search
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
     .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
