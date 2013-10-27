@@ -90,4 +90,15 @@
     width: 110px;
     margin: 30px auto 0 auto;
   }
+
+  .done-msg {
+    margin: 30px auto 0 auto;
+    font-size: 24px;
+    width: 220px;
+
+    i {
+      color: green;
+    }
+
+  }
 }

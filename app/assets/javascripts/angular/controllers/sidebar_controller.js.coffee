@@ -5,6 +5,8 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO) -
     $scope.lunch = lunch
   )
 
+  $scope.doneClicked = false
+
   $scope.restaurants = ->
     return [] if _.isEmpty($scope.lunch)
 
@@ -42,6 +44,9 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO) -
     TagDAO.create(tag).then(->
       $scope.availableTags = _.without($scope.availableTags, tag.name)
     )
+
+  $scope.done = ->
+    $scope.doneClicked = true
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
   $scope.availableTags = []
