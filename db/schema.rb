@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919085249) do
+ActiveRecord::Schema.define(:version => 20131028215311) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(:version => 20130919085249) do
 
   add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"
   add_index "restaurants", ["location_id"], :name => "index_restaurants_on_location_id"
+
+  create_table "surveys", :force => true do |t|
+    t.string   "status"
+    t.integer  "user_id"
+    t.integer  "lunch_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "surveys", ["lunch_id"], :name => "index_surveys_on_lunch_id"
+  add_index "surveys", ["user_id"], :name => "index_surveys_on_user_id"
 
   create_table "tag_definitions", :force => true do |t|
     t.string   "name"

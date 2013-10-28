@@ -1,6 +1,7 @@
 class Lunch < ActiveRecord::Base
   has_many :votes
   has_many :visits
+  has_many :surveys
 
   attr_accessible :date
 
