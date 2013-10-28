@@ -1,11 +1,9 @@
-window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO) ->
+window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
 
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
     $scope.lunch = lunch
   )
-
-  $scope.doneClicked = false
 
   $scope.restaurants = ->
     return [] if _.isEmpty($scope.lunch)
@@ -46,7 +44,10 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO) -
     )
 
   $scope.done = ->
-    $scope.doneClicked = true
+    survey = new Survey('completed', User.current, $scope.lunch)
+    SurveyDAO.create(survey).then(->
+      $scope.surveyCompleted = true
+    )
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
   $scope.availableTags = []

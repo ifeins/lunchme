@@ -18,6 +18,7 @@ Lunchme::Application.routes.draw do
 
     resources :votes, :only => [:create, :destroy]
     resources :visits, :only => [:create, :update]
+    resources :surveys, :only => [:create]
   end
 
   resource :session, :controller => :session, :only => [:destroy, :update]

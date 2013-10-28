@@ -18,8 +18,8 @@
     .new-tag
       %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-enter' => 'addTag(restaurant, newTagName)', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
 
-  .btn.done-btn{'ng-click' => 'done()', 'ng-hide' => 'doneClicked'} I'm done!
+  .btn.done-btn{'ng-click' => 'done()', 'ng-hide' => 'surveyCompleted'} I'm done!
 
-  .done-msg{'ng-show' => 'doneClicked', 'ng-animate' => "'done-msg-animate'"}
+  .done-msg{'ng-show' => 'surveyCompleted', 'ng-animate' => "'done-msg-animate'"}
     %i.fa.fa-check-circle-o
     %span You're awesome!

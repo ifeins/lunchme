@@ -1,6 +1,6 @@
 class window.Lunch
 
-  constructor: (@id, @date, @userSurvey, @votes = [], @visits = []) ->
+  constructor: (@id, @date, @votes = [], @visits = []) ->
 
   getRestaurants: ->
     _.uniq(_.map(@votes, (vote) -> vote.restaurant))

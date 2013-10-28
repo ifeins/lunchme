@@ -10,3 +10,19 @@
   }
 }
 
+.sidebar-animate-hide {
+  @include single-transition(all 50ms linear);
+}
+
+.sidebar-animate-hide {
+  width: 250px !important;
+
+  > * {
+    display: none;
+  }
+
+  &.sidebar-animate-hide-active {
+    width: 0px !important;
+    border-left-color: transparent !important;
+  }
+}
