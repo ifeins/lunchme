@@ -1,11 +1,14 @@
+$tag-bg-color: #E0EAF1;
+$tag-border-color: #b3cee1;
+
 @mixin tag {
   @include box-sizing(border-box);
   height: 20px;
 
   color: #3E6D8E;
-  background-color: #E0EAF1;
-  border-bottom: 1px solid #b3cee1;
-  border-right: 1px solid #b3cee1;
+  background-color: $tag-bg-color;
+  border-bottom: 1px solid $tag-border-color;
+  border-right: 1px solid $tag-border-color;
   padding: 3px 4px 3px 4px;
   margin: 2px 2px 2px 0;
   white-space: nowrap;
@@ -18,5 +21,17 @@
 
   .quantity {
     color: #999;
+  }
+}
+
+@mixin clickable-tag {
+  cursor: pointer;
+
+  &:hover {
+    background-color: tint($tag-bg-color, 50%);
+  }
+
+  &:active {
+    border: 1px solid $tag-border-color;
   }
 }

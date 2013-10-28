@@ -80,6 +80,10 @@
 
       .tags {
         @include tags;
+
+        .tag {
+          @include clickable-tag;
+        }
       }
 
     }

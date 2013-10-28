@@ -36,6 +36,10 @@
     margin-left: 4px;
 
     @include tags;
+
+    .tag {
+      @include clickable-tag;
+    }
   }
 
   .new-tag {
