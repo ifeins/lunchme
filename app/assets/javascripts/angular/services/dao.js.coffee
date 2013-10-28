@@ -105,7 +105,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   parseLunch = (data) ->
-    lunch = new Lunch(data.id, data.date)
+    lunch = new Lunch(data.id, data.date, data.userSurvey)
     lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
     lunch.visits = _createVisits(lunch, data.visits, UserDAO, RestaurantDAO)
     lunch
