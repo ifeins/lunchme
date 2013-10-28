@@ -15,6 +15,7 @@ gem 'js-routes'
 gem 'carrierwave'
 gem 'mechanize'
 gem 'font-awesome-rails'
+gem 'enumify'
 
 # oauth
 gem 'omniauth-google-oauth2'
