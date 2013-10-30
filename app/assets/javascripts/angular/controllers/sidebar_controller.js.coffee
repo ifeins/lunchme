@@ -1,4 +1,4 @@
-window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
+window.SidebarController = ($scope, $timeout, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
 
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
@@ -43,9 +43,14 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, S
     )
 
   $scope.done = ->
-    survey = new Survey('completed', User.current, $scope.lunch)
-    SurveyDAO.create(survey).then(->
-      $scope.surveyCompleted = true
+    $scope.surveyCompleted = true
+
+    # create the survey after a timeout so the message will have enough time to appear
+    $timeout(
+      ->
+        survey = new Survey('completed', User.current, $scope.lunch)
+        SurveyDAO.create(survey).then(null, -> $scope.surveyCompleted = false)
+      1000
     )
 
   $scope.allRestaurants = _.pluck(RestaurantDAO.all(), 'name')
