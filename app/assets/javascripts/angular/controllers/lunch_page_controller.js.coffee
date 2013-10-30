@@ -4,7 +4,7 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   $scope.query = ''
 
   $scope.restaurantSearch = (restaurant) ->
-    matchTerms = _.union([restaurant.name], _.pluck(restaurant.tags, 'name'))
+    matchTerms = _.union([restaurant.name], [restaurant.localizedName], _.pluck(restaurant.tags, 'name'))
     matchTerms = _.select(matchTerms, (term) -> term?)
     _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query) != -1)
 
