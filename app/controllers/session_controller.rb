@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
 
   respond_to :html, :only => [:create, :failure, :destroy]
-  respond_to :json
+  respond_to :json, :only => [:update]
 
   before_filter :sign_in_required, :only => [:update]
 

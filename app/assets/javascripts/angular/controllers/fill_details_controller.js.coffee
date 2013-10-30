@@ -5,6 +5,6 @@ window.FillDetailsController = ($scope, $http, $modal) ->
 
   $scope.submit = ->
     data = {area: {name: $scope.selectedArea.name}}
-    $http.put(Routes.session_path(), data).success(
+    $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
