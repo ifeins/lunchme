@@ -4,7 +4,7 @@ class LunchSerializer < ActiveModel::Serializer
   has_many :visits
 
   def user_survey
-    object.user_survey(current_user)
+    object.user_survey(current_user) if current_user.present?
   end
 
 end

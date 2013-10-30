@@ -35,6 +35,7 @@ namespace :restaurants do
     add_tags(Restaurant.find(46), 'Bistro')
     add_tags(Restaurant.find(48), 'Salad', 'Sandwich')
     add_tags(Restaurant.find(49), 'Pizzeria', 'Fast Food')
+    add_tags(Restaurant.find(50), 'Thai Food', 'Fast Food')
     add_tags(Restaurant.find(51), 'Fast Food')
     add_tags(Restaurant.find(52), 'Conditure')
     add_tags(Restaurant.find(56), 'Pizzeria', 'Fast Food')
