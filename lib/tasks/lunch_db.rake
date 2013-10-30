@@ -2,7 +2,7 @@ namespace :lunch_db do
 
   desc 'Import restaurants from LunchDB'
   task :import, [] => :environment do
-    response = HTTParty.get('http://lunchdb.herokuapp.com/restaurants?limit=100')
+    response = HTTParty.get('http://lunchdb.herokuapp.com/restaurants')
     response['restaurants'].each do |item|
       tags = []
       item['cuisines'].each do |cuisine|
@@ -15,8 +15,12 @@ namespace :lunch_db do
         end
       end
 
+      # only add restaurants that have an english name
+      next if item['english_name'].blank?
+
       Restaurant.find_or_create_by_name(
-          :name => item['name'],
+          :name => item['english_name'],
+          :localized_name => item['name'],
           :logo => fetch_logo("http:#{item['logo_url']}"),
           :tags_attributes => tags,
           :location_attributes => {
