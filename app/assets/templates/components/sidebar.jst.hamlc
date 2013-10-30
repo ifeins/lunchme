@@ -1,4 +1,4 @@
-.yesterday_lunch{'ng-show' => 'canShow'}
+.yesterday_lunch
   .yesterday_restaurant
     %h3 Where did you lunch yesterday?
     %ul

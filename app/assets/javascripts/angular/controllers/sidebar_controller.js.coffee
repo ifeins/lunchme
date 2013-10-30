@@ -13,7 +13,6 @@ window.SidebarController = ($scope, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, S
     if visit and not _.contains(restaurants, visit.restaurant)
       restaurants.push visit.restaurant
 
-    $scope.canShow = true
     restaurants
 
   $scope.visitRestaurant = (restaurant) ->
