@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
-gem 'mysql2'
+gem 'pg'
 gem 'haml'
 gem 'httparty'
 gem 'active_model_serializers'
