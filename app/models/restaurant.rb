@@ -6,7 +6,7 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader
 
-  attr_accessible :name, :logo, :location_attributes, :tags_attributes, :payment_methods
+  attr_accessible :name, :localized_name, :logo, :location_attributes, :tags_attributes, :payment_methods
   accepts_nested_attributes_for :location
   accepts_nested_attributes_for :tags
 end
