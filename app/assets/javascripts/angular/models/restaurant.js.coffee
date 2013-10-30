@@ -3,6 +3,7 @@ class window.Restaurant
   constructor: (data = {}) ->
     @id = data.id
     @name = data.name
+    @localizedName = data.localizedName
     @logoUrl = data.logoUrl
     @address = data.address
     @tags = []
