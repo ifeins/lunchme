@@ -34,6 +34,5 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
     $modal(template: 'components/restaurant_modal', className: 'restaurant-modal', controller: 'RestaurantModalController', locals: {restaurant: restaurant})
 
   # init code
-
   if User.current and not User.current.workArea
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')
