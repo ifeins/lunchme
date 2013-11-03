@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Lunchme::Application.load_tasks
+Lunchtime::Application.load_tasks

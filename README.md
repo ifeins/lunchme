@@ -1,4 +1,5 @@
-lunchme
-=======
+LunchTIME
+=========
 
-A version of lunchtime written in angular
+An application to organize group lunches.
+Written in AngularJS.
