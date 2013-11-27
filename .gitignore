@@ -17,11 +17,10 @@ log
 # ide files
 .idea
 
-# secret configuration
-config/configreader/env/google.yml
-
 # osx files
 .DS_Store
 
 # uploads
 public/uploads
+
+.env
