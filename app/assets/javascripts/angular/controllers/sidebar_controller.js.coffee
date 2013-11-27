@@ -1,4 +1,4 @@
-window.SidebarController = ($scope, $timeout, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
+Lunchtime.controller('SidebarController', ($scope, $timeout, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
 
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
@@ -59,7 +59,7 @@ window.SidebarController = ($scope, $timeout, LunchDAO, RestaurantDAO, VisitDAO,
     if newValue != oldValue
       RestaurantDAO.availableTags(newValue).then((tags) -> $scope.availableTags = tags)
   )
-
+)
 
 
 

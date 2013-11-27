@@ -1,4 +1,4 @@
-window.HeaderController = ($scope, $http) ->
+Lunchtime.controller('HeaderController', ($scope, $http) ->
 
   $scope.user = User.current
 
@@ -9,3 +9,4 @@ window.HeaderController = ($scope, $http) ->
     $http.delete(Routes.session_path()).success(->
       Browser.refresh()
     )
+)

@@ -1,4 +1,4 @@
-window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
+Lunchtime.controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   $scope.lunch = lunch
   $scope.restaurants = RestaurantDAO.all()
   $scope.query = ''
@@ -36,3 +36,4 @@ window.LunchPageController = ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   # init code
   if User.current and not User.current.workArea
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')
+)

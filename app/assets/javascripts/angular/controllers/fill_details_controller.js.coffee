@@ -1,4 +1,4 @@
-window.FillDetailsController = ($scope, $http, $modal) ->
+Lunchtime.controller('FillDetailsController', ($scope, $http, $modal) ->
 
   $scope.areas = [{id: 1, name: 'Tel Aviv'}, {id: 2, name: 'Herzliya Pituch'}, {id: 3, name: 'Ramat Ha-Hayal'}]
   $scope.selectedArea = $scope.areas[0]
@@ -8,3 +8,4 @@ window.FillDetailsController = ($scope, $http, $modal) ->
     $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
+)

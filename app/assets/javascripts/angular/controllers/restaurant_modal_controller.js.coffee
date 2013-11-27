@@ -1,4 +1,4 @@
-window.RestaurantModalController = ($scope, $http, TagDAO, RestaurantDAO) ->
+Lunchtime.controller('RestaurantModalController', ($scope, $http, TagDAO, RestaurantDAO) ->
 
   $scope.voteOnTag = (tag) ->
     TagDAO.vote(tag)
@@ -11,4 +11,4 @@ window.RestaurantModalController = ($scope, $http, TagDAO, RestaurantDAO) ->
 
   $scope.availableTags = []
   RestaurantDAO.availableTags($scope.restaurant).then((tags) -> $scope.availableTags = tags)
-
+)
