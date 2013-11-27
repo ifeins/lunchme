@@ -1,28 +1,32 @@
-.done-msg-animate-show {
-  @include single-transition(all 50ms linear);
-}
+.done-msg-animate {
 
-.done-msg-animate-show {
-  @include opacity(0);
-
-  &.done-msg-animate-show-active {
-    @include opacity(1);
-  }
-}
-
-.sidebar-animate-hide {
-  @include single-transition(all 50ms linear);
-}
-
-.sidebar-animate-hide {
-  width: 250px !important;
-
-  > * {
-    display: none;
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all linear 50ms;
   }
 
-  &.sidebar-animate-hide-active {
-    width: 0px !important;
-    border-left-color: transparent !important;
+  &.ng-hide-add {
+    @include opacity(0);
+
+    &.ng-hide-add-active {
+      @include opacity(1);
+    }
+  }
+
+}
+
+.sidebar-animate {
+  transition: all 50ms linear;
+
+  &.ng-hide-remove {
+    width: 250px !important;
+
+    > * {
+      display: none;
+    }
+
+    &.ng-hide-remove-active {
+      width: 0px !important;
+      border-left-color: transparent !important;
+    }
   }
 }
