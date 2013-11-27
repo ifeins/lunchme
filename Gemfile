@@ -15,7 +15,7 @@ gem 'font-awesome-rails'
 gem 'enumify'
 
 # oauth
-gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,10 +26,6 @@ group :assets do
   gem 'compass-photoshop-drop-shadow'
   gem 'underscore-rails'
   gem 'haml_coffee_assets'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier'
 end
 

@@ -69,8 +69,8 @@ GEM
     enumify (0.0.5)
     erubis (2.7.0)
     execjs (2.0.2)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     font-awesome-rails (4.0.0.0)
       railties (>= 3.2, < 5.0)
     fssm (0.2.10)
@@ -129,9 +129,8 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-google-oauth2 (0.2.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2
+    omniauth-facebook (1.5.1)
+      omniauth-oauth2 (~> 1.1.0)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -208,7 +207,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   mechanize
-  omniauth-google-oauth2
+  omniauth-facebook
   pg
   rails (= 3.2.14)
   sass-rails (~> 3.2)
