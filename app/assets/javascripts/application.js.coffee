@@ -8,15 +8,14 @@
 #= require utils
 #= require typeahead
 #= require_tree ../templates
-#= require angular/angular
-#= require angular/angular-resource
+#= require angular
 #= require_self
 #= require_tree ./angular
 
 window.safeApply = (scope, fn) ->
   if (scope.$$phase || scope.$root.$$phase) then fn() else scope.$apply(fn)
 
-window.Lunchtime = angular.module('Lunchtime', ['DAO', 'UI'])
+window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'DAO', 'UI'])
 
 Lunchtime.config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
