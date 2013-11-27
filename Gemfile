@@ -9,7 +9,6 @@ gem 'httparty'
 gem 'active_model_serializers'
 gem 'configreader'
 gem 'controller_support'
-gem 'js-routes'
 gem 'carrierwave'
 gem 'mechanize'
 gem 'font-awesome-rails'
@@ -38,4 +37,5 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'js-routes'
 end
