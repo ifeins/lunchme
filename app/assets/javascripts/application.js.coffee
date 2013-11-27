@@ -3,7 +3,7 @@
 #= require underscore
 #= require hamlcoffee
 #= require string
-#= require js-routes
+#= require routes
 #= require browser
 #= require utils
 #= require typeahead
