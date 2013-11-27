@@ -14,6 +14,7 @@ gem 'mechanize'
 gem 'font-awesome-rails'
 gem 'enumify'
 
+
 # oauth
 gem 'omniauth-facebook'
 
@@ -26,6 +27,7 @@ group :assets do
   gem 'compass-photoshop-drop-shadow'
   gem 'underscore-rails'
   gem 'haml_coffee_assets'
+  gem 'ngmin-rails'
   gem 'uglifier'
 end
 
