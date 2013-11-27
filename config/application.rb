@@ -33,7 +33,5 @@ module Lunchtime
     config.assets.version = '1.0'
 
     config.autoload_paths += Dir["#{config.root}/app/controllers/supports"]
-
-    config.assets.initialize_on_precompile = false
   end
 end
