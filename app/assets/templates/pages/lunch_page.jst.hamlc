@@ -1,7 +1,7 @@
 .parent
   %h2 Where do people want to lunch today?
   .lunch
-    .restaurant{'ng-repeat' => 'restaurant in lunch.getRestaurants() | orderBy:restaurantOrder:true', 'ng-animate' => "'restaurant-animate'", 'ng-click' => 'showRestaurant(restaurant)'}
+    .restaurant.restaurant-animate{'ng-repeat' => 'restaurant in lunch.getRestaurants() | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
     .empty-restaurants{'ng-show' => 'lunch.getRestaurants().length == 0'}
       %h3 No one voted for any restaurants today, be the first!

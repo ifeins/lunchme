@@ -4,6 +4,6 @@
   +include 'components/tags'
 .vote-container
   .voters
-    .voter{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)', 'ng-animate' => "'voter-animate'"}
+    .voter.voter-animate{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)'}
       %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
   .btn.vote-btn{'ng-click' => 'voteButtonClicked(restaurant)', 'stop-event' => 'click'} {{voteButtonText(restaurant)}}
