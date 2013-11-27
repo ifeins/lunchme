@@ -20,7 +20,10 @@ class SessionController < ApplicationController
     sign_in(user)
 
     respond_with user do |format|
-      format.html { redirect_to root_url }
+      format.html do
+        redirect_url = auth_additional_params['internal_redirect_url'].presence || root_url
+        redirect_to redirect_url
+      end
     end
   end
 
@@ -45,6 +48,10 @@ class SessionController < ApplicationController
 
   def auth_hash
     request.env['omniauth.auth']
+  end
+
+  def auth_additional_params
+    request.env['omniauth.params']
   end
 
 end
