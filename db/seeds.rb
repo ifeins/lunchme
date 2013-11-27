@@ -25,10 +25,6 @@ def create_user(first_name, last_name, email, avatar_url, work_area, provider, u
   )
 end
 
-def create_lunch(group, date)
-  Lunch.find_or_create_by_group_id_and_date(:group => group, :date => date)
-end
-
 # payment methods
 create_payment_method '10Bis'
 create_payment_method 'Cibus'
