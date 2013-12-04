@@ -15,9 +15,7 @@
 window.safeApply = (scope, fn) ->
   if (scope.$$phase || scope.$root.$$phase) then fn() else scope.$apply(fn)
 
-window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', 'UI'])
-
-Lunchtime.config(($routeProvider, $httpProvider) ->
+window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', 'UI']).config(($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 
   $httpProvider.defaults.transformResponse.push((value, headers) ->
