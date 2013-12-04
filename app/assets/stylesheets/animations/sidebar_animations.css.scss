@@ -1,15 +1,15 @@
 .done-msg-animate {
+  @include opacity(1);
+  line-height: 1;
 
   &.ng-hide-add, &.ng-hide-remove {
-    transition: all linear 50ms;
+    transition: all linear 500ms;
+    display: block !important;
   }
 
-  &.ng-hide-add {
+  &.ng-hide {
     @include opacity(0);
-
-    &.ng-hide-add-active {
-      @include opacity(1);
-    }
+    line-height: 0;
   }
 
 }
