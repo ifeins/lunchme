@@ -46,7 +46,8 @@ namespace :lunch_db do
     agent = Mechanize.new
     mechanize_file = agent.get(logo_url)
     filename = File.basename(mechanize_file.filename, File.extname(mechanize_file.filename))
-    temp_filename = Dir::Tmpname.make_tmpname(filename, Dir.tmpdir)
+    temp_filename = Tempfile.new(filename).path
+    File.delete temp_filename
 
     mechanize_file.save temp_filename
     File.open(temp_filename)
