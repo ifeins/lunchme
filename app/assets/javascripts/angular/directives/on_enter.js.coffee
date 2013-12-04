@@ -1,6 +1,6 @@
 ENTER_KEY_CODE = 13
 
-Lunchtime.directive('onEnter', ->
+angular.module('Lunchtime').directive('onEnter', ->
   (scope, el, attrs) ->
     applyEnter = -> scope.$apply(attrs.onEnter)
 

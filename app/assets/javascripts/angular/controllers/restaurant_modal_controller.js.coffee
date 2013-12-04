@@ -1,4 +1,4 @@
-Lunchtime.controller('RestaurantModalController', ($scope, $http, TagDAO, RestaurantDAO) ->
+angular.module('Lunchtime').controller('RestaurantModalController', ($scope, $http, TagDAO, RestaurantDAO) ->
 
   $scope.voteOnTag = (tag) ->
     TagDAO.vote(tag)

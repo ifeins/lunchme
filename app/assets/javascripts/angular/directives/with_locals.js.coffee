@@ -1,5 +1,5 @@
 # ported to coffescript from http://stackoverflow.com/a/17876761/1082326
-Lunchtime.directive('withLocals', ->
+angular.module('Lunchtime').directive('withLocals', ->
   restrict: 'A'
   link: (scope, el, attributes) ->
     localsMap = {}

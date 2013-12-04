@@ -1,4 +1,4 @@
-Lunchtime.directive('onKeyUp', ->
+angular.module('Lunchtime').directive('onKeyUp', ->
   (scope, el, attrs) ->
     applyKeyUp = -> scope.$apply(attrs.onKeyUp)
 

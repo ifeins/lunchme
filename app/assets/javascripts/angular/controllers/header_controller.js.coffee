@@ -1,4 +1,4 @@
-Lunchtime.controller('HeaderController', ($scope, $http) ->
+angular.module('Lunchtime').controller('HeaderController', ($scope, $http) ->
 
   $scope.user = User.current
 

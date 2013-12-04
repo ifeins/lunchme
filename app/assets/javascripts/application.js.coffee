@@ -31,14 +31,15 @@ window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', '
     controller: 'LunchPageController'
     template: JST['pages/lunch_page']()
     resolve:
-      lunch: (LunchDAO, $location) ->
+      lunch: ['LunchDAO', '$location', (LunchDAO, $location) ->
         $location.path('lunches/today')
         LunchDAO.today()
+      ]
   ).when('/lunches/:date',
     controller: 'LunchPageController'
     template: JST['pages/lunch_page']()
     resolve:
-      lunch: ($route, LunchDAO) -> LunchDAO.findByDate($route.current.params.date)
+      lunch: ['$route', 'LunchDAO', ($route, LunchDAO) -> LunchDAO.findByDate($route.current.params.date)]
   )
 )
 

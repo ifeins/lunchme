@@ -1,4 +1,4 @@
-Lunchtime.directive('bsTypeahead', ($parse) ->
+angular.module('Lunchtime').directive('bsTypeahead', ($parse) ->
   restrict: 'A'
   require: '?ngModel'
   link: (scope, el, attrs, ngModel) ->

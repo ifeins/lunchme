@@ -1,4 +1,4 @@
-Lunchtime.controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
+angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
   $scope.lunch = lunch
   $scope.restaurants = RestaurantDAO.all()
   $scope.query = ''
