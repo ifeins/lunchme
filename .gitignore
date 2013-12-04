@@ -20,7 +20,4 @@ log
 # osx files
 .DS_Store
 
-# uploads
-public/uploads
-
 .env
