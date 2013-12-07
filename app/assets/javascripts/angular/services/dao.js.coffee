@@ -50,7 +50,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   @
-).factory('UserDAO', ->
+).factory('UserDAO', (OfficeDAO) ->
 
   users = {}
 
@@ -60,6 +60,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     user = users[userData.id]
     unless user
       user = User.parse(userData)
+      user.office = OfficeDAO.findOrInitializeById(userData.office) if userData.office
       users[user.id] = user
 
     user
@@ -196,10 +197,14 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   offices = {}
 
+  @findOrInitializeById = (officeData) ->
+    offices[officeData.id] = new Office(officeData) unless offices[officeData.id]
+    offices[officeData.id]
+
   @load = ->
     dfd = $q.defer()
-    $http.get('offices.json').success((list) ->
-      _.each(list, (data) -> offices[data.id] = new Office(data))
+    $http.get('offices.json').success((list) =>
+      _.each(list, (data) => @findOrInitializeById(data))
       dfd.resolve()
     )
 

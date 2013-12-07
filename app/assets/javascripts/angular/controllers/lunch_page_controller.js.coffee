@@ -34,6 +34,6 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
     $modal(template: 'components/restaurant_modal', className: 'restaurant-modal', controller: 'RestaurantModalController', locals: {restaurant: restaurant})
 
   # init code
-  if User.current
+  if User.current and not User.current.office
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')
 )
