@@ -1,6 +1,5 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :location
-  belongs_to :area
   has_and_belongs_to_many :payment_methods, :join_table => :accepted_payment_methods
   has_many :tags
 

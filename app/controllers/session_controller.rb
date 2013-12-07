@@ -28,9 +28,9 @@ class SessionController < ApplicationController
   end
 
   def update
-    area_name = params[:area].try(:[], :name)
-    area = Area.find_by_name(area_name) if area_name.present?
-    current_user.update_attribute(:area, area)
+    office_name = params[:office].try(:[], :name)
+    office = Office.find_by_name(office_name) if office_name.present?
+    current_user.update_attribute(:office, office)
 
     respond_with current_user, :location => root_path
   end

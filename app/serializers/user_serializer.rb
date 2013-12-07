@@ -1,12 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :email, :avatar_url, :work_area
-
-  def work_area
-    object.area.name
-  end
-
-  def include_work_area?
-    object.area.present?
-  end
-
+  attributes :id, :first_name, :last_name, :email, :avatar_url
 end

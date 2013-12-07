@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207103352) do
+ActiveRecord::Schema.define(:version => 20131207165648) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(:version => 20131207103352) do
   end
 
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
-
-  create_table "areas", :force => true do |t|
-    t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.float    "radius"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -71,14 +62,12 @@ ActiveRecord::Schema.define(:version => 20131207103352) do
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.integer  "location_id"
-    t.integer  "area_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "logo"
     t.string   "localized_name"
   end
 
-  add_index "restaurants", ["area_id"], :name => "index_restaurants_on_area_id"
   add_index "restaurants", ["location_id"], :name => "index_restaurants_on_location_id"
 
   create_table "surveys", :force => true do |t|
@@ -116,11 +105,8 @@ ActiveRecord::Schema.define(:version => 20131207103352) do
     t.string   "avatar_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "area_id"
     t.integer  "office_id"
   end
-
-  add_index "users", ["area_id"], :name => "index_users_on_area_id"
 
   create_table "visits", :force => true do |t|
     t.integer  "lunch_id"

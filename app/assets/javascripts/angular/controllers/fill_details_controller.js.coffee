@@ -4,7 +4,7 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
   $scope.selectedOffice = $scope.offices[0]
 
   $scope.submit = ->
-    data = {area: {name: $scope.selectedArea.name}}
+    data = {office: {name: $scope.selectedOffice.name}}
     $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
