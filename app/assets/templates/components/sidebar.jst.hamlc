@@ -8,7 +8,7 @@
         %i.fa.fa-check{'ng-show' => 'hasVisitedRestaurant(restaurant)'}
     %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'on-enter' => 'visitRestaurant(yesterdayRestaurant)'}
 
-  .yesterday_restaurant_tags{'ng-show' => 'hasVisitedRestaurant()', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
+  .yesterday_restaurant_tags{'ng-show' => 'hasVisitedRestaurant() && !otherRestaurantTypeaheadOpened', 'with-locals' => '', 'locals-restaurant' => 'visitedRestaurant()'}
     %h3 How did you find {{ restaurant.name }} ?
     .tags
       .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)'}
@@ -18,7 +18,7 @@
     .new-tag
       %input{:type => 'text', :placeholder => 'Enter new tag', 'ng-model' => 'newTagName', 'on-enter' => 'addTag(restaurant, newTagName)', 'bs-typeahead' => 'availableTags', 'bs-typeahead-id' => 'newTagTypeahead'}
 
-  .btn.done-btn{'ng-click' => 'done()', 'ng-hide' => 'surveyCompleted'} I'm done!
+  .btn.done-btn{'ng-click' => 'done()', 'ng-hide' => 'surveyCompleted || otherRestaurantTypeaheadOpened || newTagTypeaheadOpened'} I'm done!
 
   .done-msg.done-msg-animate{'ng-show' => 'surveyCompleted'}
     %i.fa.fa-check-circle-o
