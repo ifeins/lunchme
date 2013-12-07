@@ -8,7 +8,7 @@
       %span Or create a new office
     .office-create
       %input{:type => 'text', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office'}
-      %input{:type => 'text', 'ng-model' => 'newOffice.street', :placeholder => 'Street name and number'}
-      %input{:type => 'text', 'ng-model' => 'newOffice.city', :placeholder => 'City'}
+      %input{:type => 'text', 'ng-model' => 'newOffice.location.street', :placeholder => 'Street name and number'}
+      %input{:type => 'text', 'ng-model' => 'newOffice.location.city', :placeholder => 'City'}
     .btn.submit-btn{'ng-click' => 'submit()'} Submit
 
