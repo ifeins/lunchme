@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_one :account, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   belongs_to :area
+  belongs_to :office
 
   attr_accessible :avatar_url, :email, :first_name, :last_name, :account_attributes, :area
   accepts_nested_attributes_for :account
