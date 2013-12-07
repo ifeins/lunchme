@@ -1,7 +1,7 @@
 .modal-body
   .sign-up-details
-    %h3 Select the area you work in:
-    .work-area
-      %i.fa.fa-globe
-      %select#area{'ng-model' => 'selectedArea', 'ng-options' => 'area.name for area in areas'}
+    %h3 Select the office you work in:
+    .office
+      %i.fa.fa-building-o
+      %select#office{'ng-model' => 'selectedOffice', 'ng-options' => 'office.name for office in offices'}
     .btn.submit-btn{'ng-click' => 'submit()'} Submit

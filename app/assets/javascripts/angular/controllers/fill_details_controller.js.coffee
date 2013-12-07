@@ -1,11 +1,14 @@
-angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal) ->
+angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal, OfficeDAO) ->
 
-  $scope.areas = [{id: 1, name: 'Tel Aviv'}, {id: 2, name: 'Herzliya Pituch'}, {id: 3, name: 'Ramat Ha-Hayal'}]
-  $scope.selectedArea = $scope.areas[0]
+  $scope.offices = []
 
   $scope.submit = ->
     data = {area: {name: $scope.selectedArea.name}}
     $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
+
+  OfficeDAO.load().then(->
+    $scope.offices = OfficeDAO.all()
+  )
 )

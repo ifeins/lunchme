@@ -192,5 +192,22 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   @
+).factory('OfficeDAO', ($http, $q) ->
+
+  offices = {}
+
+  @load = ->
+    dfd = $q.defer()
+    $http.get('offices.json').success((list) ->
+      _.each(list, (data) -> offices[data.id] = new Office(data))
+      dfd.resolve()
+    )
+
+    dfd.promise
+
+  @all = ->
+    _.values(offices)
+
+  @
 )
 

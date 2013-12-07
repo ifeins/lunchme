@@ -21,6 +21,8 @@ Lunchtime::Application.routes.draw do
     resources :surveys, :only => [:create]
   end
 
+  resources :offices, :only => [:index, :create]
+
   resource :session, :controller => :session, :only => [:destroy, :update]
 
   scope 'auth' do
