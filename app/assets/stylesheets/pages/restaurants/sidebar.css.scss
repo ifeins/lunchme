@@ -1,4 +1,5 @@
 @import 'animations/sidebar_animations';
+@import 'components/tt-dropdown';
 
 @mixin sidebar {
   @include box-sizing(border-box);
@@ -86,6 +87,10 @@
         }
       }
 
+    }
+
+    .tt-dropdown-menu {
+      @include tt-dropdown-menu;
     }
 
   }

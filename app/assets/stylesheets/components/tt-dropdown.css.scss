@@ -1,0 +1,25 @@
+@mixin tt-dropdown-menu {
+  border: 1px solid rgba(black, 0.3);
+  margin-top: 5px;
+  @include border-radius(3px);
+  @include box-sizing(border-box);
+  width: 100%;
+  background: white;
+
+  .tt-suggestions {
+
+    .tt-suggestion {
+      padding: 10px;
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &:hover {
+          color: #3f7be1;
+        }
+      }
+
+    }
+  }
+}
