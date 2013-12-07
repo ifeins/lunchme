@@ -1,6 +1,7 @@
 angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal, OfficeDAO) ->
 
-  $scope.offices = []
+  $scope.offices = [name: 'Select office']
+  $scope.selectedOffice = $scope.offices[0]
 
   $scope.submit = ->
     data = {area: {name: $scope.selectedArea.name}}
@@ -9,6 +10,6 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
     )
 
   OfficeDAO.load().then(->
-    $scope.offices = OfficeDAO.all()
+    $scope.offices = $scope.offices.concat(OfficeDAO.all())
   )
 )
