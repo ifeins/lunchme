@@ -3,6 +3,7 @@
     %h3 Select the office you work in:
     .office-select
       %select#office{'ng-model' => 'selectedOffice', 'ng-options' => 'office.name for office in offices', :selectize => "{sortField: 'text'}", 'selectize-on' => 'officesLoaded'}
+        %option{:value => ''} Select office
     .separator Or create a new office
     .office-create
       %input{:type => 'text', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office'}

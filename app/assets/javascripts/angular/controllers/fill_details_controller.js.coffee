@@ -1,7 +1,7 @@
 angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal, OfficeDAO) ->
 
   $scope.officesLoaded = false
-  $scope.offices = [name: 'Select office']
+  $scope.offices = []
   $scope.selectedOffice = $scope.offices[0]
 
   $scope.submit = ->
