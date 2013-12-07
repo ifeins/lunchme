@@ -2,6 +2,6 @@
   .sign-up-details
     %h3 Select the office you work in:
     .office
-      %i.fa.fa-building-o
+      %i.fa.fa-briefcase
       %select#office{'ng-model' => 'selectedOffice', 'ng-options' => 'office.name for office in offices'}
     .btn.submit-btn{'ng-click' => 'submit()'} Submit
