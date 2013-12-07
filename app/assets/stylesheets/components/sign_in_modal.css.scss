@@ -1,4 +1,5 @@
 .sign-in-modal {
+  color: #444;
   width: 420px;
 
   h3 {
@@ -9,26 +10,40 @@
     padding: 30px;
 
     .sign-up-details {
-      .office {
-        margin-top: 15px;
 
-        .fa-briefcase {
-          font-size: 20px;
-          vertical-align: middle;
-        }
+      .office-select {
+        margin-top: 15px;
 
         select {
           font-size: 16px;
           margin-left: 2px;
           width: 320px;
-          vertical-align: middle;
         }
       }
+
+      .separator {
+        text-align: center;
+        margin: 15px 0;
+        font-family: $light-font;
+      }
+
+      .office-create {
+        input {
+          @include box-sizing(border-box);
+          width: 100%;
+          font-size: 16px;
+          padding: 5px 10px;
+          border: 1px solid #939597;
+          @include border-radius(3px);
+          margin-bottom: 10px;
+        }
+      }
+
 
       .submit-btn {
         width: 60px;
         display: block;
-        margin: 30px auto 0 auto;
+        margin: 20px auto 0 auto;
       }
     }
   }

@@ -9,6 +9,7 @@
 #= require typeahead
 #= require_tree ../templates
 #= require angular
+#= require selectize
 #= require_self
 #= require_tree ./angular
 

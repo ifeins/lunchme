@@ -1,5 +1,6 @@
 angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal, OfficeDAO) ->
 
+  $scope.officesLoaded = false
   $scope.offices = [name: 'Select office']
   $scope.selectedOffice = $scope.offices[0]
 
@@ -11,5 +12,6 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
 
   OfficeDAO.load().then(->
     $scope.offices = $scope.offices.concat(OfficeDAO.all())
+    $scope.officesLoaded = true
   )
 )
