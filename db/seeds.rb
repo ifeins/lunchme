@@ -7,10 +7,6 @@ def create_tag_definition(name)
   TagDefinition.find_or_create_by_name(:name => name)
 end
 
-def create_area(name, latitude, longitude, radius)
-  Area.find_or_create_by_name(:name => name, :latitude => latitude, :longitude => longitude, :radius => radius)
-end
-
 def create_user(first_name, last_name, email, avatar_url, work_area, provider, uid)
   User.find_or_create_by_email(
       :first_name => first_name,
@@ -60,9 +56,6 @@ create_tag_definition('Indian')
 create_tag_definition('Healthy')
 create_tag_definition('Vegetarian')
 create_tag_definition('Vegan')
-
-# areas
-create_area('Tel Aviv', 34.770738, 32.063501, 2)
 
 # lunch
 Lunch.create(:date => Date.today)
