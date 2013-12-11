@@ -74,7 +74,6 @@ GEM
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     fssm (0.2.10)
-    geocoder (1.1.8)
     haml (4.0.2)
       tilt
     haml_coffee_assets (1.16.0)
@@ -204,7 +203,6 @@ DEPENDENCIES
   debugger
   enumify
   font-awesome-rails
-  geocoder
   haml
   haml_coffee_assets
   httparty

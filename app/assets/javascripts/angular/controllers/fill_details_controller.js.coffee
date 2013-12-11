@@ -25,8 +25,8 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       location:
         street: "#{addressComps[1].long_name} #{addressComps[0].long_name}"
         city: addressComps[2].long_name
-        latitude: coordinates.pb
-        longitude: coordinates.qb
+        latitude: coordinates.pb or coordinates.nb
+        longitude: coordinates.qb or coordinates.ob
     )
 
   OfficeDAO.load().then(->

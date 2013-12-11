@@ -13,8 +13,6 @@ gem 'carrierwave'
 gem 'mechanize'
 gem 'font-awesome-rails'
 gem 'enumify'
-gem 'geocoder'
-
 
 # oauth
 gem 'omniauth-facebook'
