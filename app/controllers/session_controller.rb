@@ -28,9 +28,7 @@ class SessionController < ApplicationController
   end
 
   def update
-    office = Office.find_or_create_by_name(params[:office])
-    current_user.update_attribute(:office, office)
-
+    current_user.update_attributes(params[:user])
     respond_with current_user, :location => root_path
   end
 

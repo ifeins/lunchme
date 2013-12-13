@@ -1,10 +1,11 @@
-angular.module('Lunchtime').directive 'selectize', ($timeout) ->
+angular.module('Lunchtime').directive 'selectize', ($timeout, $parse) ->
   restrict: 'AE'
   link: (scope, el, attrs) ->
-    scope.$watch(attrs.selectizeOn, (newValue, oldValue) ->
-      $timeout(->
-        configureSelectize($(el), scope, attrs) if newValue and newValue != oldValue
-      )
+    configureSelectize(el, scope, attrs)
+
+    $timeout(->
+      loadFn = $parse(attrs.selectizeLoad)(scope)
+      el[0].selectize.load(loadFn)
     )
 
 configureSelectize = ($el, scope, attrs) ->

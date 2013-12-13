@@ -1,17 +1,24 @@
 angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, $modal, OfficeDAO) ->
 
-  $scope.officesLoaded = false
-  $scope.offices = []
-  $scope.selectedOffice = $scope.offices[0]
-
   $scope.autocompleteOptions = {
     componentRestrictions:
       country: 'il'
   }
 
+  $scope.loadOffices = (callback) ->
+    OfficeDAO.load().then(->
+      offices = _.map(OfficeDAO.all(), (office) -> {value: office.id, text: office.name})
+      callback(offices)
+    )
+
   $scope.submit = ->
-    office = if $scope.selectedOffice then $scope.selectedOffice else officeFromScopeModel($scope.newOffice)
-    data = {office: office.toJSON()}
+    data = {user: null}
+
+    if $scope.selectedOfficeId
+      data.user = {office_id: $scope.selectedOfficeId}
+    else
+      data.user = {office_attributes: officeFromScopeModel($scope.newOffice).toJSON()}
+
     $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
@@ -29,8 +36,5 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
         longitude: coordinates.qb or coordinates.ob
     )
 
-  OfficeDAO.load().then(->
-    $scope.offices = $scope.offices.concat(OfficeDAO.all())
-    $scope.officesLoaded = true
-  )
+
 )

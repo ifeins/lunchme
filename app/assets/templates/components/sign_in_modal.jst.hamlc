@@ -2,7 +2,7 @@
   .sign-up-details
     %h3 Select the office you work in:
     .office-select
-      %select#office{'ng-model' => 'selectedOffice', 'ng-options' => 'office.name for office in offices', :selectize => "{sortField: 'text'}", 'selectize-on' => 'officesLoaded'}
+      %select#office{'ng-model' => 'selectedOfficeId', :selectize => "{sortField: 'text'}", 'selectize-load' => 'loadOffices'}
         %option{:value => ''} Select office
     .separator
       %span Or create a new office
