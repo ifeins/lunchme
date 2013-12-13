@@ -57,7 +57,12 @@
           border: 1px solid #939597;
           @include border-radius(3px);
           margin-bottom: 10px;
+
+          &.validation-failed {
+            border-color: red;
+          }
         }
+
       }
 
 

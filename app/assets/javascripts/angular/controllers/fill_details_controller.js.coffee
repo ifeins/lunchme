@@ -17,24 +17,24 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
     if $scope.selectedOfficeId
       data.user = {office_id: $scope.selectedOfficeId}
     else
-      data.user = {office_attributes: officeFromScopeModel($scope.newOffice).toJSON()}
+      office = officeFromScopeModel($scope.newOffice)
+      if _.isEmpty(office)
+        $scope.validationFailed = true
+        return
+      else
+        data.user = {office_attributes: office.toJSON()}
 
     $http.put("#{Routes.session_path()}.json", data).success(->
       $modal('hide')
     )
 
   officeFromScopeModel = (model) ->
-    addressComps = model.address.address_components
-    coordinates = model.address.geometry.location
+    location = Location.fromGooglePlace(model.address)
+    return null if _.isEmpty(location)
 
     new Office(
       name: model.name
-      location:
-        street: "#{addressComps[1].long_name} #{addressComps[0].long_name}"
-        city: addressComps[2].long_name
-        latitude: coordinates.pb or coordinates.nb
-        longitude: coordinates.qb or coordinates.ob
+      location: location
     )
-
 
 )

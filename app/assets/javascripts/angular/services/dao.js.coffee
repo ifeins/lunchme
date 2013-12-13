@@ -198,7 +198,10 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   offices = {}
 
   @findOrInitializeById = (officeData) ->
-    offices[officeData.id] = new Office(officeData) unless offices[officeData.id]
+    unless offices[officeData.id]
+      officeData.location = new Location(officeData.location)
+      offices[officeData.id] = new Office(officeData)
+
     offices[officeData.id]
 
   @load = ->
