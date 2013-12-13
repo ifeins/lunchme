@@ -49,21 +49,45 @@
       }
 
       .office-create {
-        input {
-          @include box-sizing(border-box);
-          width: 100%;
-          font-size: 16px;
-          padding: 5px 10px;
-          border: 1px solid #939597;
-          @include border-radius(3px);
-          margin-bottom: 10px;
+        .input-group {
+          position: relative;
 
-          &.validation-failed {
-            outline: #ff5757 auto 5px;
-            outline-offset: -2px;
+          input {
+            @include box-sizing(border-box);
+            width: 100%;
+            font-size: 16px;
+            padding: 5px 10px;
+            border: 1px solid #939597;
+            @include border-radius(3px);
+            margin-bottom: 10px;
+
+            &.ng-invalid.ng-dirty {
+              + i.fa-exclamation-circle {
+                display: block;
+                position: absolute;
+                font-size: 20px;
+                right: 7px;
+                top: 7px;
+                color: #ff0d3b;
+              }
+            }
+
+            &.ng-valid.ng-dirty {
+              + i.fa-check-circle {
+                display: block;
+                position: absolute;
+                font-size: 20px;
+                right: 7px;
+                top: 7px;
+                color: #44cc55;
+              }
+            }
+          }
+
+          i {
+            display: none;
           }
         }
-
       }
 
 
