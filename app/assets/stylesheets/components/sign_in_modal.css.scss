@@ -59,7 +59,8 @@
           margin-bottom: 10px;
 
           &.validation-failed {
-            border-color: red;
+            outline: #ff5757 auto 5px;
+            outline-offset: -2px;
           }
         }
 
