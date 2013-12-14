@@ -13,7 +13,7 @@
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle
       .input-group
-        %input{:type => 'text', :placeholder => "Office's address", 'ng-model' => 'newOffice.address', 'ggl-places-autocomplete' => 'autocompleteOptions', 'ng-class' => "{'validation-failed': validationFailed}"}
+        %input{:type => 'text', :placeholder => "Office's address", 'ng-model' => 'newOffice.address', 'ggl-places-autocomplete' => 'autocompleteOptions', 'complete-address-required' => null}
         .input-icons
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle

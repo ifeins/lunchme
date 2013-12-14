@@ -3,10 +3,10 @@ angular.module('Lunchtime').directive('minCharsRequired', ->
   link: (scope, el, attrs, model) ->
     model.$parsers.unshift((viewValue) ->
       if viewValue.length >= attrs.minCharsRequired
-        model.$setValidity('minChars', true)
+        model.$setValidity('minCharsRequired', true)
         viewValue
       else
-        model.$setValidity('minChars', false)
+        model.$setValidity('minCharsRequired', false)
         undefined
     )
 )
