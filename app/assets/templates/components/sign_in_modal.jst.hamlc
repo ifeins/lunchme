@@ -2,7 +2,7 @@
   .sign-up-details{'ng-form' => 'signUpForm'}
     %h3 Select the office you work in:
     .office-select
-      %select#office{'ng-model' => 'selectedOfficeId', :selectize => "{sortField: 'text'}", 'selectize-load' => 'loadOffices'}
+      %select#office{:name => 'officeSelect', 'ng-model' => 'selectedOfficeId', :selectize => "{sortField: 'text'}", 'selectize-load' => 'loadOffices'}
         %option{:value => ''} Select office
     .separator
       %span Or create a new office
@@ -21,6 +21,6 @@
           %i.fa.fa-exclamation-circle
         .input-errors{'ng-show' => 'signUpForm.officeAddress.$dirty && signUpForm.officeAddress.$invalid'}
           %span{'ng-show' => 'signUpForm.officeAddress.$error.completeAddressRequired'} Must provide street, street number and city
-    .btn.submit-btn{'ng-click' => 'submit()'} Submit
+    .btn.submit-btn{'ng-click' => 'submit()', 'ng-disabled' => 'signUpForm.$invalid'} Submit
   %img.google-logo{:src => '/assets/powered-by-google-on-white.png'}
 

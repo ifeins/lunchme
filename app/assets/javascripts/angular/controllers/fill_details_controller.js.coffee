@@ -32,4 +32,7 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       location: location
     )
 
+  # initially the form should be invalid as no values were entered
+  $scope.signUpForm.$invalid = false
+
 )
