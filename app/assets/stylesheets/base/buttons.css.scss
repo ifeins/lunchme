@@ -25,4 +25,14 @@
     @include box-shadow(none);
     border: shade($from, 30%) 1px solid;
   }
+
+  &[disabled='disabled'] {
+    $disabled-from: #5adce5;
+    $disabled-to: #5acbd2;
+
+    @include background(linear-gradient($disabled-from, $disabled-to));
+    border: 1px solid #55d8ff;
+    @include box-shadow(#49b8c0 0 0 0 1px);
+    color: rgba(white, 0.5);
+  }
 }
