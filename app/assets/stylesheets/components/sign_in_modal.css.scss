@@ -51,6 +51,7 @@
       .office-create {
         .input-group {
           position: relative;
+          margin-bottom: 10px;
 
           .input-icons {
             display: none;
@@ -64,6 +65,13 @@
             }
           }
 
+          .input-errors {
+            color: #ff0d3b;
+            font-family: $light-font;
+            font-size: 12px;
+            text-align: right;
+          }
+
           input {
             @include box-sizing(border-box);
             width: 100%;
@@ -71,7 +79,6 @@
             padding: 5px 10px;
             border: 1px solid #939597;
             @include border-radius(3px);
-            margin-bottom: 10px;
 
             &.ng-invalid.ng-dirty {
               + .input-icons {

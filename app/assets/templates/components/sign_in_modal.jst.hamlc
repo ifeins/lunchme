@@ -1,5 +1,5 @@
 .modal-body
-  .sign-up-details
+  .sign-up-details{'ng-form' => 'signUpForm'}
     %h3 Select the office you work in:
     .office-select
       %select#office{'ng-model' => 'selectedOfficeId', :selectize => "{sortField: 'text'}", 'selectize-load' => 'loadOffices'}
@@ -8,15 +8,19 @@
       %span Or create a new office
     .office-create
       .input-group
-        %input{:type => 'text', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office', 'min-chars-required' => 3}
+        %input{:type => 'text', :name => 'officeName', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office', 'min-chars-required' => 3}
         .input-icons
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle
+        .input-errors{'ng-show' => 'signUpForm.officeName.$dirty && signUpForm.officeName.$invalid'}
+          %span{'ng-show' => 'signUpForm.officeName.$error.minCharsRequired'} Must be at least 3 characters long
       .input-group
-        %input{:type => 'text', :placeholder => "Office's address", 'ng-model' => 'newOffice.address', 'ggl-places-autocomplete' => 'autocompleteOptions', 'complete-address-required' => null}
+        %input{:type => 'text', :name => 'officeAddress', :placeholder => "Office's address", 'ng-model' => 'newOffice.address', 'ggl-places-autocomplete' => 'autocompleteOptions', 'complete-address-required' => null}
         .input-icons
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle
+        .input-errors{'ng-show' => 'signUpForm.officeAddress.$dirty && signUpForm.officeAddress.$invalid'}
+          %span{'ng-show' => 'signUpForm.officeAddress.$error.completeAddressRequired'} Must provide street, street number and city
     .btn.submit-btn{'ng-click' => 'submit()'} Submit
   %img.google-logo{:src => '/assets/powered-by-google-on-white.png'}
 
