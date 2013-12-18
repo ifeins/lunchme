@@ -8,7 +8,7 @@
       %span Or create a new office
     .office-create
       .input-group
-        %input{:type => 'text', :name => 'officeName', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office', 'ng-minlength' => 3}
+        %input{:type => 'text', :name => 'officeName', 'ng-model' => 'newOffice.name', :placeholder => 'The name of the office', 'ng-minlength' => 3, :required => null}
         .input-icons
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle
@@ -20,7 +20,7 @@
           %i.fa.fa-check-circle
           %i.fa.fa-exclamation-circle
         .input-errors{'ng-show' => 'signUpForm.officeAddress.$dirty && signUpForm.officeAddress.$invalid'}
-          %span{'ng-show' => 'signUpForm.officeAddress.$error.completeAddressRequired'} Must provide street, street number and city
+          %span{'ng-show' => 'signUpForm.officeAddress.$error.completeAddressRequired'} Must provide street, street number, and city
     .btn.submit-btn{'ng-click' => 'submit()', 'ng-disabled' => 'signUpForm.$invalid'} Submit
   %img.google-logo{:src => '/assets/powered-by-google-on-white.png'}
 
