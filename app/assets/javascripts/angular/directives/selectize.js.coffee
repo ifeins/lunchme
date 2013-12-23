@@ -9,5 +9,12 @@ angular.module('Lunchtime').directive 'selectize', ($timeout, $parse) ->
     )
 
 configureSelectize = ($el, scope, attrs) ->
-  $el.selectize scope.$eval(attrs.selectize)
+  options = scope.$eval(attrs.selectize)
+  if options.onChange
+    methodName = options.onChange
+    options.onChange = (value) ->
+      method = scope.$eval(methodName)
+      method(value)
+
+  $el.selectize options
 

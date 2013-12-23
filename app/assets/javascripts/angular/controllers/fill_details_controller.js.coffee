@@ -5,6 +5,11 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       country: 'il'
   }
 
+  $scope.newOffice = {
+    name: ''
+    address: ''
+  }
+
   $scope.loadOffices = (callback) ->
     OfficeDAO.load().then(->
       offices = _.map(OfficeDAO.all(), (office) -> {value: office.id, text: office.name})
@@ -24,6 +29,12 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       $modal('hide')
     )
 
+  $scope.officeSelected = ->
+    $scope.newOffice.name = ''
+    $scope.newOffice.address = ''
+    $scope.signUpForm.$setPristine()
+    $scope.signUpForm.$setValidity(true)
+
   officeFromScopeModel = (model) ->
     location = Location.fromGooglePlace(model.address)
 
@@ -31,8 +42,5 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       name: model.name
       location: location
     )
-
-  # initially the form should be invalid as no values were entered
-  $scope.signUpForm.$invalid = false
 
 )
