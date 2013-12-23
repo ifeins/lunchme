@@ -5,7 +5,8 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       country: 'il'
   }
 
-  $scope.newOffice = {
+  $scope.office = {
+    id: null
     name: ''
     address: ''
   }
@@ -19,10 +20,10 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
   $scope.submit = ->
     data = {user: null}
 
-    if $scope.selectedOfficeId
-      data.user = {office_id: $scope.selectedOfficeId}
+    if $scope.office.id
+      data.user = {office_id: $scope.office.id}
     else
-      office = officeFromScopeModel($scope.newOffice)
+      office = officeFromScopeModel($scope.office)
       data.user = {office_attributes: office.toJSON()}
 
     $http.put("#{Routes.session_path()}.json", data).success(->
@@ -30,8 +31,8 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
     )
 
   $scope.officeSelected = ->
-    $scope.newOffice.name = ''
-    $scope.newOffice.address = ''
+    $scope.office.name = ''
+    $scope.office.address = ''
 
     $scope.signUpForm.officeName.$setValidity('minlength', true)
     $scope.signUpForm.officeAddress.$setValidity('completeAddressRequired', true)
