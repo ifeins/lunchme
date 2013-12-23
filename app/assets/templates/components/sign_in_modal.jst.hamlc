@@ -14,6 +14,7 @@
           %i.fa.fa-exclamation-circle
         .input-errors{'ng-show' => 'signUpForm.officeName.$dirty && signUpForm.officeName.$invalid'}
           %span{'ng-show' => 'signUpForm.officeName.$error.minlength'} Must be at least 3 characters long
+          %span{'ng-show' => 'signUpForm.officeName.$error.required'} You must provide the name of the office
       .input-group
         %input{:type => 'text', :name => 'officeAddress', :placeholder => "Office's address", 'ng-model' => 'newOffice.address', 'ggl-places-autocomplete' => 'autocompleteOptions', 'complete-address-required' => null}
         .input-icons
