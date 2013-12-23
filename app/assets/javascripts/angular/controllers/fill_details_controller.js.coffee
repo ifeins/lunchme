@@ -32,8 +32,10 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
   $scope.officeSelected = ->
     $scope.newOffice.name = ''
     $scope.newOffice.address = ''
+
+    $scope.signUpForm.officeName.$setValidity('minlength', true)
+    $scope.signUpForm.officeAddress.$setValidity('completeAddressRequired', true)
     $scope.signUpForm.$setPristine()
-    $scope.signUpForm.$setValidity(true)
 
   officeFromScopeModel = (model) ->
     location = Location.fromGooglePlace(model.address)
