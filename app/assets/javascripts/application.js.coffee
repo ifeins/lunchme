@@ -6,6 +6,7 @@
 #= require routes
 #= require browser
 #= require utils
+#= require ordered_hash
 #= require typeahead
 #= require_tree ../templates
 #= require angular

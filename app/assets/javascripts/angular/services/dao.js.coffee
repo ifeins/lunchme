@@ -23,24 +23,24 @@ _createSurvey = (lunch, user, data) ->
 
 angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
-  restaurants = {}
+  restaurants = new OrderedHash()
 
   @load = ->
     dfd = $q.defer()
     $http.get('restaurants.json').success((list) ->
-      _.each(list, (data) -> restaurants[data.id] = new Restaurant(data))
+      _.each(list, (data) -> restaurants.set(data.id, new Restaurant(data)))
       dfd.resolve()
     )
     dfd.promise
 
   @all = ->
-    _.values(restaurants)
+    restaurants.all()
 
   @find = (id) ->
-    restaurants[id]
+    restaurants.get(id)
 
   @findByName = (name) ->
-    _.findWhere(restaurants, name: name)
+    _.findWhere(@all(), name: name)
 
   @availableTags = (restaurant) ->
     dfd = $q.defer()
