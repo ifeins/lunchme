@@ -11,7 +11,8 @@ class RestaurantsController < ApplicationController
 
   def index
     if user_signed_in? and current_user.office.try(:location).present?
-      locations = Location.within(RADIUS, origin: current_user.office.location)
+      origin = current_user.office.location
+      locations = Location.within(RADIUS, origin: origin).by_distance(origin: origin)
       restaurants = locations.map {|location| Restaurant.find_by_location_id(location.id) }.compact
     else
       restaurants = Restaurant.all
