@@ -27,7 +27,8 @@ angular.module('Lunchtime').controller('FillDetailsController', ($scope, $http, 
       data.user = {office_attributes: office.toJSON()}
 
     $http.put("#{Routes.session_path()}.json", data).success(->
-      $modal('hide')
+      # reload the browser so the restaurants displayed will be filtered by the office's location
+      window.location.reload()
     )
 
   $scope.officeSelected = ->
