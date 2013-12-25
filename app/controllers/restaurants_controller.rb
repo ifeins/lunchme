@@ -6,8 +6,18 @@ class RestaurantsController < ApplicationController
 
   before_filter :load_restaurant, :only => [:available_tags]
 
+  # the radius around the office's location to search restaurants in
+  RADIUS = 3
+
   def index
-    respond_with Restaurant.all
+    if user_signed_in? and current_user.office.try(:location).present?
+      locations = Location.within(RADIUS, origin: current_user.office.location)
+      restaurants = locations.map {|location| Restaurant.find_by_location_id(location.id) }.compact
+    else
+      restaurants = Restaurant.all
+    end
+
+    respond_with restaurants
   end
 
   def available_tags
