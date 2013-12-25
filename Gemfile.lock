@@ -74,6 +74,11 @@ GEM
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     fssm (0.2.10)
+    geokit (1.7.1)
+      multi_json (>= 1.3.2)
+    geokit-rails (2.0.1)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     haml (4.0.2)
       tilt
     haml_coffee_assets (1.16.0)
@@ -203,6 +208,7 @@ DEPENDENCIES
   debugger
   enumify
   font-awesome-rails
+  geokit-rails
   haml
   haml_coffee_assets
   httparty
