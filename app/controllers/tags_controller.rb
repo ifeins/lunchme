@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
-  class InvalidTagError < StandardError; end
+  class TagError < StandardError; end
 
   attr_reader :restaurant
 
@@ -11,17 +11,22 @@ class TagsController < ApplicationController
   def create
     tag_definition = TagDefinition.find_by_name(params[:name])
     if tag_definition.present?
-      tag = restaurant.tags.create(:tag_definition => tag_definition)
+      tag = restaurant.tags.build(:tag_definition => tag_definition)
+      tag.users << current_user
+      tag.save
       respond_with tag, :location => root_url
     else
-      raise InvalidTagError.new('Tag is not listed in the predefined tags')
+      raise TagError.new('Tag is not listed in the predefined tags')
     end
 
   end
 
   def vote
     tag = restaurant.tags.find(params[:tag_id])
+    raise TagError.new('User already voted for tag') if tag.users.include?(current_user)
+
     tag.quantity += 1
+    tag.users << current_user
     tag.save!
 
     # by default rails doesn't includes body in response to PUT requests
