@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20131227194758) do
     t.integer  "office_id"
   end
 
-  create_table "users_tags", :force => true do |t|
+  create_table "users_tags", :id => false, :force => true do |t|
     t.integer "user_id", :null => false
     t.integer "tag_id",  :null => false
   end
