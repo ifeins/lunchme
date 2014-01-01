@@ -1,8 +1,8 @@
 $tag-bg-color: #E0EAF1;
 $tag-border-color: #b3cee1;
 
-$voted-tag-bg-color: #CCF8CB;
-$voted-tag-text-color: #618E3E;
+$voted-tag-bg-color: #acd02f;
+$voted-tag-text-color: #5c7113;
 
 @mixin tag {
   @include box-sizing(border-box);
@@ -50,6 +50,8 @@ $voted-tag-text-color: #618E3E;
 @mixin voted-tag {
   cursor: default;
 
-  background-color: $voted-tag-bg-color;
+  background-color: tint($voted-tag-bg-color, 30%);
+  border-bottom-color: $voted-tag-bg-color;
+  border-right-color: $voted-tag-bg-color;
   color: $voted-tag-text-color;
 }
