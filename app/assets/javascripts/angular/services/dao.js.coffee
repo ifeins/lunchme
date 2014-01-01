@@ -145,6 +145,15 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
       tag.unvote(User.current) # revert operation
     )
 
+  @unvote = (tag) ->
+    return unless User.current
+
+    tag.unvote(User.current)
+    $http.put("restaurants/#{tag.restaurant.id}/tags/#{tag.id}/unvote.json", tag.toJSON()).error(->
+      tag.vote(User.current) # revert operation
+    )
+
+
   @
 
 ).factory('VisitDAO', ($http, $q) ->

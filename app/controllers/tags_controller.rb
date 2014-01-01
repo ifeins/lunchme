@@ -35,6 +35,20 @@ class TagsController < ApplicationController
     end
   end
 
+  def unvote
+    tag = restaurant.tags.find(params[:tag_id])
+    raise TagError.new('User did not vote for this tag before') unless tag.users.include?(current_user)
+
+    tag.quantity -= 1
+    tag.users.delete(current_user)
+    tag.save!
+
+    # by default rails doesn't includes body in response to PUT requests
+    respond_with tag do |format|
+      format.json { render :json => tag }
+    end
+  end
+
   private
 
   def load_restaurant

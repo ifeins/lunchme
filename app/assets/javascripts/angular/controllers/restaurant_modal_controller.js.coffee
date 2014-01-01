@@ -3,7 +3,10 @@ angular.module('Lunchtime').controller('RestaurantModalController', ($scope, $ht
   $scope.user = User.current
 
   $scope.voteOnTag = (tag) ->
-    TagDAO.vote(tag) unless tag.userVotedFor(User.current)
+    if tag.userVotedFor(User.current)
+      TagDAO.unvote(tag)
+    else
+      TagDAO.vote(tag)
 
   $scope.addTag = (restaurant, tagName) ->
     tag = new Tag(name: tagName, restaurant: restaurant)

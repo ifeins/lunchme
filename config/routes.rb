@@ -7,6 +7,7 @@ Lunchtime::Application.routes.draw do
 
     resources :tags, :only => [:create] do
       put :vote
+      put :unvote
     end
   end
 
