@@ -1,5 +1,7 @@
 angular.module('Lunchtime').controller('RestaurantModalController', ($scope, $http, TagDAO, RestaurantDAO) ->
 
+  $scope.user = User.current
+
   $scope.voteOnTag = (tag) ->
     TagDAO.vote(tag) unless tag.userVotedFor(User.current)
 

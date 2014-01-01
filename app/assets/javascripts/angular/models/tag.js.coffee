@@ -16,7 +16,12 @@ class window.Tag
     @usersIds.splice(@usersIds.indexOf(user.id)) if @userVotedFor(user)
 
   userVotedFor: (user) ->
+    return false unless user
     _.contains(@usersIds, user.id)
+
+  canVoteFor: (user) ->
+    return false unless user
+    not @userVotedFor(user)
 
   toJSON: ->
     name: @name

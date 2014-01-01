@@ -1,6 +1,9 @@
 $tag-bg-color: #E0EAF1;
 $tag-border-color: #b3cee1;
 
+$voted-tag-bg-color: #CCF8CB;
+$voted-tag-text-color: #618E3E;
+
 @mixin tag {
   @include box-sizing(border-box);
   height: 20px;
@@ -22,6 +25,14 @@ $tag-border-color: #b3cee1;
   .quantity {
     color: #999;
   }
+
+  &.voted {
+    @include voted-tag;
+  }
+
+  &.clickable {
+    @include clickable-tag;
+  }
 }
 
 @mixin clickable-tag {
@@ -34,4 +45,11 @@ $tag-border-color: #b3cee1;
   &:active {
     border: 1px solid $tag-border-color;
   }
+}
+
+@mixin voted-tag {
+  cursor: default;
+
+  background-color: $voted-tag-bg-color;
+  color: $voted-tag-text-color;
 }

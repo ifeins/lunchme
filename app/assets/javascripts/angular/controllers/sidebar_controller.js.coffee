@@ -1,5 +1,7 @@
 angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, LunchDAO, RestaurantDAO, VisitDAO, TagDAO, SurveyDAO) ->
 
+  $scope.user = User.current
+
   $scope.lunch = []
   LunchDAO.yesterday().then((lunch) ->
     $scope.lunch = lunch

@@ -5,7 +5,7 @@
   .location {{ restaurant.address }}
   %h3 Vote on existing tags or add a new one
   .tags
-    .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)'}
+    .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)', 'ng-class' => '{voted: tag.userVotedFor(user), clickable: tag.canVoteFor(user)}'}
       %span.name {{tag.name}}
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
