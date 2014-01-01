@@ -5,7 +5,7 @@ Lunchtime::Application.routes.draw do
   resources :restaurants, :only => [:index] do
     get :available_tags
 
-    resources :tags, :only => [:create] do
+    resources :tags, :only => [:create, :destroy] do
       put :vote
       put :unvote
     end

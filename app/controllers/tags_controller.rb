@@ -18,7 +18,13 @@ class TagsController < ApplicationController
     else
       raise TagError.new('Tag is not listed in the predefined tags')
     end
+  end
 
+  def destroy
+    tag = restaurant.tags.find(params[:id]).destroy
+    respond_with tag do |format|
+      format.json { render json: tag }
+    end
   end
 
   def vote

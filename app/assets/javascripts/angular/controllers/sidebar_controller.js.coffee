@@ -37,7 +37,10 @@ angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, L
 
   $scope.voteOnTag = (tag) ->
     if tag.userVotedFor(User.current)
-      TagDAO.unvote(tag)
+      if tag.quantity == 1
+        TagDAO.destroy(tag)
+      else
+        TagDAO.unvote(tag)
     else
       TagDAO.vote(tag)
 

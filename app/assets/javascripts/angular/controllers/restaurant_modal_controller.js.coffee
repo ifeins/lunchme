@@ -4,7 +4,10 @@ angular.module('Lunchtime').controller('RestaurantModalController', ($scope, $ht
 
   $scope.voteOnTag = (tag) ->
     if tag.userVotedFor(User.current)
-      TagDAO.unvote(tag)
+      if tag.quantity == 1
+        TagDAO.destroy(tag)
+      else
+        TagDAO.unvote(tag)
     else
       TagDAO.vote(tag)
 

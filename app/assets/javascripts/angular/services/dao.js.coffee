@@ -137,6 +137,17 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
     dfd.promise
 
+  @destroy = (tag) ->
+    return unless User.current
+
+    tag.restaurant.removeTag tag
+    dfd = $q.defer()
+    $http.delete("restaurants/#{tag.restaurant.id}/tags/#{tag.id}.json").success(->
+      dfd.resolve()
+    ).error(->
+      tag.restaurant.addTag tag
+    )
+
   @vote = (tag) ->
     return unless User.current
 
