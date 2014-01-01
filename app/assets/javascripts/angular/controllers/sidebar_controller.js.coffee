@@ -34,7 +34,7 @@ angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, L
     $scope.lunch.userVisit?(User.current)?.restaurant
 
   $scope.voteOnTag = (tag) ->
-    TagDAO.vote(tag)
+    TagDAO.vote(tag) unless tag.userVotedFor(User.current)
 
   $scope.addTag = (restaurant, tagName) ->
     tag = new Tag(name: tagName, restaurant: restaurant)

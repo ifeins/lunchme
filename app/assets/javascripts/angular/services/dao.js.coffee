@@ -126,6 +126,8 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     $http.post("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
       tag.quantity = response.quantity
       tag.id = response.id
+      tag.usersIds ||= {}
+      tag.usersIds.push(User.current.id)
       dfd.resolve()
     ).error(->
       tag.restaurant.removeTag tag
@@ -135,10 +137,10 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   @vote = (tag) ->
-    tag.increment()
+    tag.vote(User.current)
 
     $http.put("restaurants/#{tag.restaurant.id}/tags/#{tag.id}/vote.json", tag.toJSON()).error(->
-      tag.decrement() # revert operation
+      tag.unvote(User.current) # revert operation
     )
 
   @

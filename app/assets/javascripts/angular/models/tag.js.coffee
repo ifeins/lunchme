@@ -5,12 +5,18 @@ class window.Tag
     @name = data.name
     @quantity = data.quantity
     @restaurant = data.restaurant
+    @usersIds = data.userIds || []
 
-  increment: ->
+  vote: (user) ->
     @quantity++
+    @usersIds.push(user.id)
 
-  decrement: ->
+  unvote: (user) ->
     @quantity--
+    @usersIds.splice(@usersIds.indexOf(user.id)) if @userVotedFor(user)
+
+  userVotedFor: (user) ->
+    _.contains(@usersIds, user.id)
 
   toJSON: ->
     name: @name
