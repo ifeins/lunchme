@@ -7,6 +7,10 @@ $grey-shadow: rgba(#000, 0.15);
   @include box-sizing(border-box);
   @include min-height(700px);
 
+  h2 {
+    color: #444;
+  }
+
   > div {
     display: flex;
     flex-flow: row nowrap;
