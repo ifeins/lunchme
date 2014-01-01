@@ -3,6 +3,7 @@ $tag-border-color: #b3cee1;
 
 $voted-tag-bg-color: #acd02f;
 $voted-tag-text-color: #5c7113;
+$voted-tag-border-color: #acd02f;
 
 @mixin tag {
   @include box-sizing(border-box);
@@ -45,13 +46,25 @@ $voted-tag-text-color: #5c7113;
   &:active {
     border: 1px solid $tag-border-color;
   }
+
+  &.voted {
+    &:hover {
+      background-color: tint($voted-tag-bg-color, 50%);
+    }
+
+    &:active {
+      border: 1px solid $voted-tag-border-color;
+    }
+  }
+
 }
+
 
 @mixin voted-tag {
   cursor: default;
 
   background-color: tint($voted-tag-bg-color, 30%);
-  border-bottom-color: $voted-tag-bg-color;
-  border-right-color: $voted-tag-bg-color;
+  border-bottom-color: $voted-tag-border-color;
+  border-right-color: $voted-tag-border-color;
   color: $voted-tag-text-color;
 }
