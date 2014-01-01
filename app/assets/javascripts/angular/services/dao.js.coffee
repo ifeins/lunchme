@@ -120,8 +120,9 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 ).factory('TagDAO', ($http, $q) ->
 
   @create = (tag) ->
-    tag.restaurant.addTag tag
+    return unless User.current
 
+    tag.restaurant.addTag tag
     dfd = $q.defer()
     $http.post("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
       tag.quantity = response.quantity
@@ -137,8 +138,9 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     dfd.promise
 
   @vote = (tag) ->
-    tag.vote(User.current)
+    return unless User.current
 
+    tag.vote(User.current)
     $http.put("restaurants/#{tag.restaurant.id}/tags/#{tag.id}/vote.json", tag.toJSON()).error(->
       tag.unvote(User.current) # revert operation
     )
