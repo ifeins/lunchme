@@ -14,6 +14,7 @@ gem 'mechanize'
 gem 'font-awesome-rails'
 gem 'enumify'
 gem 'geokit-rails'
+gem 'pusher'
 
 # oauth
 gem 'omniauth-facebook'
