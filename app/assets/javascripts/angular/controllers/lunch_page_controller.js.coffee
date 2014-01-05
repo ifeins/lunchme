@@ -37,4 +37,11 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   # init code
   if User.current and not User.current.office
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')
+
+  pusher = new Pusher(PusherConfig.appKey)
+  $scope.channel = pusher.subscribe("lunch-#{$scope.lunch.id}")
+  $scope.channel.bind('restaurant-voted', (data) ->
+    console.log("restaurant voted with data: #{data}")
+  )
+
 )
