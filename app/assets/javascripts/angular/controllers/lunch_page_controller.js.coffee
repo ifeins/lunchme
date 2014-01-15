@@ -1,4 +1,4 @@
-angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO) ->
+angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO, UserDAO) ->
   $scope.user = User.current
   $scope.lunch = lunch
   $scope.restaurants = RestaurantDAO.all()
@@ -41,7 +41,12 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   pusher = new Pusher(PusherConfig.appKey)
   $scope.channel = pusher.subscribe("lunch-#{$scope.lunch.id}")
   $scope.channel.bind('restaurant-voted', (data) ->
-    console.log("restaurant voted with data: #{data}")
+    voteData = JSON.parse(data.message)
+    user = UserDAO.findOrInitializeById(voteData.user)
+    restaurant = RestaurantDAO.find(voteData.restaurant_id)
+    unless user.isCurrentUser() # don't handle pusher events triggered by the current user
+      vote = new Vote($scope.lunch, user, restaurant)
+      $scope.lunch.addVote(vote)
   )
 
 )
