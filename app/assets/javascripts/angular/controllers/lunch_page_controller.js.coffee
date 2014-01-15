@@ -34,6 +34,12 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   $scope.showRestaurant = (restaurant) ->
     $modal(template: 'components/restaurant_modal', className: 'restaurant-modal', controller: 'RestaurantModalController', locals: {restaurant: restaurant})
 
+  voteFromPusherData = (data) ->
+    voteData = JSON.parse(data.vote_json)
+    user = UserDAO.findOrInitializeById(voteData.user)
+    restaurant = RestaurantDAO.find(voteData.restaurant_id)
+    new Vote($scope.lunch, user, restaurant)
+
   # init code
   if User.current and not User.current.office
     $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'FillDetailsController')
@@ -41,12 +47,14 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   pusher = new Pusher(PusherConfig.appKey)
   $scope.channel = pusher.subscribe("lunch-#{$scope.lunch.id}")
   $scope.channel.bind('restaurant-voted', (data) ->
-    voteData = JSON.parse(data.message)
-    user = UserDAO.findOrInitializeById(voteData.user)
-    restaurant = RestaurantDAO.find(voteData.restaurant_id)
-    unless user.isCurrentUser() # don't handle pusher events triggered by the current user
-      vote = new Vote($scope.lunch, user, restaurant)
-      safeApply($scope, -> $scope.lunch.addVote(vote))
+    vote = voteFromPusherData(data)
+    safeApply($scope, -> $scope.lunch.addVote(vote)) unless vote.user.isCurrentUser()
   )
+  $scope.channel.bind('restaurant-unvoted', (data) ->
+    vote = voteFromPusherData(data)
+    safeApply($scope, -> $scope.lunch.removeVote(vote)) unless vote.user.isCurrentUser()
+  )
+
+
 
 )
