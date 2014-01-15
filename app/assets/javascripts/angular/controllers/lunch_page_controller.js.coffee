@@ -46,7 +46,7 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
     restaurant = RestaurantDAO.find(voteData.restaurant_id)
     unless user.isCurrentUser() # don't handle pusher events triggered by the current user
       vote = new Vote($scope.lunch, user, restaurant)
-      $scope.lunch.addVote(vote)
+      safeApply($scope, -> $scope.lunch.addVote(vote))
   )
 
 )
