@@ -55,6 +55,4 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
     safeApply($scope, -> $scope.lunch.removeVote(vote)) unless vote.user.isCurrentUser()
   )
 
-
-
 )

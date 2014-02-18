@@ -1,7 +1,7 @@
 .parent
   %h2 Where do people want to lunch today?
   .lunch
-    .restaurant.restaurant-animate{'ng-repeat' => 'restaurant in lunch.getRestaurants() | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
+    .restaurant.restaurant-animate{'ng-repeat' => 'restaurant in lunch.getRestaurants() track by restaurant.id | orderBy:restaurantOrder:true', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
     .empty-restaurants{'ng-show' => 'lunch.getRestaurants().length == 0'}
       %h3 No one voted for any restaurants today, be the first!
@@ -12,7 +12,7 @@
     .search
       %i.fa.fa-search
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
-    .restaurant{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch', 'ng-click' => 'showRestaurant(restaurant)'}
+    .restaurant{'ng-repeat' => 'restaurant in restaurants track by restaurant.id | filter:restaurantSearch', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
 .sidebar.sidebar-animate{'ng-controller' => 'SidebarController', 'ng-hide' => 'lunch.userSurvey'}
   +include 'components/sidebar'
