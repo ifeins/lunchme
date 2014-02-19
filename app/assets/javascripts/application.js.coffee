@@ -3,6 +3,7 @@
 #= require underscore
 #= require hamlcoffee
 #= require string
+#= require moment
 #= require routes
 #= require browser
 #= require utils
@@ -13,6 +14,14 @@
 #= require selectize
 #= require_self
 #= require_tree ./angular
+
+dateFromRoute = (dateParam) ->
+  if dateParam == 'today'
+    moment()
+  else if dateParam == 'yesterday'
+    moment().subtract('days', 1)
+  else
+    moment(dateParam)
 
 window.safeApply = (scope, fn) ->
   if (scope.$$phase || scope.$root.$$phase) then fn() else scope.$apply(fn)
@@ -30,22 +39,17 @@ window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', '
   )
 
   $routeProvider.when('/',
-    controller: 'LunchPageController'
-    template: JST['pages/lunch_page']()
-    resolve:
-      lunch: ['LunchDAO', '$location', (LunchDAO, $location) ->
-        $location.path('lunches/today')
-        LunchDAO.today()
-      ]
-      yesterdayLunch: ['LunchDAO', (LunchDAO) ->
-        LunchDAO.yesterday()
-      ]
+    redirectTo: 'lunches/today'
   ).when('/lunches/:date',
     controller: 'LunchPageController'
     template: JST['pages/lunch_page']()
     resolve:
       lunch: ['$route', 'LunchDAO', ($route, LunchDAO) -> LunchDAO.findByDate($route.current.params.date)]
-      yesterdayLunch: ['LunchDAO', (LunchDAO) -> LunchDAO.yesterday()]
+      yesterdayLunch: ['$route', 'LunchDAO', ($route, LunchDAO) ->
+        lunchDate = dateFromRoute($route.current.params.date)
+        yesterdayDate = lunchDate.subtract('days', 1).format('YYYY-MM-DD')
+        LunchDAO.findByDate(yesterdayDate)
+      ]
   )
 )
 

@@ -15,6 +15,7 @@ gem 'font-awesome-rails'
 gem 'enumify'
 gem 'geokit-rails'
 gem 'pusher'
+gem 'momentjs-rails'
 
 # oauth
 gem 'omniauth-facebook'
