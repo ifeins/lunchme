@@ -1,6 +1,7 @@
-angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, RestaurantDAO, VoteDAO, UserDAO) ->
+angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, yesterdayLunch, RestaurantDAO, VoteDAO, UserDAO) ->
   $scope.user = User.current
   $scope.lunch = lunch
+  $scope.yesterdayLunch = yesterdayLunch
   $scope.restaurants = RestaurantDAO.all()
   $scope.query = ''
 

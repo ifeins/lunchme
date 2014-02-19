@@ -14,5 +14,5 @@
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
     .restaurant{'ng-repeat' => 'restaurant in restaurants track by restaurant.id | filter:restaurantSearch', 'ng-click' => 'showRestaurant(restaurant)'}
       +include 'components/restaurant'
-.sidebar.sidebar-animate{'ng-controller' => 'SidebarController', 'ng-hide' => 'lunch.userSurvey'}
+.sidebar.sidebar-animate{'ng-controller' => 'SidebarController', 'ng-hide' => 'yesterdayLunch.userSurvey'}
   +include 'components/sidebar'

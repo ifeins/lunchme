@@ -6,7 +6,7 @@ class window.OrderedHash
 
   set: (key, value) ->
     index = @keyToValueIndexMap[key]
-    if index
+    if index >= 0
       @values[index] = value
     else
       @values.push value

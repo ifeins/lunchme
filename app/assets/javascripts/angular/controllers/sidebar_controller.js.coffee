@@ -2,16 +2,11 @@ angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, L
 
   $scope.user = User.current
 
-  $scope.lunch = []
-  LunchDAO.yesterday().then((lunch) ->
-    $scope.lunch = lunch
-  )
-
   $scope.restaurants = ->
-    return [] if _.isEmpty($scope.lunch)
+    return [] if _.isEmpty($scope.yesterdayLunch)
 
-    restaurants = $scope.lunch.userVotedRestaurants(User.current)
-    visit = $scope.lunch.userVisit(User.current)
+    restaurants = $scope.yesterdayLunch.userVotedRestaurants(User.current)
+    visit = $scope.yesterdayLunch.userVisit(User.current)
     if visit and not _.contains(restaurants, visit.restaurant)
       restaurants.push visit.restaurant
 
@@ -19,21 +14,21 @@ angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, L
 
   $scope.visitRestaurant = (restaurant) ->
     restaurant = RestaurantDAO.findByName(restaurant) if _.isString(restaurant)
-    visit = $scope.lunch.userVisit(User.current)
+    visit = $scope.yesterdayLunch.userVisit(User.current)
     if visit
       VisitDAO.update(visit, restaurant)
     else
-      visit = new Visit($scope.lunch, User.current, restaurant)
+      visit = new Visit($scope.yesterdayLunch, User.current, restaurant)
       VisitDAO.create(visit)
 
   $scope.hasVisitedRestaurant = (restaurant = null) ->
     if restaurant
-      $scope.lunch.hasVisited?(restaurant)
+      $scope.yesterdayLunch.hasVisited?(restaurant)
     else
-      $scope.lunch.userVisit?(User.current)?
+      $scope.yesterdayLunch.userVisit?(User.current)?
 
   $scope.visitedRestaurant = ->
-    $scope.lunch.userVisit?(User.current)?.restaurant
+    $scope.yesterdayLunch.userVisit?(User.current)?.restaurant
 
   $scope.voteOnTag = (tag) ->
     if tag.userVotedFor(User.current)
@@ -56,7 +51,7 @@ angular.module('Lunchtime').controller('SidebarController', ($scope, $timeout, L
     # create the survey after a timeout so the message will have enough time to appear
     $timeout(
       ->
-        survey = new Survey('completed', User.current, $scope.lunch)
+        survey = new Survey('completed', User.current, $scope.yesterdayLunch)
         SurveyDAO.create(survey).then(null, -> $scope.surveyCompleted = false)
       1000
     )
