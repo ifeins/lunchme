@@ -49,11 +49,11 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   $scope.channel = pusher.subscribe("lunch-#{$scope.lunch.id}")
   $scope.channel.bind('restaurant-voted', (data) ->
     vote = voteFromPusherData(data)
-    safeApply($scope, -> $scope.lunch.addVote(vote)) unless vote.user.isCurrentUser()
+    safeApply($scope, -> $scope.lunch.addVote(vote))
   )
   $scope.channel.bind('restaurant-unvoted', (data) ->
     vote = voteFromPusherData(data)
-    safeApply($scope, -> $scope.lunch.removeVote(vote)) unless vote.user.isCurrentUser()
+    safeApply($scope, -> $scope.lunch.removeVote(vote))
   )
 
 )

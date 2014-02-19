@@ -28,10 +28,13 @@ class window.Lunch
     @userVoteForRestaurant(user, restaurant)?
 
   addVote: (vote) ->
-    @votes.push vote
+    @votes.push vote unless @containsVote(vote)
 
   removeVote: (vote) ->
-    @votes.splice(@votes.indexOf(vote), 1)
+    @votes.splice(@votes.indexOf(vote), 1) if @containsVote(vote)
+
+  containsVote: (vote) ->
+    _.find(@votes, (currVote) -> currVote.isEqual(vote))?
 
   ## visit methods ##
 
