@@ -25,7 +25,7 @@ end
 create_payment_method '10Bis'
 create_payment_method 'Cibus'
 create_payment_method 'Credit Card'
-create_payment_method 'Cash'
+create_payment_method 'Cash Only'
 
 # tags
 create_tag_definition('American')

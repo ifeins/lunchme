@@ -36,8 +36,7 @@ namespace :lunch_db do
           },
           :payment_methods => [
               PaymentMethod.find_by_name('10Bis'),
-              PaymentMethod.find_by_name('Credit Card'),
-              PaymentMethod.find_by_name('Cash')
+              PaymentMethod.find_by_name('Credit Card')
           ]
       )
     end
