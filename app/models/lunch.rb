@@ -1,7 +1,7 @@
 class Lunch < ActiveRecord::Base
-  has_many :votes
-  has_many :visits
-  has_many :surveys
+  has_many :votes, dependent: :destroy
+  has_many :visits, dependent: :destroy
+  has_many :surveys, dependent: :destroy
 
   attr_accessible :date
 
