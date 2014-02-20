@@ -9,16 +9,16 @@ namespace :lunch_db do
 
     response = HTTParty.get("http://lunchdb.herokuapp.com/restaurants/?lat=#{latitude}&lng=#{longitude}&radius=#{radius}")
     response['restaurants'].each do |item|
-      tags = []
-      item['cuisines'].each do |cuisine|
-        hebrew_cuisine = cuisine.try(:[], 'name').presence
-        if hebrew_cuisine.present?
-          english_cuisine = CuisineMapper.map_cuisine hebrew_cuisine
-          tag_definition = TagDefinition.find_by_name english_cuisine if english_cuisine.present?
-          tag = {:tag_definition => tag_definition, :quantity => 1} if tag_definition.present?
-          tags << tag if tag.present? and not tags.include? tag
-        end
-      end
+      tags = [] # currently not taking the 10bis cuisines into consideration as they are not accurate
+      #item['cuisines'].each do |cuisine|
+      #  hebrew_cuisine = cuisine.try(:[], 'name').presence
+      #  if hebrew_cuisine.present?
+      #    english_cuisine = CuisineMapper.map_cuisine hebrew_cuisine
+      #    tag_definition = TagDefinition.find_by_name english_cuisine if english_cuisine.present?
+      #    tag = {:tag_definition => tag_definition, :quantity => 1} if tag_definition.present?
+      #    tags << tag if tag.present? and not tags.include? tag
+      #  end
+      #end
 
       # only add restaurants that have an english name
       next if item['english_name'].blank?
