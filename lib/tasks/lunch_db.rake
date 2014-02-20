@@ -16,7 +16,7 @@ namespace :lunch_db do
           english_cuisine = CuisineMapper.map_cuisine hebrew_cuisine
           tag_definition = TagDefinition.find_by_name english_cuisine if english_cuisine.present?
           tag = {:tag_definition => tag_definition, :quantity => 1} if tag_definition.present?
-          tags << tag if tag.present?
+          tags << tag if tag.present? and not tags.include? tag
         end
       end
 
@@ -26,7 +26,7 @@ namespace :lunch_db do
       Restaurant.find_or_create_by_name(
           :name => item['english_name'],
           :localized_name => item['name'],
-          :logo => fetch_logo("http:#{item['logo_url']}"),
+          :logo => fetch_logo(item['logo_url']),
           :tags_attributes => tags,
           :location_attributes => {
               :street => street_name(item['address'], item['city']),
@@ -48,8 +48,9 @@ namespace :lunch_db do
   end
 
   def fetch_logo(logo_url)
+    fixed_logo_url = logo_url.starts_with?('http') ? logo_url : "http:#{logo_url}"
     agent = Mechanize.new
-    mechanize_file = agent.get(logo_url)
+    mechanize_file = agent.get(fixed_logo_url)
     filename = File.basename(mechanize_file.filename, File.extname(mechanize_file.filename))
     temp_filename = "#{Rails.root}/tmp/#{filename}"
 

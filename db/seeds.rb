@@ -58,4 +58,5 @@ create_tag_definition('Vegetarian')
 create_tag_definition('Vegan')
 
 # lunch
-Lunch.create(:date => Date.today)
+Lunch.create(date: Date.today)
+Lunch.create(date: Date.yesterday)
