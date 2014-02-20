@@ -2,7 +2,12 @@ namespace :lunch_db do
 
   desc 'Import restaurants from LunchDB'
   task :import, [] => :environment do
-    response = HTTParty.get('http://lunchdb.herokuapp.com/restaurants')
+    # currently fetching restaurants nearby the office
+    latitude = 32.0631381
+    longitude = 34.7706718
+    radius = 3
+
+    response = HTTParty.get("http://lunchdb.herokuapp.com/restaurants/?lat=#{latitude}&lng=#{longitude}&radius=#{radius}")
     response['restaurants'].each do |item|
       tags = []
       item['cuisines'].each do |cuisine|
