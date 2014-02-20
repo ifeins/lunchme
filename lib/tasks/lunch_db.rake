@@ -34,10 +34,7 @@ namespace :lunch_db do
               :latitude => item['latitude'],
               :longitude => item['longitude']
           },
-          :payment_methods => [
-              PaymentMethod.find_by_name('10Bis'),
-              PaymentMethod.find_by_name('Credit Card')
-          ]
+          :payment_methods => [PaymentMethod.find_by_name('10Bis')]
       )
     end
   end
