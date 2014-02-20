@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
   before_filter :load_restaurant, :only => [:available_tags]
 
   # the radius around the office's location to search restaurants in
-  RADIUS = 3
+  RADIUS = 4
 
   def index
     if user_signed_in? and current_user.office.try(:location).present?
