@@ -1,7 +1,7 @@
 class Restaurant < ActiveRecord::Base
-  belongs_to :location
+  belongs_to :location, :dependent => :destroy
   has_and_belongs_to_many :payment_methods, :join_table => :accepted_payment_methods
-  has_many :tags
+  has_many :tags, :dependent => :destroy
 
   mount_uploader :logo, LogoUploader
 
