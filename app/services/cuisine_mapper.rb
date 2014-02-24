@@ -25,6 +25,7 @@ class CuisineMapper
       when 'סושי' then 'Sushi'
       when 'סלטים' then 'Salad'
       when 'סנדוייצים' then 'Sandwich'
+      when 'אוכל טבעוני' then 'Vegan'
     end
   end
 
