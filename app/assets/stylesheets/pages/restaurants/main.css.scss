@@ -22,6 +22,7 @@ $grey-shadow: rgba(#000, 0.15);
   }
 
   .parent {
+    width: 100%;
     flex: 3 0 auto;
     .search {
       position: relative;
