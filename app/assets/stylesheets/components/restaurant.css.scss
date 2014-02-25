@@ -6,10 +6,11 @@
   padding: 10px;
   margin-bottom: 15px;
   cursor: pointer;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  -webkit-align-items: center;
 
   @include border-radius(4px);
   @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
@@ -17,7 +18,7 @@
   background-color: white;
 
   img {
-    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
     height: 44px;
     vertical-align: middle;
   }
@@ -37,22 +38,23 @@
 
   .vote-container {
     align-self: center;
-    flex: 12 0 auto;
+    -webkit-flex: 12 0 auto;
     height: 44px;
     margin-left: 30px;
 
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    align-items: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -webkit-justify-content: flex-end;
+    -webkit-align-items: center;
 
     .voters {
-      flex: 0 0 auto;
+      -webkit-flex: 0 0 auto;
       @include voters;
     }
 
     .vote-btn {
-      flex: 0 0 auto;
+      -webkit-flex: 0 0 auto;
       margin-left: 10px;
       text-align: center;
       width: 95px;

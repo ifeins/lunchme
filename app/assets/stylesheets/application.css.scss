@@ -14,16 +14,16 @@ body {
   margin: 0;
   font-family: $body-font;
   background: #f0f0f0;
-  display: flex;
+  display: -webkit-flex;
   @include min-height(100vh);
-  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .container {
   @include box-sizing(border-box);
   width: $container-width;
   margin: 0 auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  -webkit-flex: 1;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
 }

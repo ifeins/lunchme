@@ -1,8 +1,9 @@
 @import "components/tag";
 
 @mixin tags {
-  display: flex;
-  flex-flow: row wrap;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
   cursor: default;
 
   .tag {

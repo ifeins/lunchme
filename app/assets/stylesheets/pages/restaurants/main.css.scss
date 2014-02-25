@@ -5,25 +5,26 @@ $grey-shadow: rgba(#000, 0.15);
 
 .main {
   @include box-sizing(border-box);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  -webkit-flex: 1;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
 
   h2 {
     color: #444;
   }
 
   > div {
-    flex: 1;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
+    -webkit-flex: 1;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -webkit-align-items: stretch;
   }
 
   .parent {
     width: 100%;
-    flex: 3 0 auto;
+    -webkit-flex: 3 0 auto;
     .search {
       position: relative;
       margin-bottom: 30px;
