@@ -15,7 +15,7 @@ body {
   font-family: $body-font;
   background: #f0f0f0;
   display: flex;
-  min-height: 100vh;
+  @include min-height(100vh);
   flex-direction: column;
 }
 
@@ -24,4 +24,6 @@ body {
   width: $container-width;
   margin: 0 auto;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
