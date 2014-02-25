@@ -4,6 +4,7 @@
 $grey-shadow: rgba(#000, 0.15);
 
 .main {
+  width: 100%;
   @include box-sizing(border-box);
   -webkit-flex: 1;
   display: -webkit-flex;
@@ -14,6 +15,8 @@ $grey-shadow: rgba(#000, 0.15);
   }
 
   > div {
+    width: 100%;
+    @include box-sizing(border-box);
     -webkit-flex: 1;
     display: -webkit-flex;
     -webkit-flex-direction: row;
@@ -23,7 +26,8 @@ $grey-shadow: rgba(#000, 0.15);
   }
 
   .parent {
-    width: 100%;
+    width: 80%;
+    @include box-sizing(border-box);
     -webkit-flex: 3 0 auto;
     .search {
       position: relative;
