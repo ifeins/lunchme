@@ -15,10 +15,17 @@ configureTypeahead = ($parse, scope, el, attrs, ngModel) ->
   value = $parse(attrs.bsTypeahead)(scope)
   return unless value
 
+  selectionHandler = -> scope.$apply(attrs.bsTypeaheadHandler) if attrs.bsTypeaheadHandler
+
   el.typeahead('destroy')
   el.typeahead(local: value) # we don't set a name for the dataset as we don't want it to be cached
   el.on('typeahead:autocompleted', (obj, datum) ->
     ngModel.$setViewValue(datum.value)
+    selectionHandler() if selectionHandler
+  )
+  el.on('typeahead:selected', (obj, datum) ->
+    ngModel.$setViewValue(datum.value)
+    selectionHandler() if selectionHandler
   )
   el.on('typeahead:suggestions-rendered', ->
     safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = true)
