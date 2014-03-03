@@ -120,21 +120,22 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 ).factory('TagDAO', ($http, $q) ->
 
   @create = (tag) ->
-    return unless User.current
-    return if tag.restaurant.containsTag(tag)
-
-    tag.restaurant.addTag tag
     dfd = $q.defer()
-    $http.post("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
-      tag.quantity = response.quantity
-      tag.id = response.id
-      tag.usersIds ||= {}
-      tag.usersIds.push(User.current.id)
-      dfd.resolve()
-    ).error(->
-      tag.restaurant.removeTag tag
+
+    if User.isSignedIn() and not tag.restaurant.containsTag(tag)
+      tag.restaurant.addTag tag
+      $http.post("restaurants/#{tag.restaurant.id}/tags.json", tag.toJSON()).success((response) ->
+        tag.quantity = response.quantity
+        tag.id = response.id
+        tag.usersIds ||= {}
+        tag.usersIds.push(User.current.id)
+        dfd.resolve()
+      ).error(->
+        tag.restaurant.removeTag tag
+        dfd.reject()
+      )
+    else
       dfd.reject()
-    )
 
     dfd.promise
 
