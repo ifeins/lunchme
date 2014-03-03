@@ -121,6 +121,7 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   @create = (tag) ->
     return unless User.current
+    return if tag.restaurant.containsTag(tag)
 
     tag.restaurant.addTag tag
     dfd = $q.defer()

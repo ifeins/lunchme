@@ -17,3 +17,6 @@ class window.Restaurant
     index = @tags.indexOf(tag)
     @tags.splice(index, 1)
 
+  containsTag: (tag) ->
+    _.find(@tags, (currTag) -> currTag.name == tag.name)?
+
