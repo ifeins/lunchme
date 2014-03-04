@@ -16,26 +16,37 @@ configureTypeahead = ($parse, scope, el, attrs, ngModel) ->
   return unless value
 
   selectionHandler = -> scope.$apply(attrs.bsTypeaheadHandler) if attrs.bsTypeaheadHandler
+  engine = new Bloodhound(
+    datumTokenizer: Bloodhound.tokenizers.whitespace
+    queryTokenizer: Bloodhound.tokenizers.whitespace
+    local: value
+  )
+  engine.initialize()
 
   el.typeahead('destroy')
-  el.typeahead(local: value) # we don't set a name for the dataset as we don't want it to be cached
+  el.typeahead(
+    {
+      autoselect: true
+    },
+    {
+      name: null # we don't set a name for the dataset as we don't want it to be cached
+      displayKey: (datum) -> datum
+      source: engine.ttAdapter()
+    }
+  )
   el.on('typeahead:autocompleted', (obj, datum) ->
-    ngModel.$setViewValue(datum.value)
+    ngModel.$setViewValue(datum)
     selectionHandler() if selectionHandler
   )
   el.on('typeahead:selected', (obj, datum) ->
-    ngModel.$setViewValue(datum.value)
+    ngModel.$setViewValue(datum)
     selectionHandler() if selectionHandler
   )
-  el.on('typeahead:suggestions-rendered', ->
+  el.on('typeahead:opened', ->
     safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = true)
   )
-  el.on('typeahead:suggestions-cleared', ->
+  el.on('typeahead:closed', ->
     safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false)
   )
-
-  # need both blur and focousout for this to work
-  el.blur(-> safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false))
-  el.focusout(-> safeApply(scope, -> scope["#{attrs.bsTypeaheadId}Opened"] = false))
 
 
