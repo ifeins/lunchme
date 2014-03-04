@@ -11,6 +11,7 @@ angular.module('Lunchtime').directive('withLocals', ->
 
     for localKey of localsMap
       scope.$watch(localsMap[localKey], (newValue, oldValue) ->
-        scope[localKey] = newValue if newValue != oldValue
+        return if scope[localKey] and newValue == oldValue
+        scope[localKey] = newValue
       )
 )
