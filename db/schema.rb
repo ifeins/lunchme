@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131227194758) do
+ActiveRecord::Schema.define(:version => 20140312150554) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20131227194758) do
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "votes", ["lunch_id", "restaurant_id", "user_id"], :name => "index_votes_on_lunch_id_and_restaurant_id_and_user_id", :unique => true
   add_index "votes", ["lunch_id"], :name => "index_votes_on_lunch_id"
   add_index "votes", ["restaurant_id"], :name => "index_votes_on_restaurant_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
