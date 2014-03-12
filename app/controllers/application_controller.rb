@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include UserSupport
   include ErrorSupport
 
+  before_filter :must_not_be_banned
   after_filter :set_ng_xsrf_token
 
   def set_ng_xsrf_token

@@ -25,6 +25,10 @@ module UserSupport
     forbidden unless user_signed_in?
   end
 
+  def must_not_be_banned
+    banned if user_signed_in? and current_user.banned?
+  end
+
   private
 
   def load_user

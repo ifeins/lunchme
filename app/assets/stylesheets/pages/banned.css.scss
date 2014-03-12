@@ -1,0 +1,13 @@
+.image-container {
+  -webkit-flex: 1;
+
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+
+  img {
+    display: block;
+  }
+}
+

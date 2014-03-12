@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   has_many :votes, :dependent => :destroy
   belongs_to :office
 
-  attr_accessible :avatar_url, :email, :first_name, :last_name, :account_attributes, :office_id, :office_attributes
+  attr_accessible :avatar_url, :email, :first_name, :last_name, :account_attributes, :office_id, :office_attributes, :banned
   accepts_nested_attributes_for :account
   accepts_nested_attributes_for :office
 
   def ban!
-    update!(banned: true)
+    update_attributes(banned: true)
   end
 
 end
