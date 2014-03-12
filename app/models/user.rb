@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   attr_accessible :avatar_url, :email, :first_name, :last_name, :account_attributes, :office_id, :office_attributes
   accepts_nested_attributes_for :account
   accepts_nested_attributes_for :office
+
+  def ban!
+    update!(banned: true)
+  end
+
 end

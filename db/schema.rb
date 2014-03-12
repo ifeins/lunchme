@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140312150554) do
+ActiveRecord::Schema.define(:version => 20140312173349) do
 
   create_table "accepted_payment_methods", :force => true do |t|
     t.integer "restaurant_id"
@@ -103,9 +103,10 @@ ActiveRecord::Schema.define(:version => 20140312150554) do
     t.string   "last_name"
     t.string   "email"
     t.string   "avatar_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "office_id"
+    t.boolean  "banned",     :default => false
   end
 
   create_table "users_tags", :id => false, :force => true do |t|
