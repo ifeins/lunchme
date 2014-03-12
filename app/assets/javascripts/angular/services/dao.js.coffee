@@ -69,18 +69,19 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
 ).factory('VoteDAO', ($http) ->
 
-  @create = (vote) ->
+  @create = (vote, success) ->
     vote.lunch.addVote vote
     $http.post("lunches/#{vote.lunch.id}/votes.json", vote.toJSON()).success((response) ->
       vote.id = response.id
+      success()
     ).error(->
       # in case of failure we revert the addition
       vote.lunch.removeVote vote
     )
 
-  @destroy = (vote) ->
+  @destroy = (vote, success) ->
     vote.lunch.removeVote vote
-    $http.delete("lunches/#{vote.lunch.id}/votes/#{vote.id}.json").error(->
+    $http.delete("lunches/#{vote.lunch.id}/votes/#{vote.id}.json").success(success).error(->
       vote.lunch.addVote vote
     )
 

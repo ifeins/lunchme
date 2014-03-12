@@ -13,13 +13,16 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   ### vote methods ###
 
   $scope.voteButtonClicked = (restaurant) ->
-    return unless User.current # TODO: should display error message
+    return unless User.current # TODO: should prompt users to sign in
+    return if $scope.duringVote
+
+    $scope.duringVote = true
 
     vote = lunch.userVoteForRestaurant(User.current, restaurant)
     if vote
-      VoteDAO.destroy(vote)
+      VoteDAO.destroy(vote, -> $scope.duringVote = false)
     else
-      VoteDAO.create(new Vote(lunch, User.current, restaurant))
+      VoteDAO.create(new Vote(lunch, User.current, restaurant), -> $scope.duringVote = false)
 
   $scope.voteButtonText = (restaurant) ->
     return "I want in!" unless User.current
