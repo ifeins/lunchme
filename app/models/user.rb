@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     update_attributes(banned: true)
   end
 
+  def unban!
+    update_attributes(banned: false)
+  end
+
 end
