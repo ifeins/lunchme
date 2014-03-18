@@ -1,6 +1,6 @@
 .modal-body
   .title
-    %img.logo{'ng-src' => '{{restaurant.logoUrl}}'}
+    %img.logo{'width' => 75, 'height' => 75, 'ng-src' => '{{restaurant.logoUrl}}'}
     %h2 {{ restaurant.localizedName }}
   .location {{ restaurant.address }}
   %h3 Vote on existing tags or add a new one
