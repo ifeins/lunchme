@@ -8,7 +8,7 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, l
   $scope.restaurantSearch = (restaurant) ->
     matchTerms = _.union([restaurant.name], [restaurant.localizedName], _.pluck(restaurant.tags, 'name'))
     matchTerms = _.select(matchTerms, (term) -> term?)
-    _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query) != -1)
+    _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query.toLowerCase()) != -1)
 
   ### vote methods ###
 
