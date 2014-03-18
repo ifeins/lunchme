@@ -1,9 +1,10 @@
-angular.module('Lunchtime').controller('LunchPageController', ($scope, $modal, lunch, yesterdayLunch, RestaurantDAO, VoteDAO, UserDAO) ->
+angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScope, $modal, lunch, yesterdayLunch, RestaurantDAO, VoteDAO, UserDAO) ->
   $scope.user = User.current
   $scope.lunch = lunch
   $scope.yesterdayLunch = yesterdayLunch
   $scope.restaurants = RestaurantDAO.all()
   $scope.query = ''
+  $rootScope.lunchLoaded = true
 
   $scope.restaurantSearch = (restaurant) ->
     matchTerms = _.union([restaurant.name], [restaurant.localizedName], _.pluck(restaurant.tags, 'name'))

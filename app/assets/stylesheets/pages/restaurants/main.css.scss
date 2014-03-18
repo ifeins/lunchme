@@ -10,6 +10,14 @@ $grey-shadow: rgba(#000, 0.15);
   display: -webkit-flex;
   -webkit-flex-direction: column;
 
+  .spinner {
+    -webkit-flex: 1;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+
   h2 {
     color: #444;
   }
