@@ -31,7 +31,7 @@ class window.Lunch
     @votes.push vote unless @containsVote(vote)
 
   removeVote: (vote) ->
-    @votes.splice(@votes.indexOf(vote), 1) if @containsVote(vote)
+    @votes = _.reject(@votes, (currVote) -> currVote.isEqual(vote))
 
   containsVote: (vote) ->
     _.find(@votes, (currVote) -> currVote.isEqual(vote))?
