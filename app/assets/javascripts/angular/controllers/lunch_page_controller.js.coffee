@@ -11,6 +11,12 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
     matchTerms = _.select(matchTerms, (term) -> term?)
     _.any(matchTerms, (term) -> term.toLowerCase().indexOf($scope.query.toLowerCase()) != -1)
 
+  $scope.shouldShowSidebar = ->
+    day = moment().day()
+    return false if day == 6 and day == 0 # should not prompt for sunday or saturday
+
+    return User.isSignedIn() and !yesterdayLunch.userSurvey
+
   ### vote methods ###
 
   $scope.voteButtonClicked = (restaurant) ->
