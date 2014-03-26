@@ -13,7 +13,7 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
 
   $scope.shouldShowSidebar = ->
     day = moment().day()
-    return false if day == 6 and day == 0 # should not prompt for sunday or saturday
+    return false if day == 6 or day == 0 # should not prompt for sunday or saturday
 
     return User.isSignedIn() and !yesterdayLunch.userSurvey
 
