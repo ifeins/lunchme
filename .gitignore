@@ -20,4 +20,4 @@ log
 # osx files
 .DS_Store
 
-.env
+.rbenv-vars
