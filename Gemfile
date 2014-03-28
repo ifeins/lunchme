@@ -36,7 +36,8 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'debugger'
+  gem 'debugger-ruby_core_source', '~> 1.3.2'
+  gem 'debugger', '~> 1.6.6'
 end
 
 group :development do

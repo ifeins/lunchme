@@ -58,12 +58,12 @@ GEM
       rails
     controller_support (0.2.1)
       activesupport
-    debugger (1.5.0)
+    debugger (1.6.6)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.0)
+    debugger-ruby_core_source (1.3.2)
     domain_name (0.5.15)
       unf (>= 0.0.5, < 1.0.0)
     enumify (0.0.5)
@@ -213,7 +213,8 @@ DEPENDENCIES
   compass-rails
   configreader
   controller_support
-  debugger
+  debugger (~> 1.6.6)
+  debugger-ruby_core_source (~> 1.3.2)
   enumify
   font-awesome-rails
   geokit-rails
