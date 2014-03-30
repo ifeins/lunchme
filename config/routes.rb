@@ -32,4 +32,8 @@ Lunchtime::Application.routes.draw do
     match 'failure' => 'session#failure'
   end
 
+  scope 'status', :controller => :status do
+    get 'ping'
+  end
+
 end
