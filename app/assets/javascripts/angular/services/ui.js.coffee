@@ -3,6 +3,7 @@ class Modal
   constructor: (config, $controller, $rootScope, $compile, $timeout, $interpolate) ->
     @$el = $('#modal')
     @$el.empty()
+    @$el.removeClass() # remove all previous classes of the element
     @$el.addClass(config.className) if config.className
 
     scope = $rootScope.$new()
