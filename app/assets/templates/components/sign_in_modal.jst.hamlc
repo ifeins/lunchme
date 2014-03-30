@@ -1,6 +1,6 @@
 .modal-body
   %i.fa.fa-user
-    Hey there!
+    Hold on, please.
   %p To vote for your favorite restaurant you need to sign in.
   .facebook-btn{'ng-click' => 'submit()'}
     %i.fa.fa-facebook
