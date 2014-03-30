@@ -1,0 +1,47 @@
+.sign-in-modal {
+  color: #444;
+  width: 500px;
+
+  .modal-body {
+    padding: 30px;
+
+    .fa-user {
+      font-size: 30px;
+    }
+
+    .facebook-btn {
+      margin-top: 30px;
+      @include background-image(linear-gradient(#7892ba, #4f70a4));
+      font-family: $body-font;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 5px 15px;
+      padding-left: 40px;
+      color: white;
+      cursor: pointer;
+      @include box-sizing(border-box);
+      height: 30px;
+
+      border: 1px solid #8ea2c2;
+      border-bottom: none;
+      @include box-shadow(shade(#8ea2c2, 30%) 0 0 0 1px, rgba(black, 0.5) 0 2px 0 0);
+      @include border-radius(3px);
+
+      margin-top: 30px;
+      display: block;
+      width: 130px;
+      margin: 0 auto;
+
+      position: relative;
+
+      .fa-facebook {
+        position: absolute;
+        bottom: -4px;
+        left: 10px;
+        font-size: 28px;
+      }
+    }
+  }
+
+
+}

@@ -20,7 +20,10 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
   ### vote methods ###
 
   $scope.voteButtonClicked = (restaurant) ->
-    return unless User.current # TODO: should prompt users to sign in
+    unless User.current
+      $modal(template: 'components/sign_in_modal', className: 'sign-in-modal', controller: 'SignInController')
+      return
+
     return if $scope.duringVote
 
     $scope.duringVote = true
