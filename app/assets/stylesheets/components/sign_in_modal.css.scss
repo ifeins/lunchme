@@ -42,7 +42,7 @@
 
       .fa-facebook {
         position: absolute;
-        bottom: -3px;
+        bottom: -2px;
         left: 10px;
         font-size: 28px;
       }
@@ -54,10 +54,6 @@
       &:active {
         @include box-shadow(none);
         border: shade($from, 30%) 1px solid;
-
-        .fa-facebook {
-          bottom: -2px;
-        }
       }
     }
   }
