@@ -5,8 +5,15 @@
   .modal-body {
     padding: 30px;
 
-    .fa-user {
+    img {
+      vertical-align: middle;
+    }
+
+    h3 {
       font-size: 30px;
+      @include inline-block;
+      vertical-align: middle;
+      margin-left: 15px;
     }
 
     p {

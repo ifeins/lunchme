@@ -1,6 +1,6 @@
 .modal-body
-  %i.fa.fa-user
-    Hold on, please.
+  %img{:src => '/assets/avatar_placeholder.png', :width => 95, :height => 95}
+  %h3 Hold on, please.
   %p To vote for your favorite restaurant you need to sign in.
   .facebook-btn{'ng-click' => 'submit()'}
     %i.fa.fa-facebook
