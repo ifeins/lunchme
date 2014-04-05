@@ -42,8 +42,16 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
     else
       "I want in!"
 
-  $scope.restaurantOrder = (restaurant) ->
-    lunch.votesForRestaurant(restaurant).length
+  $scope.restaurantOrder = (restaurant1, restaurant2) ->
+    votes1 = lunch.votesForRestaurant(restaurant1).length
+    votes2 = lunch.votesForRestaurant(restaurant2).length
+
+    if votes1 > votes2
+      return -1
+    else if votes1 < votes2
+      return 1
+    else
+      return restaurant1.distanceFromOffice() - restaurant2.distanceFromOffice()
 
   $scope.showRestaurant = (restaurant) ->
     $modal(template: 'components/restaurant_modal', className: 'restaurant-modal', controller: 'RestaurantModalController', locals: {restaurant: restaurant})
