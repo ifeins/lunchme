@@ -62,25 +62,6 @@ $grey-shadow: rgba(#000, 0.15);
       }
     }
 
-    .lunch {
-      margin-bottom: 50px;
-
-      .empty-restaurants {
-        @include box-sizing(border-box);
-        @include border-radius(4px);
-        @include photoshop-drop-shadow(90, 1px, 0, 0px, $grey-shadow);
-        padding: 20px;
-        border: 1px solid #bfbfbf;
-        background-color: white;
-        color: #428bca;
-        text-align: center;
-
-        h3 {
-          margin: 0;
-        }
-      }
-    }
-
     .restaurant {
       @include restaurant;
     }
