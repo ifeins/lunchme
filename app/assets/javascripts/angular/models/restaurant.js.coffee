@@ -5,7 +5,7 @@ class window.Restaurant
     @name = data.name
     @localizedName = data.localizedName
     @logoUrl = data.logoUrl
-    @address = data.address
+    @location = data.location
     @tags = []
     _.each(data.tags, (tagData) => @addTag(new Tag(tagData))) if data.tags
 

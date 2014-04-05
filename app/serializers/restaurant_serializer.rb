@@ -1,5 +1,5 @@
 class RestaurantSerializer < ActiveModel::Serializer
-  attributes :id, :name, :localized_name, :logo_url, :address
+  attributes :id, :name, :localized_name, :logo_url
   has_many :tags
   has_one :location
 
