@@ -6,7 +6,8 @@ class SessionController < ApplicationController
   before_filter :sign_in_required, :only => [:update]
 
   def create
-    account = Account.find_or_create_by(:provider => auth_hash[:provider], :uid => auth_hash[:uid]).update(
+    account = Account.find_or_create_by(:provider => auth_hash[:provider], :uid => auth_hash[:uid])
+    account.update(
       :user_attributes => {
         :first_name => auth_hash[:info][:first_name],
         :last_name => auth_hash[:info][:last_name],
@@ -26,7 +27,7 @@ class SessionController < ApplicationController
   end
 
   def update
-    current_user.update_attributes(params[:user])
+    current_user.update_attributes(user_update_params)
     respond_with current_user, :location => root_path
   end
 
