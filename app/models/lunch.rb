@@ -3,8 +3,6 @@ class Lunch < ActiveRecord::Base
   has_many :visits, dependent: :destroy
   has_many :surveys, dependent: :destroy
 
-  attr_accessible :date
-
   def self.today
     find_by_date(Date.today)
   end

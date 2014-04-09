@@ -1,4 +1,4 @@
-Lunchtime::Application.routes.draw do
+Rails.application.routes.draw do
 
   root :to => 'application#index'
 
@@ -27,9 +27,9 @@ Lunchtime::Application.routes.draw do
   resource :session, :controller => :session, :only => [:destroy, :update]
 
   scope 'auth' do
-    match ':provider' => 'session#does_not_matter', :as => :sign_in
-    match ':provider/callback' => 'session#create'
-    match 'failure' => 'session#failure'
+    get ':provider' => 'session#does_not_matter', :as => :sign_in
+    get ':provider/callback' => 'session#create'
+    get 'failure' => 'session#failure'
   end
 
   scope 'status', :controller => :status do
