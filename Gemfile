@@ -5,6 +5,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'jquery-rails'
+gem 'rails-observers', '~> 0.1.2'
 gem 'rails_12factor', group: :production # for heroku
 
 # assets
