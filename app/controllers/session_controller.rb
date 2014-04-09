@@ -37,7 +37,7 @@ class SessionController < ApplicationController
 
   def destroy
     sign_out
-    respond_with nil, :location => root_path
+    redirect_to root_path, status: :see_other
   end
 
   private
