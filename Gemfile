@@ -1,7 +1,21 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
 
-gem 'rails', '3.2.14'
+gem 'rails', '4.1.0'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem 'jquery-rails'
+gem 'rails_12factor', group: :production # for heroku
+
+# assets
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'compass-rails', '~> 1.1.7'
+gem 'compass-photoshop-drop-shadow'
+gem 'underscore-rails'
+gem 'haml_coffee_assets', git: "https://github.com/netzpirat/haml_coffee_assets"
+gem 'ngmin-rails'
 
 gem 'pg'
 gem 'haml'
@@ -20,27 +34,13 @@ gem 'momentjs-rails'
 # oauth
 gem 'omniauth-facebook'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2'
-  gem 'coffee-rails', '~> 3.2'
-  gem 'compass-rails'
-  gem 'compass-photoshop-drop-shadow'
-  gem 'underscore-rails'
-  gem 'haml_coffee_assets'
-  gem 'ngmin-rails'
-  gem 'uglifier'
-end
-
-gem 'jquery-rails'
-
 group :development, :test do
-  gem 'debugger-ruby_core_source', '~> 1.3.2'
-  gem 'debugger', '~> 1.6.6'
+  gem 'byebug', '~> 2.7.0'
 end
 
 group :development do
   gem 'awesome_print'
   gem 'js-routes'
 end
+
+ruby "2.1.1"
