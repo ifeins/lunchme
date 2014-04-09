@@ -9,7 +9,7 @@ class TagsController < ApplicationController
   respond_to :json
 
   def create
-    tag_definition = TagDefinition.find_by_name(params[:name])
+    tag_definition = TagDefinition.find_by(name: params[:name])
     if tag_definition.present?
       tag = restaurant.tags.build(:tag_definition => tag_definition)
       tag.users << current_user
@@ -60,5 +60,6 @@ class TagsController < ApplicationController
   def load_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
+
 
 end

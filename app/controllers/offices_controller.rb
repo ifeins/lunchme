@@ -7,9 +7,14 @@ class OfficesController < ApplicationController
   end
 
   def create
-    office = Office.create(params[:office])
+    office = Office.create(office_create_params)
     respond_with office
   end
 
+  private
+
+  def office_create_params
+    params.require(:office).permit(:name, :location_attributes => [:latitude, :longitude, :street, :city])
+  end
 
 end

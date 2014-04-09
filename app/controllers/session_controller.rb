@@ -6,15 +6,13 @@ class SessionController < ApplicationController
   before_filter :sign_in_required, :only => [:update]
 
   def create
-    account = Account.find_or_create_by_provider_and_uid(
-        auth_hash[:provider],
-        auth_hash[:uid],
-        :user_attributes => {
-            :first_name => auth_hash[:info][:first_name],
-            :last_name => auth_hash[:info][:last_name],
-            :email => auth_hash[:info][:email],
-            :avatar_url => auth_hash[:info][:image]
-        }
+    account = Account.find_or_create_by(:provider => auth_hash[:provider], :uid => auth_hash[:uid]).update(
+      :user_attributes => {
+        :first_name => auth_hash[:info][:first_name],
+        :last_name => auth_hash[:info][:last_name],
+        :email => auth_hash[:info][:email],
+        :avatar_url => auth_hash[:info][:image]
+      }
     )
     user = account.user
     sign_in(user)
@@ -42,6 +40,10 @@ class SessionController < ApplicationController
   end
 
   private
+
+  def user_update_params
+    params.require(:user).permit(:office_id, office_attributes: [:name, location_attributes: [:latitude, :longitude, :street, :city]])
+  end
 
   def auth_hash
     request.env['omniauth.auth']
