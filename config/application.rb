@@ -9,7 +9,6 @@ Bundler.require(*Rails.groups)
 module Lunchtime
   class Application < Rails::Application
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
     config.active_record.observers = :vote_observer
     config.autoload_paths += Dir["#{config.root}/app/controllers/supports"]
   end
