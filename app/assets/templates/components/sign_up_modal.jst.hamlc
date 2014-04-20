@@ -22,5 +22,5 @@
         .input-errors{'ng-show' => 'signUpForm.officeAddress.$dirty && signUpForm.officeAddress.$invalid'}
           %span{'ng-show' => 'signUpForm.officeAddress.$error.completeAddressRequired'} Must provide street, street number, and city
     .btn.submit-btn{'ng-click' => 'submit()', 'ng-disabled' => 'signUpForm.$invalid'} Submit
-  %img.google-logo{:src => '/assets/powered-by-google-on-white.png'}
+  %img.google-logo{:src => Assets.poweredByGoogle}
 
