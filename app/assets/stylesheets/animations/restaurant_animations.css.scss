@@ -1,6 +1,6 @@
 .restaurant-animate {
   &.ng-enter, &.ng-leave {
-    transition: 0.5s linear all;
+    transition: 0.25s linear all;
   }
 
   &.ng-enter {
@@ -26,7 +26,7 @@
 
 .voter-animate {
   &.ng-enter, &.ng-leave {
-    transition: 0.5s linear all;
+    transition: 0.25s linear all;
     //@include single-transition(all 500ms linear);
   }
 
