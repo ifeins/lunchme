@@ -4,7 +4,7 @@
     .search
       %i.fa.fa-search
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
-    .restaurant.restaurant-animate{'ng-repeat' => 'restaurant in restaurants | filter:restaurantSearch | orderObjectsBy:restaurantOrder track by restaurant.id', 'ng-click' => 'showRestaurant(restaurant)'}
+    .restaurant.restaurant-animate{'ng-repeat' => 'restaurant in restaurants | orderObjectsBy:restaurantOrder track by restaurant.id', 'ng-click' => 'showRestaurant(restaurant)', 'ng-show' => '([restaurant] | filter:restaurantSearch).length > 0'}
       +include 'components/restaurant'
 .sidebar.sidebar-animate{'ng-controller' => 'SidebarController', 'ng-show' => 'shouldShowSidebar()'}
   +include 'components/sidebar'
