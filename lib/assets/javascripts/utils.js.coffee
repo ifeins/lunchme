@@ -1,5 +1,8 @@
 class window.Utils
 
+  @setWindowTitle: (title) ->
+    document.title = title
+
   @camelCaseObject = (obj) ->
     return obj if not _.isObject(obj) and not _.isArray(obj)
 

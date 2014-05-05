@@ -8,6 +8,7 @@
 #= require routes
 #= require browser
 #= require utils
+#= require window_title_support
 #= require ordered_hash
 #= require typeahead
 #= require_tree ../templates
