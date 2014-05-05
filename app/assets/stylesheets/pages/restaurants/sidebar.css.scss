@@ -57,8 +57,11 @@
           }
 
           span {
+            @include inline-block;
+            @include ellipsis;
             vertical-align: middle;
             margin-left: 5px;
+            width: 135px;
           }
 
           &:hover {

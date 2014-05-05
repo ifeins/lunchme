@@ -4,7 +4,7 @@
     %ul
       %li.restaurant-vote-btn{'ng-repeat' => 'restaurant in restaurants()', 'ng-click' => 'visitRestaurant(restaurant)'}
         %img{'ng-src' => '{{restaurant.logoUrl}}', :width => 30, :height => 30}
-        %span {{restaurant.name}}
+        %span{'title' => '{{restaurant.name}}'} {{restaurant.name}}
         %i.fa.fa-check{'ng-show' => 'hasVisitedRestaurant(restaurant)'}
     %input{:type => 'text', :placeholder => 'Other...', 'ng-model' => 'yesterdayRestaurant', 'bs-typeahead' => 'allRestaurants', 'bs-typeahead-id' => 'otherRestaurantTypeahead', 'bs-typeahead-handler' => 'visitRestaurant(yesterdayRestaurant)'}
 
