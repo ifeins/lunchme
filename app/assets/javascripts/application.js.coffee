@@ -27,7 +27,7 @@ dateFromRoute = (dateParam) ->
 window.safeApply = (scope, fn) ->
   if (scope.$$phase || scope.$root.$$phase) then fn() else scope.$apply(fn)
 
-window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', 'UI']).config(($routeProvider, $httpProvider) ->
+window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', 'UI', 'doowb.angular-pusher']).config(($routeProvider, $httpProvider, PusherServiceProvider) ->
   $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'
 
   $httpProvider.defaults.transformResponse.push((value, headers) ->
@@ -52,6 +52,10 @@ window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', '
         LunchDAO.findByDate(yesterdayDate)
       ]
   )
+
+  PusherServiceProvider.setPusherUrl('http://js.pusher.com/2.2/pusher.min.js')
+  PusherServiceProvider.setToken(PusherConfig.appKey)
+
 )
 
 
