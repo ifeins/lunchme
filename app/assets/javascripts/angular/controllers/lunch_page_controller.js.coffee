@@ -76,6 +76,8 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
   Pusher.subscribe("lunch-#{$scope.lunch.id}", 'restaurant-unvoted', (data) ->
     vote = voteFromPusherData(data)
     safeApply($scope, -> $scope.lunch.removeVote(vote))
+    unless vote.user.isCurrentUser()
+      WindowTitleSupport.flashWindowTitle("#{vote.user.firstName} unvoted for #{vote.restaurant.name}")
   )
 
 )
