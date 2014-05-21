@@ -46,6 +46,10 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
     votes1 = lunch.votesForRestaurant(restaurant1).length
     votes2 = lunch.votesForRestaurant(restaurant2).length
 
+    if User.isSignedIn()
+      return -1 if lunch.isVotedForRestaurant(User.current, restaurant1) and not lunch.isVotedForRestaurant(User.current, restaurant2)
+      return 1 if lunch.isVotedForRestaurant(User.current, restaurant2) and not lunch.isVotedForRestaurant(User.current, restaurant1)
+
     if votes1 > votes2
       return -1
     else if votes1 < votes2
