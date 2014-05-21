@@ -18,12 +18,13 @@
 
   img {
     -webkit-flex: 0 0 auto;
-    height: 44px;
+    width: 75px;
     vertical-align: middle;
   }
 
   .details {
     margin-left: 10px;
+    font-size: 20px;
 
     > .name {
       font-weight: bold;
