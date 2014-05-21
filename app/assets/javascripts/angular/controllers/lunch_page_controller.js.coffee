@@ -1,4 +1,4 @@
-angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScope, $modal, lunch, yesterdayLunch, RestaurantDAO, VoteDAO, UserDAO) ->
+angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScope, $modal, lunch, yesterdayLunch, RestaurantDAO, VoteDAO, UserDAO, Pusher) ->
   $scope.user = User.current
   $scope.lunch = lunch
   $scope.yesterdayLunch = yesterdayLunch
@@ -66,14 +66,13 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
   if User.current and not User.current.office
     $modal(template: 'components/sign_up_modal', className: 'sign-up-modal', controller: 'FillDetailsController')
 
-  pusher = new Pusher(PusherConfig.appKey)
-  $scope.channel = pusher.subscribe("lunch-#{$scope.lunch.id}")
-  $scope.channel.bind('restaurant-voted', (data) ->
+  Pusher.subscribe("lunch-#{$scope.lunch.id}", 'restaurant-voted', (data) ->
     vote = voteFromPusherData(data)
     WindowTitleSupport.flashWindowTitle("#{vote.user.firstName} voted for #{vote.restaurant.name}")
     safeApply($scope, -> $scope.lunch.addVote(vote))
   )
-  $scope.channel.bind('restaurant-unvoted', (data) ->
+
+  Pusher.subscribe("lunch-#{$scope.lunch.id}", 'restaurant-unvoted', (data) ->
     vote = voteFromPusherData(data)
     safeApply($scope, -> $scope.lunch.removeVote(vote))
   )

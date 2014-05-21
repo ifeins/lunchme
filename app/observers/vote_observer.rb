@@ -12,7 +12,9 @@ class VoteObserver < ActiveRecord::Observer
   private
 
   def notify_vote_event(event_name, vote)
-    Pusher.trigger(pusher_channel(vote), event_name, vote_json: VoteSerializer.new(vote).to_json)
+    channel = pusher_channel(vote)
+    Rails.logger.debug {"sending pusher event #{event_name} on channel #{channel}"}
+    Pusher[channel].trigger(event_name, vote_json: VoteSerializer.new(vote).to_json)
   end
 
   def pusher_channel(vote)
