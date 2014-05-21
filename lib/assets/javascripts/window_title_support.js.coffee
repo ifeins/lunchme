@@ -7,9 +7,8 @@ class window.WindowTitleSupport
   @interval: null
 
   @bindEvents: ->
-    _.bindAll(@, '_focus', '_blur', '_flip')
-    $(window).focus(@_focus)
-    $(window).blur(@_blur)
+    _.bindAll(@, '_handleVisibilityChange', '_flip')
+    document.addEventListener('webkitvisibilitychange', @_handleVisibilityChange)
 
   @flashWindowTitle: (title) ->
     return if @hasFocus
@@ -30,8 +29,16 @@ class window.WindowTitleSupport
   @_flip: ->
     if @showNewTitle
       Utils.setWindowTitle(@windowTitle)
+      @showNewTitle = false
     else
       Utils.setWindowTitle(@originalTitle)
+      @showNewTitle = true
+
+  @_handleVisibilityChange: ->
+    if document.hidden
+      @_blur()
+    else
+      @_focus()
 
 WindowTitleSupport.bindEvents()
 
