@@ -2,9 +2,10 @@ class window.WindowTitleSupport
 
   @originalTitle: 'Lunchtime'
   @windowTitle: null
-  @showNewTitle: false
+  @flashActive: false
   @hasFocus: true
   @interval: null
+  @animationFrame: 0
 
   @bindEvents: ->
     _.bindAll(@, '_handleVisibilityChange', '_flip')
@@ -14,25 +15,30 @@ class window.WindowTitleSupport
     return if @hasFocus
 
     @windowTitle = title
-    @showNewTitle = true
+    @flashActive = true
 
   @_focus: ->
     @hasFocus = true
     clearInterval(@interval)
     @interval = null
-    @showNewTitle = false
+    @flashActive = false
+    @animationFrame = 0
+    @windowTitle = null
+    Utils.setWindowTitle(@originalTitle)
 
   @_blur: ->
     @hasFocus = false
     @interval = setInterval(@_flip, 1500) unless @interval
 
   @_flip: ->
-    if @showNewTitle
+    return unless @flashActive
+
+    if @animationFrame == 0
       Utils.setWindowTitle(@windowTitle)
-      @showNewTitle = false
+      @animationFrame = 1
     else
       Utils.setWindowTitle(@originalTitle)
-      @showNewTitle = true
+      @animationFrame = 0
 
   @_handleVisibilityChange: ->
     if document.hidden

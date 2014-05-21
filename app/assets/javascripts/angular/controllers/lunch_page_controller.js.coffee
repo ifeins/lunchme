@@ -68,8 +68,9 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
 
   Pusher.subscribe("lunch-#{$scope.lunch.id}", 'restaurant-voted', (data) ->
     vote = voteFromPusherData(data)
-    WindowTitleSupport.flashWindowTitle("#{vote.user.firstName} voted for #{vote.restaurant.name}")
     safeApply($scope, -> $scope.lunch.addVote(vote))
+    unless vote.user.isCurrentUser()
+      WindowTitleSupport.flashWindowTitle("#{vote.user.firstName} voted for #{vote.restaurant.name}")
   )
 
   Pusher.subscribe("lunch-#{$scope.lunch.id}", 'restaurant-unvoted', (data) ->
