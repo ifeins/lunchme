@@ -6,4 +6,5 @@
   .voters
     .voter{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)', 'ng-attr-title' => '{{voter.fullName()}}'}
       %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
-  .btn.vote-btn{'ng-click' => 'voteButtonClicked(restaurant)', 'stop-event' => 'click'} {{voteButtonText(restaurant)}}
+  .vote-btn{'ng-click' => 'voteButtonClicked(restaurant)', 'stop-event' => 'click'}
+    %i.fa.fa-arrow-circle-o-up
