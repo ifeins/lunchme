@@ -1,3 +1,6 @@
+//= depend_on_asset 'upvote.png'
+//= depend_on_asset 'upvote-active.png'
+
 @import "components/voters";
 
 @mixin restaurant {
@@ -54,32 +57,18 @@
     }
 
     .vote-btn {
-      $from: rgb(0, 199, 245);
-      $to: rgb(0, 137, 177);
-
-      -webkit-flex: 0 0 auto;
-      margin-left: 10px;
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      font-size: 42px;
-
       @include inline-block;
       @include box-sizing(border-box);
 
-      color: white;
+      background: image-url('upvote.png');
+      width: 51px;
+      height: 51px;
 
-      @include background(linear-gradient($from, $to));
-      box-shadow: -2px 2px 2px rgba(black, 0.5);
       &:active {
-        @include background(linear-gradient($to, $from));
-        box-shadow: inset 0px 2px 3px -6px rgba(black, 0.5);
-
-        i {
-          text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000
-        }
+        background: image-url('upvote-active.png');
       }
     }
+
   }
 
   &:hover {
