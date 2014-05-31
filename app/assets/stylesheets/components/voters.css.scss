@@ -1,14 +1,14 @@
 @mixin voters {
   @include box-sizing(border-box);
   cursor: default;
-  height: 40px;
+  height: 50px;
 
   .voter {
     @include inline-block;
 
     img {
-      width: 75px;
-      height: 75px;
+      width: 50px;
+      height: 50px;
     }
     margin-left: 10px;
 
