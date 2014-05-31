@@ -12,7 +12,7 @@ class SessionController < ApplicationController
         :first_name => auth_hash[:info][:first_name],
         :last_name => auth_hash[:info][:last_name],
         :email => auth_hash[:info][:email],
-        :avatar_url => auth_hash[:info][:image]
+        :avatar_url => avatar_url(auth_hash[:uid])
       }
     )
     user = account.user
@@ -41,6 +41,10 @@ class SessionController < ApplicationController
   end
 
   private
+
+  def avatar_url(uid)
+    "http://graph.facebook.com/#{uid}/picture?width=100&height=100"
+  end
 
   def user_update_params
     params.require(:user).permit(:office_id, office_attributes: [:name, location_attributes: [:latitude, :longitude, :street, :city]])
