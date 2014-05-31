@@ -1,5 +1,7 @@
 //= depend_on_asset 'upvote.png'
+//= depend_on_asset 'upvote-hover.png'
 //= depend_on_asset 'upvote-active.png'
+//= depend_on_asset 'upvote-voted.png'
 
 @import "components/voters";
 
@@ -60,12 +62,24 @@
       @include inline-block;
       @include box-sizing(border-box);
 
-      background: image-url('upvote.png');
-      width: 51px;
-      height: 51px;
+      background: image-url('upvote.png') no-repeat;
+      width: 136px;
+      height: 34px;
+
+      &:hover {
+        background-image: image-url('upvote-hover.png');
+      }
 
       &:active {
-        background: image-url('upvote-active.png');
+        background-image: image-url('upvote-active.png');
+      }
+
+      &.voted {
+        background-image: image-url('upvote-voted.png');
+
+        &:active, &:hover {
+          background-image: image-url('upvote-voted.png');
+        }
       }
     }
 

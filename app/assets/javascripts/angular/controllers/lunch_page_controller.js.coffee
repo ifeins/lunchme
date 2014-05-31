@@ -42,6 +42,11 @@ angular.module('Lunchtime').controller('LunchPageController', ($scope, $rootScop
     else
       "I want in!"
 
+  $scope.isVoted = (restaurant) ->
+    return false unless User.current
+
+    lunch.isVotedForRestaurant(User.current, restaurant)
+
   $scope.restaurantOrder = (restaurant1, restaurant2) ->
     votes1 = lunch.votesForRestaurant(restaurant1).length
     votes2 = lunch.votesForRestaurant(restaurant2).length
