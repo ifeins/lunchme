@@ -14,7 +14,7 @@ namespace :lunch_db do
         hebrew_cuisine = cuisine.try(:[], 'name').presence
         if hebrew_cuisine.present?
           english_cuisine = CuisineMapper.map_cuisine hebrew_cuisine
-          tag_definition = TagDefinition.find_by_name english_cuisine if english_cuisine.present?
+          tag_definition = TagDefinition.find_by(name: english_cuisine) if english_cuisine.present?
           tag = {:tag_definition => tag_definition, :quantity => 1} if tag_definition.present?
           tags << tag if tag.present? and not tags.include? tag
         end
@@ -23,18 +23,17 @@ namespace :lunch_db do
       # only add restaurants that have an english name
       next if item['english_name'].blank?
 
-      Restaurant.find_or_create_by_name(
-          :name => item['english_name'],
-          :localized_name => item['name'],
-          :logo => fetch_logo(item['logo_url']),
-          :tags_attributes => tags,
-          :location_attributes => {
-              :street => street_name(item['address'], item['city']),
-              :city => item['city'],
-              :latitude => item['latitude'],
-              :longitude => item['longitude']
-          },
-          :payment_methods => [PaymentMethod.find_by_name('10Bis')]
+      Restaurant.find_or_create_by(name: item['english_name']).update(
+        localized_name: item['name'],
+        logo: fetch_logo(item['logo_url']),
+        tags_attributes: tags,
+        location_attributes: {
+          street: street_name(item['address'], item['city']),
+          city: item['city'],
+          latitude: item['latitude'],
+          longitude: item['longitude']
+        },
+        payment_methods: [PaymentMethod.find_by(name: '10Bis')]
       )
     end
   end
