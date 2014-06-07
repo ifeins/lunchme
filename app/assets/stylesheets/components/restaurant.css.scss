@@ -1,8 +1,3 @@
-//= depend_on_asset 'upvote.png'
-//= depend_on_asset 'upvote-hover.png'
-//= depend_on_asset 'upvote-active.png'
-//= depend_on_asset 'upvote-voted.png'
-
 @import "components/voters";
 
 @mixin restaurant {
@@ -104,17 +99,6 @@
         }
         i {
           display: inline;
-        }
-
-        &:active, &:hover {
-          background: #f1f1f1;
-          box-shadow: 0 0 0 1px #747272;
-          span {
-            display: none;
-          }
-          i {
-            display: inline;
-          }
         }
       }
     }
