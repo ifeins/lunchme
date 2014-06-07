@@ -1,5 +1,4 @@
 .tags
   .tag{'ng-repeat' => 'tag in restaurant.tags', 'ng-class' => '{voted: tag.userVotedFor(user)}'}
-    %span.name {{tag.name}}
-    %span.multiplier ×
-    %span.quantity {{tag.quantity}}
+    .quantity {{tag.quantity}}
+    .name {{tag.name}}
