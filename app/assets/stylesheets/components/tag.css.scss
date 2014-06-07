@@ -10,41 +10,27 @@ $voted-tag-border-color: #acd02f;
   height: 25px;
   font-family: $body-font;
 
-  .quantity {
-    @include min-width(18px);
-    padding: 0 2px;
-    line-height: 24px;
-    background: #1ba8e5;
-    border-radius: 3px 0 0 3px;
-    text-align: center;
-    border-bottom: 1px solid #1ba8e5;
+  @include border-radius(3px);
+  padding: 0 13px;
+  font-size: 13px;
+  line-height: 24px;
+  text-align: center;
+  background: #f0f0f0;
+  color: #333333;
+  border: 1px solid #d4d4d4;
+
+  .multiplier, .quantity {
     font-size: 12px;
-
-    color: white;
-    font-weight: bold;
-    float: left;
-    @include text-shadow(#666 0 1px 0);
-  }
-
-  .name {
-    border-radius: 0 3px 3px 0;
-    line-height: 24px;
-    padding: 0 13px;
-    font-size: 13px;
-    color: #333;
-    background: #f0f0f0;
-    border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    float: left;
+    color: #999999;
   }
 
   margin: 5px 10px 2px 0;
   white-space: nowrap;
 
-//  &.voted {
-//    @include voted-tag;
-//  }
-//
+  &.voted {
+    @include voted-tag;
+  }
+
 //  &.clickable {
 //    @include clickable-tag;
 //  }
@@ -77,8 +63,6 @@ $voted-tag-border-color: #acd02f;
 @mixin voted-tag {
   cursor: default;
 
-  background-color: tint($voted-tag-bg-color, 30%);
-  border-bottom-color: $voted-tag-border-color;
-  border-right-color: $voted-tag-border-color;
-  color: $voted-tag-text-color;
+  background-color: #c0c0c0;
+  border: 1px solid #8b8b8b;
 }
