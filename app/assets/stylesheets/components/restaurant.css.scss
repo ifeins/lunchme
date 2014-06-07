@@ -100,6 +100,12 @@
         i {
           display: inline;
         }
+
+        &:hover {
+          i {
+            color: #bae8ff;
+          }
+        }
       }
     }
 
