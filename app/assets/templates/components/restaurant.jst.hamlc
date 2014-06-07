@@ -7,3 +7,5 @@
     .voter{'ng-repeat' => 'voter in lunch.votersForRestaurant(restaurant)', 'ng-attr-title' => '{{voter.fullName()}}'}
       %img.avatar{'ng-src' => '{{voter.avatarUrl}}'}
   .vote-btn{'ng-click' => 'voteButtonClicked(restaurant)', 'stop-event' => 'click', 'ng-class' => "{voted: isVoted(restaurant)}"}
+    %span I WANT IN!
+    %i.fa.fa-check
