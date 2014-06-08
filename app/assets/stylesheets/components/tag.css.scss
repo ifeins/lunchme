@@ -1,9 +1,8 @@
-$tag-bg-color: #E0EAF1;
-$tag-border-color: #b3cee1;
+$tag-bg-color: #f0f0f0;
+$tag-border-color: #d4d4d4;
 
-$voted-tag-bg-color: #acd02f;
-$voted-tag-text-color: #5c7113;
-$voted-tag-border-color: #acd02f;
+$voted-tag-bg-color: #c0c0c0;
+$voted-tag-border-color: #8b8b8b;
 
 @mixin tag {
   @include box-sizing(border-box);
@@ -12,12 +11,13 @@ $voted-tag-border-color: #acd02f;
 
   @include border-radius(3px);
   padding: 0 13px;
+  background: $tag-bg-color;
+  border: 1px solid $tag-border-color;
+
   font-size: 13px;
   line-height: 24px;
   text-align: center;
-  background: #f0f0f0;
   color: #333333;
-  border: 1px solid #d4d4d4;
 
   .multiplier, .quantity {
     font-size: 12px;
@@ -31,38 +31,31 @@ $voted-tag-border-color: #acd02f;
     @include voted-tag;
   }
 
-//  &.clickable {
-//    @include clickable-tag;
-//  }
+  &.clickable {
+    @include clickable-tag;
+  }
 }
 
 @mixin clickable-tag {
   cursor: pointer;
 
   &:hover {
-    background-color: tint($tag-bg-color, 50%);
-  }
-
-  &:active {
-    border: 1px solid $tag-border-color;
+    background-color: $voted-tag-bg-color;
+    border: 1px solid $voted-tag-border-color;
   }
 
   &.voted {
     &:hover {
-      background-color: tint($voted-tag-bg-color, 50%);
-    }
-
-    &:active {
-      border: 1px solid $voted-tag-border-color;
+      background-color: $tag-bg-color;
+      border: 1px solid $tag-border-color;
     }
   }
 
 }
 
-
 @mixin voted-tag {
   cursor: default;
 
-  background-color: #c0c0c0;
-  border: 1px solid #8b8b8b;
+  background-color: $voted-tag-bg-color;
+  border: 1px solid $voted-tag-border-color;
 }
