@@ -40,17 +40,8 @@ $voted-tag-border-color: #8b8b8b;
   cursor: pointer;
 
   &:hover {
-    background-color: $voted-tag-bg-color;
-    border: 1px solid $voted-tag-border-color;
+    border: 1px solid #3f7be1;
   }
-
-  &.voted {
-    &:hover {
-      background-color: $tag-bg-color;
-      border: 1px solid $tag-border-color;
-    }
-  }
-
 }
 
 @mixin voted-tag {
