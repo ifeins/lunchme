@@ -6,5 +6,3 @@
       %input{:type => 'text', :placeholder => 'start typing to filter restaurants', 'ng-model' => 'query'}
     .restaurant{'ng-repeat' => 'restaurant in restaurants | orderObjectsBy:restaurantOrder track by restaurant.id', 'ng-click' => 'showRestaurant(restaurant)', 'ng-show' => '([restaurant] | filter:restaurantSearch).length > 0'}
       +include 'components/restaurant'
-.sidebar.sidebar-animate{'ng-controller' => 'SidebarController', 'ng-show' => 'shouldShowSidebar()'}
-  +include 'components/sidebar'
