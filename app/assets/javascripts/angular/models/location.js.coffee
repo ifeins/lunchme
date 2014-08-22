@@ -30,7 +30,7 @@ class window.Location
   @_coordinatesFromGooglePlace: (place) ->
     coordinates = place.geometry.location
     latitude: coordinates.pb or coordinates.nb or coordinates.d or coordinates.k
-    longitude: coordinates.qb or coordinates.ob or coordinates.e or coordinates.A
+    longitude: coordinates.qb or coordinates.ob or coordinates.e or coordinates.A or coordinates.B
 
   constructor: (data) ->
     @id = data.id
