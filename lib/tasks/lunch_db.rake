@@ -25,7 +25,7 @@ namespace :lunch_db do
 
       Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
         restaurant.localized_name = item['name']
-        restaurant.logo = fetch_logo(item['english_name'], item['logo_url'])
+        restaurant.logo = fetch_logo(item['english_name'], item['logo_url']) if item['logo_url'].present?
         restaurant.payment_methods = [PaymentMethod.find_by(name: '10Bis')]
         restaurant.tags_attributes = tags
         restaurant.location_attributes = {
