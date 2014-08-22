@@ -1,24 +1,23 @@
 def create_payment_method(name)
   logo_url = "/assets/payment_methods/#{name.downcase.parameterize}-logo.png"
-  PaymentMethod.find_or_create_by_name(:name => name, :logo_url => logo_url)
+  PaymentMethod.find_or_create_by(name: name) { |payment| payment.logo_url = logo_url }
 end
 
 def create_tag_definition(name)
-  TagDefinition.find_or_create_by_name(:name => name)
+  TagDefinition.find_or_create_by(name: name)
 end
 
 def create_user(first_name, last_name, email, avatar_url, work_area, provider, uid)
-  User.find_or_create_by_email(
-      :first_name => first_name,
-      :last_name => last_name,
-      :email => email,
-      :avatar_url => avatar_url,
-      :area => Area.find_by_name(work_area),
-      :account_attributes => {
-        :provider => provider,
-        :uid => uid
-      }
-  )
+  User.find_or_create_by(email: email) do |user|
+    user.first_name = first_name
+    user.last_name = last_name
+    user.avatar_url = avatar_url
+    user.area = Area.find_by(name: work_area)
+    user.account_attributes = {
+      provider: provider,
+      uid: uid
+    }
+  end
 end
 
 # payment methods
@@ -62,5 +61,5 @@ create_tag_definition('Vegetarian')
 create_tag_definition('Vietnamese')
 
 # lunch
-Lunch.create(date: Date.today)
-Lunch.create(date: Date.yesterday)
+Lunch.find_or_create_by(date: Date.today)
+Lunch.find_or_create_by(date: Date.yesterday)
