@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
     resources :votes, :only => [:create, :destroy]
     resources :visits, :only => [:create, :update]
-    resources :surveys, :only => [:create]
   end
 
   resources :offices, :only => [:index, :create]

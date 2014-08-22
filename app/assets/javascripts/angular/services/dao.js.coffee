@@ -18,9 +18,6 @@ _createVisits = (lunch, visits, UserDAO, RestaurantDAO) ->
     visit
   )
 
-_createSurvey = (lunch, user, data) ->
-  new Survey(data.status, user, lunch)
-
 angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
 
   restaurants = new OrderedHash()
@@ -113,8 +110,6 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
     lunch = new Lunch(data.id, data.date)
     lunch.votes = _createVotes(lunch, data.votes, RestaurantDAO, UserDAO)
     lunch.visits = _createVisits(lunch, data.visits, UserDAO, RestaurantDAO)
-    lunch.userSurvey = _createSurvey(lunch, User.current, data.userSurvey) if data.userSurvey
-
     lunch
 
   @
@@ -198,22 +193,6 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
       dfd.resolve()
     ).error(->
       lunch.removeVisit(visit)
-      dfd.reject()
-    )
-
-    dfd.promise
-
-  @
-).factory('SurveyDAO', ($http, $q) ->
-
-  @create = (survey) ->
-    lunch = survey.lunch
-    dfd = $q.defer()
-    $http.post("lunches/#{lunch.id}/surveys.json", survey.toJSON()).success( ->
-      # this time will only set the survey on the lunch after successful response from the server
-      lunch.userSurvey = survey
-      dfd.resolve()
-    ).error(->
       dfd.reject()
     )
 

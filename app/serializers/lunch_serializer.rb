@@ -1,10 +1,5 @@
 class LunchSerializer < ActiveModel::Serializer
-  attributes :id, :date, :user_survey
+  attributes :id, :date
   has_many :votes
   has_many :visits
-
-  def user_survey
-    object.user_survey(current_user) if current_user.present?
-  end
-
 end
