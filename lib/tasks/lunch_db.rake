@@ -35,11 +35,6 @@ namespace :lunch_db do
           longitude: item['longitude']
         }
       end
-
-      # temporary update of logo
-      if item['logo_url'].present?
-        restaurant.update!(logo: fetch_logo(item['english_name'], item['logo_url']))
-      end
     end
   end
 
