@@ -34,6 +34,7 @@ $grey-shadow: rgba(#000, 0.15);
   }
 
   .parent {
+    margin-bottom: 10px;
     width: 80%;
     @include box-sizing(border-box);
     -webkit-flex: 3 0 auto;
