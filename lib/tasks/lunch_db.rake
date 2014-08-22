@@ -23,18 +23,18 @@ namespace :lunch_db do
       # only add restaurants that have an english name
       next if item['english_name'].blank?
 
-      Restaurant.find_or_create_by(name: item['english_name']).update(
-        localized_name: item['name'],
-        logo: fetch_logo(item['logo_url']),
-        tags_attributes: tags,
-        location_attributes: {
+      Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
+        restaurant.localized_name = item['name']
+        restaurant.logo = fetch_logo(item['english_name'], item['logo_url'])
+        restaurant.payment_methods = [PaymentMethod.find_by(name: '10Bis')]
+        restaurant.tags_attributes = tags
+        restaurant.location_attributes = {
           street: street_name(item['address'], item['city']),
           city: item['city'],
           latitude: item['latitude'],
           longitude: item['longitude']
-        },
-        payment_methods: [PaymentMethod.find_by(name: '10Bis')]
-      )
+        }
+      end
     end
   end
 
@@ -42,11 +42,11 @@ namespace :lunch_db do
     street.gsub(city, '').gsub(',', '').gsub('.', '').strip
   end
 
-  def fetch_logo(logo_url)
+  def fetch_logo(restaurant_name, logo_url)
     fixed_logo_url = logo_url.starts_with?('http') ? logo_url : "http:#{logo_url}"
     agent = Mechanize.new
     mechanize_file = agent.get(fixed_logo_url)
-    filename = File.basename(mechanize_file.filename, File.extname(mechanize_file.filename))
+    filename = File.basename(restaurant_name.downcase.tr(' ', '-').gsub(/[\-]{2,}/,'-'), File.extname(mechanize_file.filename))
     temp_filename = "#{Rails.root}/tmp/#{filename}"
 
     mechanize_file.save temp_filename
