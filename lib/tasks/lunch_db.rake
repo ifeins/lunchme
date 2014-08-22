@@ -46,7 +46,7 @@ namespace :lunch_db do
     fixed_logo_url = logo_url.starts_with?('http') ? logo_url : "http:#{logo_url}"
     agent = Mechanize.new
     mechanize_file = agent.get(fixed_logo_url)
-    filename = File.basename(restaurant_name.downcase.tr(' ', '-').gsub(/[\-]{2,}/,'-'), File.extname(mechanize_file.filename))
+    filename = "#{restaurant_name.downcase.tr(' ', '-').gsub('.', '').gsub(/[\-]{2,}/,'-')}#{File.extname(mechanize_file.filename)}"
     temp_filename = "#{Rails.root}/tmp/#{filename}"
 
     mechanize_file.save temp_filename
