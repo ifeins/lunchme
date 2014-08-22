@@ -15,6 +15,6 @@ class AddTagRestaurantPairUniquenessConstraint < ActiveRecord::Migration
   end
 
   def down
-    remove_index :votes, column: [:tag_definition_id, :restaurant_id]
+    remove_index :tags, column: [:tag_definition_id, :restaurant_id]
   end
 end
