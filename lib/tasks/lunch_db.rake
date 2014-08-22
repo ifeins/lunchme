@@ -23,7 +23,7 @@ namespace :lunch_db do
       # only add restaurants that have an english name
       next if item['english_name'].blank?
 
-      Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
+      restaurant = Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
         restaurant.localized_name = item['name']
         restaurant.logo = fetch_logo(item['english_name'], item['logo_url']) if item['logo_url'].present?
         restaurant.payment_methods = [PaymentMethod.find_by(name: '10Bis')]
@@ -34,6 +34,11 @@ namespace :lunch_db do
           latitude: item['latitude'],
           longitude: item['longitude']
         }
+      end
+
+      # temporary update of logo
+      if item['logo_url'].present?
+        restaurant.update!(logo: fetch_logo(item['english_name'], item['logo_url']))
       end
     end
   end
