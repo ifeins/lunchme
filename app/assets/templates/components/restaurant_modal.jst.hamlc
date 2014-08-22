@@ -3,7 +3,6 @@
     %img.logo{'width' => 75, 'height' => 75, 'ng-src' => '{{restaurant.logoUrl}}'}
     %h2 {{ restaurant.localizedName }}
   .location {{ restaurant.location.address }}
-  %h3 Vote on existing tags or add a new one
   .tags
     .tag.clickable{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)', 'ng-class' => '{voted: tag.userVotedFor(user)}'}
       %span.name {{tag.name}}

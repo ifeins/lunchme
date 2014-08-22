@@ -25,12 +25,8 @@
   }
 
   .location {
-    margin-top: 15px;
+    margin: 15px 0;
     text-align: center;
-  }
-
-  h3 {
-    margin: 20px 0;
   }
 
   .tags {
@@ -39,7 +35,7 @@
   }
 
   .new-tag {
-    padding-top: 15px;
+    padding-top: 10px;
     clear: both;
 
     .twitter-typeahead {
@@ -53,7 +49,7 @@
       padding: 5px 10px;
       border: 1px solid #939597;
       @include border-radius(3px);
-      box-shadow: inset 1px 4px 7px -6px black;
+      box-shadow: inset 1px 4px 7px -6px rgba(black, 0.5);
     }
   }
 
