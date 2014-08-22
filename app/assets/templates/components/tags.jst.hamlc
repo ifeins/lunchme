@@ -1,3 +1,3 @@
 .tags
-  .tag{'ng-repeat' => 'tag in restaurant.tags'}
+  .tag{'ng-repeat' => "tag in restaurant.tags | orderBy:'-quantity' track by tag.id"}
     %span.name {{tag.name}}

@@ -4,7 +4,7 @@
     %h2 {{ restaurant.localizedName }}
   .location {{ restaurant.location.address }}
   .tags
-    .tag.clickable{'ng-repeat' => 'tag in restaurant.tags', 'ng-click' => 'voteOnTag(tag)', 'ng-class' => '{voted: tag.userVotedFor(user)}'}
+    .tag.clickable{'ng-repeat' => "tag in restaurant.tags | orderBy:'-quantity' track by tag.id", 'ng-click' => 'voteOnTag(tag)', 'ng-class' => '{voted: tag.userVotedFor(user)}'}
       %span.name {{tag.name}}
       %span.multiplier ×
       %span.quantity {{tag.quantity}}
