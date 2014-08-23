@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include ErrorSupport
   include CorsSupport
 
-  before_filter :must_not_be_banned
+  before_filter :must_not_be_banned, :sign_out_if_needed
   after_filter :set_ng_xsrf_token
   after_filter :allow_cross_origin
 

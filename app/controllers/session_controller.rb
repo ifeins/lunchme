@@ -7,12 +7,13 @@ class SessionController < ApplicationController
 
   def create
     account = Account.find_or_create_by(:provider => auth_hash[:provider], :uid => auth_hash[:uid])
-    account.update(
-      :user_attributes => {
-        :first_name => auth_hash[:info][:first_name],
-        :last_name => auth_hash[:info][:last_name],
-        :email => auth_hash[:info][:email],
-        :avatar_url => avatar_url(auth_hash[:uid])
+    account.update!(
+      user_attributes: {
+        first_name: auth_hash[:info][:first_name],
+        last_name: auth_hash[:info][:last_name],
+        email: auth_hash[:info][:email],
+        avatar_url: avatar_url(auth_hash[:uid]),
+        last_sign_in_at: DateTime.current
       }
     )
     user = account.user

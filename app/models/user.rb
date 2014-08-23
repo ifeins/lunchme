@@ -15,7 +15,19 @@ class User < ActiveRecord::Base
   end
 
   def force_sign_out!
-    update!(forced_sign_out_at: Time.now.to_i)
+    update!(forced_sign_out_at: DateTime.current)
+  end
+
+  def should_sign_out?
+    return false if forced_sign_out_at.nil?
+
+    if last_sign_in_at.nil?
+      # if this value doesn't exist then it means that it's the first time it is invoked after this change
+      # was deployed and so the user should be forced to sign out
+      return true
+    end
+
+    last_sign_in_at < forced_sign_out_at
   end
 
 end

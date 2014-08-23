@@ -29,6 +29,10 @@ module UserSupport
     banned if user_signed_in? and current_user.banned?
   end
 
+  def sign_out_if_needed
+    sign_out if user_signed_in? and current_user.should_sign_out?
+  end
+
   private
 
   def load_user
