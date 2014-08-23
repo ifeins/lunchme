@@ -3,7 +3,7 @@
 
 #modal.restaurant-modal {
   width: 550px;
-  height: 500px;
+  height: 450px;
   @include box-sizing(border-box);
   // unfortunately all the restaurants' logos have a white background, so in any other color it will look bad.
   background: white;
