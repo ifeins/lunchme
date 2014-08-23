@@ -105,11 +105,11 @@ ActiveRecord::Schema.define(version: 20140823080949) do
     t.string   "last_name"
     t.string   "email"
     t.string   "avatar_url"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "office_id"
-    t.boolean  "banned",              default: false
-    t.datetime "forced_signed_in_at"
+    t.boolean  "banned",             default: false
+    t.datetime "forced_sign_out_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

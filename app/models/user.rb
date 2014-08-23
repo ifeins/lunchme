@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
     update_attribute(:banned, false)
   end
 
-  def force_sign_in!
-    update!(forced_signed_in_at: Time.now.to_i)
+  def force_sign_out!
+    update!(forced_sign_out_at: Time.now.to_i)
   end
 
 end
