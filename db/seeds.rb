@@ -62,4 +62,3 @@ create_tag_definition('Vietnamese')
 
 # lunch
 Lunch.find_or_create_by(date: Date.today)
-Lunch.find_or_create_by(date: Date.yesterday)

@@ -10,10 +10,6 @@ class LunchesController < ApplicationController
     respond_with_lunch Lunch.find_by_date(Date.today)
   end
 
-  def yesterday
-    respond_with_lunch Lunch.find_by_date(Date.yesterday)
-  end
-
   private
 
   def respond_with_lunch(lunch)

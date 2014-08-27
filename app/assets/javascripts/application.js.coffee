@@ -47,11 +47,6 @@ window.Lunchtime = angular.module('Lunchtime', ['ngRoute', 'ngAnimate', 'DAO', '
     template: JST['pages/lunch_page']()
     resolve:
       lunch: ['$route', 'LunchDAO', ($route, LunchDAO) -> LunchDAO.findByDate($route.current.params.date)]
-      yesterdayLunch: ['$route', 'LunchDAO', ($route, LunchDAO) ->
-        lunchDate = dateFromRoute($route.current.params.date)
-        yesterdayDate = lunchDate.subtract('days', 1).format('YYYY-MM-DD')
-        LunchDAO.findByDate(yesterdayDate)
-      ]
   )
 
   PusherServiceProvider.setPusherUrl('http://js.pusher.com/2.2/pusher.min.js')

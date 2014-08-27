@@ -6,10 +6,6 @@ class Lunch < ActiveRecord::Base
     find_by_date(Date.today)
   end
 
-  def self.yesterday
-    find_by_date(Date.yesterday)
-  end
-
   def to_param
     date.to_s
   end

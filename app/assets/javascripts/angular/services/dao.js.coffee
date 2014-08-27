@@ -89,9 +89,6 @@ angular.module('DAO', []).factory('RestaurantDAO', ($http, $q) ->
   @today = ->
     fetchLunchFromPath('lunches/today.json')
 
-  @yesterday = ->
-    fetchLunchFromPath('lunches/yesterday.json')
-
   @findByDate = (date) ->
     fetchLunchFromPath("lunches/#{date}.json")
 
