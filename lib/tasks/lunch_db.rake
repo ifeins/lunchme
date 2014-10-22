@@ -6,6 +6,7 @@ namespace :lunch_db do
     latitude = 32.0631381
     longitude = 34.7706718
     radius = 3
+    new_restaurants_imported = 0
 
     response = HTTParty.get("http://lunchdb.herokuapp.com/restaurants/?lat=#{latitude}&lng=#{longitude}&radius=#{radius}")
     response['restaurants'].each do |item|
@@ -23,7 +24,9 @@ namespace :lunch_db do
       # only add restaurants that have an english name
       next if item['english_name'].blank?
 
-      Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
+
+      restaurant = Restaurant.find_or_create_by(name: item['english_name']) do |restaurant|
+        new_restaurants_imported += 1
         restaurant.localized_name = item['name']
         restaurant.logo = fetch_logo(item['english_name'], item['logo_url']) if item['logo_url'].present?
         restaurant.payment_methods = [PaymentMethod.find_by(name: '10Bis')]
@@ -35,6 +38,17 @@ namespace :lunch_db do
           longitude: item['longitude']
         }
       end
+
+      # TODO: this is just temporary, until all restaurants logo will be uploaded to S3
+      if restaurant.logo.current_path.nil? && item['logo_url'].present?
+        restaurant.update!(logo: fetch_logo(item['english_name'], item['logo_url']))
+      end
+    end
+
+    if new_restaurants_imported.zero?
+      puts 'No new restaurants were imported'
+    else
+      puts "Imported #{new_restaurants_imported} new restaurants"
     end
   end
 
