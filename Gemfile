@@ -31,6 +31,7 @@ gem 'enumify'
 gem 'geokit-rails'
 gem 'pusher'
 gem 'momentjs-rails'
+gem 'fog'
 
 # oauth
 gem 'omniauth-facebook'
