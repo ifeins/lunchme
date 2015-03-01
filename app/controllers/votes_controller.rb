@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
   before_filter :load_lunch
+  before_filter :sign_in_required
 
   attr_reader :lunch, :restaurant, :vote
 
