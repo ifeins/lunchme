@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   scope 'auth' do
     get ':provider' => 'session#does_not_matter', :as => :sign_in
+    post ':provider/native_callback' => 'session#connect_from_device', :defaults => {:format => :json}
     get ':provider/callback' => 'session#create'
     get 'failure' => 'session#failure'
   end

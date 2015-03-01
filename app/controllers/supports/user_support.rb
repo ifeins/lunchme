@@ -2,6 +2,7 @@ module UserSupport
   extend ControllerSupport::Base
 
   USER_SESSION_KEY = :user
+  USER_HEADER = 'X-Lunchtime-User'
 
   helper_method :current_user, :user_signed_in?
 
@@ -36,7 +37,7 @@ module UserSupport
   private
 
   def load_user
-    user_id = session[USER_SESSION_KEY]
+    user_id = session[USER_SESSION_KEY].presence || request.headers[USER_HEADER]
     user_id.present? ? User.find_by_id(user_id) : nil
   end
 

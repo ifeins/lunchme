@@ -32,6 +32,7 @@ gem 'geokit-rails'
 gem 'pusher'
 gem 'momentjs-rails'
 gem 'fog'
+gem 'koala', '~> 1.11.1'
 
 # oauth
 gem 'omniauth-facebook'
